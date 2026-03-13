@@ -116,6 +116,9 @@
                 <a href="#" class="s-link" onclick="showPanel('account',this)">
                     <i class="fas fa-user-circle"></i><span>My Account</span>
                 </a>
+                <a href="#" class="s-link" onclick="openChangeHistory()">
+                    <i class="fas fa-history"></i><span>Change History</span>
+                </a>
                 <a href="index.html" class="s-link" target="_blank">
                     <i class="fas fa-external-link-alt"></i><span>View Website</span>
                 </a>
@@ -909,6 +912,19 @@ silver|Maria Santos|Silver Medalist"></textarea></div>
                     <button type="submit" class="btn-save"><i class="fas fa-save"></i> Save Status</button>
                 </div>
             </form>
+        </div>
+    </div>
+
+    
+    <div class="modal-bg" id="changeHistoryModal">
+        <div class="modal-box" style="max-width:900px">
+            <div class="modal-hd">
+                <h3><i class="fas fa-history"></i> Change History</h3>
+                <button onclick="closeModal('changeHistoryModal')"><i class="fas fa-times"></i></button>
+            </div>
+            <div id="changeHistoryBody" style="padding:1rem">
+                <p class="empty-msg">Loading change history...</p>
+            </div>
         </div>
     </div>
 
