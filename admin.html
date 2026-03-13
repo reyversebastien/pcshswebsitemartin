@@ -34,17 +34,13 @@
                 </div>
             </div>
             <div class="login-form-wrap">
-                <h2>Sign In</h2>
-                <p class="login-sub">Enter your credentials to access the admin panel.</p>
+                <h2>Admin Access</h2>
+                <p class="login-sub">Enter the PIN to access the admin panel.</p>
                 <form id="loginForm" onsubmit="doLogin(event)">
                     <div class="lf-group">
-                        <label><i class="fas fa-user"></i> Username</label>
-                        <input type="text" id="loginUser" placeholder="admin" required autocomplete="username" />
-                    </div>
-                    <div class="lf-group">
-                        <label><i class="fas fa-lock"></i> Password</label>
-                        <input type="password" id="loginPass" placeholder="••••••••" required
-                            autocomplete="current-password" />
+                        <label><i class="fas fa-lock"></i> PIN</label>
+                        <input type="password" id="loginPass" placeholder="••••••" required
+                            autocomplete="off" inputmode="numeric" maxlength="6" />
                         <button type="button" class="show-pass" onclick="togglePass()"><i class="fas fa-eye"
                                 id="eyeIcon"></i></button>
                     </div>
