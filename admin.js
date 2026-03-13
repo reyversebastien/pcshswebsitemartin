@@ -21,28 +21,26 @@ function saveUsers(users) {
 
 function doLogin(e) {
     e.preventDefault();
-    const user = document.getElementById('loginUser').value.trim();
-    const pass = document.getElementById('loginPass').value;
+    const pin = document.getElementById('loginPass').value.trim();
     const err = document.getElementById('loginError');
     const btn = document.getElementById('loginBtn');
 
-    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Signing in…';
+    const ADMIN_PIN = '102005';
+
+    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Verifying…';
     btn.disabled = true;
 
     setTimeout(() => {
-        const users = getUsers();
-        const found = users.find(u => u.username === user && u.password === pass);
-
-        if (found) {
-            found.lastLogin = new Date().toLocaleString();
-            saveUsers(users);
-            localStorage.setItem(SESSION_KEY, JSON.stringify(found));
+        if (pin === ADMIN_PIN) {
+            const admin = { id: 'admin', username: 'admin', lastLogin: new Date().toLocaleString() };
+            localStorage.setItem(SESSION_KEY, JSON.stringify(admin));
             err.textContent = '';
-            launchAdmin(found);
+            launchAdmin(admin);
         } else {
-            err.textContent = 'Invalid username or password.';
-            btn.innerHTML = '<span>Sign In</span> <i class="fas fa-arrow-right"></i>';
+            err.textContent = 'Invalid PIN. Please try again.';
+            btn.innerHTML = '<span>Unlock</span> <i class="fas fa-arrow-right"></i>';
             btn.disabled = false;
+            document.getElementById('loginPass').value = '';
         }
     }, 800);
 }
