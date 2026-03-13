@@ -4,8 +4,18 @@ class PCDatabase {
     constructor() {
         
         
-        this.useFirebase = false;
+        this.useFirebase = true;
         this.fs = null;
+        
+        if (window._PCSHS_FIREBASE_INIT && typeof firebase !== 'undefined') {
+            try {
+                this.fs = firebase.firestore();
+                console.log('%c✅ Firestore enabled for real-time sync', 'color:#FF6D00;font-weight:bold;font-size:12px;');
+            } catch (e) {
+                console.warn('Firestore init failed, using localStorage fallback', e.message);
+                this.useFirebase = false;
+            }
+        }
     }
 
     
