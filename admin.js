@@ -67,6 +67,79 @@ function doLogout() {
     document.getElementById('loginBtn').disabled = false;
 }
 
+function undoChange(changeId) {
+    confirmDelete(() => {
+        const history = JSON.parse(localStorage.getItem('pcshs_change_history') || '[]');
+        const change = history.find(c => c.id === changeId);
+        if (!change || !change.backup) {
+            showToast('Cannot undo: backup not found.', 'error');
+            return;
+        }
+
+        // Restore from backup
+        const { dataType, data } = change.backup;
+        if (dataType === 'news') localStorage.setItem('pcshs_news', JSON.stringify(data));
+        else if (dataType === 'events') localStorage.setItem('pcshs_events', JSON.stringify(data));
+        else if (dataType === 'research') localStorage.setItem('pcshs_research', JSON.stringify(data));
+        else if (dataType === 'awards') localStorage.setItem('pcshs_awards', JSON.stringify(data));
+        else if (dataType === 'clubs') localStorage.setItem('pcshs_clubs', JSON.stringify(data));
+        else if (dataType === 'achievers') localStorage.setItem('pcshs_achievers', JSON.stringify(data));
+
+        // Log the undo action
+        const session = JSON.parse(localStorage.getItem(SESSION_KEY) || '{}');
+        logActivity(`↩️ Undid: ${change.msg}`, 'undo', {});
+
+        // Re-render
+        renderNews(); renderEvents(); renderResearch(); renderAwards(); renderClubs(); renderAchievers();
+        showToast(`Restored: ${change.msg}`, 'success');
+    });
+}
+
+function renderChangeHistory() {
+    const modalBody = document.getElementById('changeHistoryBody');
+    if (!modalBody) return;
+    
+    const history = JSON.parse(localStorage.getItem('pcshs_change_history') || '[]');
+    if (!history.length) {
+        modalBody.innerHTML = '<p style="padding:20px;text-align:center;color:#999">No changes recorded yet.</p>';
+        return;
+    }
+
+    modalBody.innerHTML = `
+        <div style="max-height:500px;overflow-y:auto;">
+            <table class="change-table" style="width:100%;border-collapse:collapse;">
+                <thead>
+                    <tr style="background:#f5f7fa;border-bottom:2px solid #ddd;">
+                        <th style="padding:10px;text-align:left;font-weight:600;">Change</th>
+                        <th style="padding:10px;text-align:left;font-weight:600;">Type</th>
+                        <th style="padding:10px;text-align:left;font-weight:600;">Admin</th>
+                        <th style="padding:10px;text-align:left;font-weight:600;">Time</th>
+                        <th style="padding:10px;text-align:center;font-weight:600;">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    ${history.slice(0, 50).map(c => `
+                        <tr style="border-bottom:1px solid #eee;">
+                            <td style="padding:10px;"><strong>${c.msg}</strong></td>
+                            <td style="padding:10px;"><span class="tag tag-blue">${c.type}</span></td>
+                            <td style="padding:10px;">${c.admin}</td>
+                            <td style="padding:10px;font-size:.85rem;color:#666">${new Date(c.timestamp).toLocaleString()}</td>
+                            <td style="padding:10px;text-align:center;">
+                                ${c.backup ? `<button class="btn-small" onclick="undoChange('${c.id}')" title="Restore"><i class="fas fa-undo"></i> Undo</button>` : '<span style="color:#ccc">—</span>'}
+                            </td>
+                        </tr>
+                    `).join('')}
+                </tbody>
+            </table>
+        </div>
+    `;
+}
+
+function openChangeHistory() {
+    renderChangeHistory();
+    openModal('changeHistoryModal');
+}
+
 function launchAdmin(user) {
     document.getElementById('loginScreen').style.display = 'none';
     document.getElementById('adminApp').style.display = 'flex';
@@ -125,12 +198,70 @@ function showToast(msg, type = 'default') {
 }
 
 
-function logActivity(msg) {
+function logActivity(msg, changeType = 'other', details = {}) {
     const logs = JSON.parse(localStorage.getItem('pcshs_activity') || '[]');
-    logs.unshift({ msg, time: new Date().toLocaleTimeString() });
-    if (logs.length > 20) logs.pop();
+    const timestamp = new Date();
+    const session = JSON.parse(localStorage.getItem(SESSION_KEY) || '{}');
+    const adminName = session.username || 'admin';
+    
+    const logEntry = {
+        msg,
+        type: changeType,
+        admin: adminName,
+        timestamp: timestamp.toISOString(),
+        time: timestamp.toLocaleTimeString(),
+        date: timestamp.toLocaleDateString(),
+        details
+    };
+    
+    logs.unshift(logEntry);
+    if (logs.length > 100) logs.pop();
     localStorage.setItem('pcshs_activity', JSON.stringify(logs));
+    
+    saveChangeHistory(msg, changeType, details);
+    autoDeployToNetlify();
     renderActivity();
+}
+
+function saveChangeHistory(msg, changeType, details) {
+    const history = JSON.parse(localStorage.getItem('pcshs_change_history') || '[]');
+    const timestamp = new Date();
+    const session = JSON.parse(localStorage.getItem(SESSION_KEY) || '{}');
+    
+    const entry = {
+        id: 'ch_' + Date.now(),
+        msg,
+        type: changeType,
+        admin: session.username || 'admin',
+        timestamp: timestamp.toISOString(),
+        backup: details.backup || null,
+        changedFields: details.changedFields || [],
+        status: 'success'
+    };
+    
+    history.unshift(entry);
+    if (history.length > 500) history.pop();
+    localStorage.setItem('pcshs_change_history', JSON.stringify(history));
+}
+
+function autoDeployToNetlify() {
+    // This triggers a rebuild if your Netlify site is connected to GitHub
+    // The actual deployment happens through GitHub push (automated via sync)
+    const deployLog = {
+        timestamp: new Date().toISOString(),
+        status: 'queued',
+        message: 'Changes synced to database, Netlify rebuild pending...'
+    };
+    
+    console.log('%c⚡ Auto-deploy queued - Netlify will rebuild automatically', 'color:#FFA500;font-weight:bold;font-size:11px;');
+    
+    // Trigger build via Netlify API (requires auth token)
+    const netlifyBuildHook = localStorage.getItem('netlify_build_hook_url');
+    if (netlifyBuildHook) {
+        fetch(netlifyBuildHook, { method: 'POST' })
+            .then(() => console.log('%c✅ Netlify rebuild triggered!', 'color:#00AA00;font-weight:bold;font-size:11px;'))
+            .catch(err => console.warn('Build hook unavailable', err));
+    }
 }
 
 function renderActivity() {
@@ -141,10 +272,14 @@ function renderActivity() {
         feed.innerHTML = '<p class="empty-msg">No recent activity.</p>';
         return;
     }
-    feed.innerHTML = logs.slice(0, 6).map(l => `
-    <div class="activity-item">
+    feed.innerHTML = logs.slice(0, 10).map(l => `
+    <div class="activity-item" title="${l.timestamp || ''}">
       <i class="fas fa-circle-dot"></i>
-      <div><div>${l.msg}</div><div class="act-time">${l.time}</div></div>
+      <div>
+        <div><strong>${l.admin || 'admin'}</strong>: ${l.msg}</div>
+        <div class="act-time">${l.time || new Date(l.timestamp).toLocaleTimeString()}</div>
+      </div>
+      ${l.id ? `<button class="act-undo" onclick="undoChange('${l.id}')" title="Undo"><i class="fas fa-undo"></i></button>` : ''}
     </div>
   `).join('');
 }
@@ -235,6 +370,10 @@ function saveNews(e) {
     e.preventDefault();
     const news = getNews();
     const editId = document.getElementById('newsEditId').value;
+    
+    // Create backup
+    const backup = { dataType: 'news', data: JSON.parse(JSON.stringify(news)) };
+    
     const item = {
         id: editId || 'n_' + Date.now(),
         title: document.getElementById('newsTitle').value.trim(),
@@ -249,10 +388,10 @@ function saveNews(e) {
     if (editId) {
         const idx = news.findIndex(n => n.id === editId);
         if (idx > -1) news[idx] = item;
-        logActivity(`Updated news: "${item.title}"`);
+        logActivity(`Updated news: "${item.title}"`, 'edit_news', { backup, changedFields: ['title', 'category', 'date'] });
     } else {
         news.unshift(item);
-        logActivity(`Added news: "${item.title}"`);
+        logActivity(`Added news: "${item.title}"`, 'add_news', { backup, changedFields: ['all'] });
     }
 
     saveNewsData(news);
@@ -318,6 +457,8 @@ function saveEvent(e) {
     e.preventDefault();
     const events = getEvents();
     const editId = document.getElementById('eventEditId').value;
+    const backup = { dataType: 'events', data: JSON.parse(JSON.stringify(events)) };
+    
     const item = {
         id: editId || 'ev_' + Date.now(),
         title: document.getElementById('eventTitle').value.trim(),
@@ -330,10 +471,10 @@ function saveEvent(e) {
     if (editId) {
         const idx = events.findIndex(ev => ev.id === editId);
         if (idx > -1) events[idx] = item;
-        logActivity(`Updated event: "${item.title}"`);
+        logActivity(`Updated event: "${item.title}"`, 'edit_event', { backup, changedFields: ['title', 'month', 'day'] });
     } else {
         events.push(item);
-        logActivity(`Added event: "${item.title}"`);
+        logActivity(`Added event: "${item.title}"`, 'add_event', { backup, changedFields: ['all'] });
     }
 
     saveEventsData(events);
@@ -399,6 +540,8 @@ function saveResearch(e) {
     e.preventDefault();
     const items = getResearch();
     const editId = document.getElementById('researchEditId').value;
+    const backup = { dataType: 'research', data: JSON.parse(JSON.stringify(items)) };
+    
     const item = {
         id: editId || 'r_' + Date.now(),
         title: document.getElementById('researchTitle').value.trim(),
@@ -412,10 +555,10 @@ function saveResearch(e) {
     if (editId) {
         const idx = items.findIndex(r => r.id === editId);
         if (idx > -1) items[idx] = item;
-        logActivity(`Updated research: "${item.title}"`);
+        logActivity(`Updated research: "${item.title}"`, 'edit_research', { backup, changedFields: ['title', 'topic'] });
     } else {
         items.unshift(item);
-        logActivity(`Added research: "${item.title}"`);
+        logActivity(`Added research: "${item.title}"`, 'add_research', { backup, changedFields: ['all'] });
     }
 
     saveResearchData(items);
@@ -474,15 +617,17 @@ function saveAward(e) {
     e.preventDefault();
     const items = getAwards();
     const editId = document.getElementById('awardEditId').value;
+    const backup = { dataType: 'awards', data: JSON.parse(JSON.stringify(items)) };
+    
     const item = { id: editId || 'a_' + Date.now(), text: document.getElementById('awardText').value.trim() };
 
     if (editId) {
         const idx = items.findIndex(a => a.id === editId);
         if (idx > -1) items[idx] = item;
-        logActivity(`Updated award: "${item.text.substring(0, 40)}"`);
+        logActivity(`Updated award: "${item.text.substring(0, 40)}"`, 'edit_award', { backup, changedFields: ['text'] });
     } else {
         items.push(item);
-        logActivity(`Added award: "${item.text.substring(0, 40)}"`);
+        logActivity(`Added award: "${item.text.substring(0, 40)}"`, 'add_award', { backup, changedFields: ['all'] });
     }
 
     saveAwardsData(items);
@@ -578,12 +723,39 @@ function deleteUser(id) {
 
 function deleteItem(type, id) {
     confirmDelete(() => {
-        let data, key, updated;
-        if (type === 'news') { data = getNews().filter(n => n.id !== id); key = 'pcshs_news'; updated = 'pcshs_news_updated'; saveNewsData(data); renderNews(); }
-        if (type === 'events') { data = getEvents().filter(e => e.id !== id); key = 'pcshs_events'; updated = 'pcshs_events_updated'; saveEventsData(data); renderEvents(); }
-        if (type === 'research') { data = getResearch().filter(r => r.id !== id); key = 'pcshs_research'; updated = 'pcshs_research_updated'; saveResearchData(data); renderResearch(); }
-        if (type === 'awards') { data = getAwards().filter(a => a.id !== id); key = 'pcshs_awards'; updated = 'pcshs_awards_updated'; saveAwardsData(data); renderAwards(); }
-        logActivity(`Deleted ${type} item`);
+        let data, key, updated, backup;
+        if (type === 'news') { 
+            backup = { dataType: 'news', data: JSON.parse(JSON.stringify(getNews())) };
+            data = getNews().filter(n => n.id !== id); 
+            key = 'pcshs_news'; updated = 'pcshs_news_updated'; 
+            saveNewsData(data); 
+            renderNews();
+            logActivity(`Deleted news item`, 'delete_news', { backup });
+        }
+        if (type === 'events') { 
+            backup = { dataType: 'events', data: JSON.parse(JSON.stringify(getEvents())) };
+            data = getEvents().filter(e => e.id !== id); 
+            key = 'pcshs_events'; updated = 'pcshs_events_updated'; 
+            saveEventsData(data); 
+            renderEvents();
+            logActivity(`Deleted event`, 'delete_event', { backup });
+        }
+        if (type === 'research') { 
+            backup = { dataType: 'research', data: JSON.parse(JSON.stringify(getResearch())) };
+            data = getResearch().filter(r => r.id !== id); 
+            key = 'pcshs_research'; updated = 'pcshs_research_updated'; 
+            saveResearchData(data); 
+            renderResearch();
+            logActivity(`Deleted research item`, 'delete_research', { backup });
+        }
+        if (type === 'awards') { 
+            backup = { dataType: 'awards', data: JSON.parse(JSON.stringify(getAwards())) };
+            data = getAwards().filter(a => a.id !== id); 
+            key = 'pcshs_awards'; updated = 'pcshs_awards_updated'; 
+            saveAwardsData(data); 
+            renderAwards();
+            logActivity(`Deleted award`, 'delete_award', { backup });
+        }
         showToast('Item deleted.', 'default');
         refreshDashboard();
     });
@@ -1075,6 +1247,8 @@ function saveClub(e) {
     e.preventDefault();
     const items = getClubs();
     const editId = document.getElementById('clubEditId').value;
+    const backup = { dataType: 'clubs', data: JSON.parse(JSON.stringify(items)) };
+    
     const item = {
         id: editId || 'cl_' + Date.now(),
         name: document.getElementById('clubName').value.trim(),
@@ -1086,10 +1260,10 @@ function saveClub(e) {
     if (editId) {
         const idx = items.findIndex(c => c.id === editId);
         if (idx > -1) items[idx] = item;
-        logActivity(`Updated club: "${item.name}"`);
+        logActivity(`Updated club: "${item.name}"`, 'edit_clubs', { backup, changedFields: ['name', 'type'] });
     } else {
         items.push(item);
-        logActivity(`Added club: "${item.name}"`);
+        logActivity(`Added club: "${item.name}"`, 'add_clubs', { backup, changedFields: ['all'] });
     }
     saveClubsData(items);
     renderClubs();
@@ -1156,6 +1330,8 @@ function saveAchiever(e) {
     e.preventDefault();
     const items = getAchievers();
     const editId = document.getElementById('achieverEditId').value;
+    const backup = { dataType: 'achievers', data: JSON.parse(JSON.stringify(items)) };
+    
     const item = {
         id: editId || 'ac_' + Date.now(),
         title: document.getElementById('achTitle').value.trim(),
@@ -1169,10 +1345,10 @@ function saveAchiever(e) {
     if (editId) {
         const idx = items.findIndex(a => a.id === editId);
         if (idx > -1) items[idx] = item;
-        logActivity(`Updated achievement: "${item.title}"`);
+        logActivity(`Updated achievement: "${item.title}"`, 'edit_achievers', { backup, changedFields: ['title', 'cat'] });
     } else {
         items.unshift(item);
-        logActivity(`Added achievement: "${item.title}"`);
+        logActivity(`Added achievement: "${item.title}"`, 'add_achievers', { backup, changedFields: ['all'] });
     }
     saveAchieversData(items);
     renderAchievers();
