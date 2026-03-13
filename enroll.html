@@ -1,0 +1,1586 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Online Enrollment — PCSHS</title>
+    <meta name="description"
+        content="Apply to Pasig City Science High School. Submit your online application for S.Y. 2025–2026." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;600;700&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --blue: #0038A8;
+            --blue-dark: #002580;
+            --blue-light: #1A73E8;
+            --blue-pale: #EEF3FF;
+            --white: #fff;
+            --text: #1A1F36;
+            --text-light: #6B7280;
+            --gray: #F3F5FA;
+            --border: #E2E8F0;
+            --radius: 12px;
+            --shadow: 0 4px 24px rgba(0, 56, 168, .1);
+            --green: #2E7D32;
+            --red: #C62828;
+            --gold: #A67C00;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--gray);
+            color: var(--text);
+            min-height: 100vh;
+        }
+
+        /* NAV */
+        .enr-nav {
+            background: var(--blue-dark);
+            padding: .75rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, .3);
+        }
+
+        .enr-nav-logo {
+            display: flex;
+            align-items: center;
+            gap: .75rem;
+            text-decoration: none;
+        }
+
+        .enr-nav-logo img {
+            width: 38px;
+            height: 38px;
+            object-fit: contain;
+        }
+
+        .enr-nav-logo span {
+            color: #fff;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            font-size: 1rem;
+        }
+
+        .enr-nav-links {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .enr-nav-links a {
+            color: rgba(255, 255, 255, .7);
+            text-decoration: none;
+            font-size: .875rem;
+            transition: color .2s;
+        }
+
+        .enr-nav-links a:hover,
+        .enr-nav-links a.active {
+            color: #fff;
+        }
+
+        .enr-nav-links .nav-cta {
+            background: rgba(255, 255, 255, .15);
+            padding: .4rem 1rem;
+            border-radius: 20px;
+        }
+
+        /* HERO */
+        .enr-hero {
+            background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue) 60%, var(--blue-light) 100%);
+            padding: 4rem 2rem;
+            text-align: center;
+            color: #fff;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .enr-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url('https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=1400&q=60') center/cover;
+            opacity: .12;
+        }
+
+        .enr-hero-inner {
+            position: relative;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .enr-hero span {
+            background: rgba(255, 255, 255, .15);
+            border: 1px solid rgba(255, 255, 255, .3);
+            padding: .3rem 1rem;
+            border-radius: 20px;
+            font-size: .8rem;
+            font-weight: 600;
+            letter-spacing: .07em;
+            text-transform: uppercase;
+        }
+
+        .enr-hero h1 {
+            font-family: 'DM Serif Display', serif;
+            font-size: clamp(2rem, 5vw, 3rem);
+            margin: 1rem 0 .5rem;
+        }
+
+        .enr-hero p {
+            font-size: 1.05rem;
+            opacity: .85;
+        }
+
+        .enr-hero-badges {
+            display: flex;
+            gap: .75rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+        }
+
+        .enr-hero-badges span {
+            background: rgba(255, 255, 255, .1);
+            border: 1px solid rgba(255, 255, 255, .2);
+            padding: .35rem .85rem;
+            border-radius: 20px;
+            font-size: .8rem;
+        }
+
+        /* TABS */
+        .enr-tabs {
+            display: flex;
+            background: var(--white);
+            border-bottom: 2px solid var(--border);
+            position: sticky;
+            top: 0;
+        }
+
+        .enr-tab {
+            flex: 1;
+            padding: 1rem;
+            text-align: center;
+            font-weight: 600;
+            font-size: .9rem;
+            cursor: pointer;
+            color: var(--text-light);
+            transition: all .2s;
+            border-bottom: 3px solid transparent;
+            margin-bottom: -2px;
+        }
+
+        .enr-tab.active {
+            color: var(--blue);
+            border-bottom-color: var(--blue);
+        }
+
+        .enr-tab i {
+            margin-right: .4rem;
+        }
+
+        /* LAYOUT */
+        .enr-body {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2.5rem 1.5rem;
+            display: grid;
+            grid-template-columns: 1fr 320px;
+            gap: 2rem;
+        }
+
+        @media (max-width: 860px) {
+            .enr-body {
+                grid-template-columns: 1fr;
+            }
+
+            .enr-nav-links {
+                display: none;
+            }
+        }
+
+        /* CARD */
+        .enr-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 2rem;
+            box-shadow: var(--shadow);
+        }
+
+        .enr-card h2 {
+            font-size: 1.25rem;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            margin-bottom: .5rem;
+        }
+
+        .enr-card .subhead {
+            color: var(--text-light);
+            font-size: .875rem;
+            margin-bottom: 1.75rem;
+        }
+
+        /* PROGRESS */
+        .step-progress {
+            display: flex;
+            gap: 0;
+            margin-bottom: 2rem;
+        }
+
+        .step-dot {
+            flex: 1;
+            text-align: center;
+            position: relative;
+        }
+
+        .step-dot::before {
+            content: '';
+            position: absolute;
+            top: 15px;
+            left: 50%;
+            right: -50%;
+            height: 2px;
+            background: var(--border);
+        }
+
+        .step-dot:last-child::before {
+            display: none;
+        }
+
+        .step-circle {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: var(--border);
+            color: var(--text-light);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: .78rem;
+            font-weight: 700;
+            position: relative;
+            z-index: 1;
+            transition: all .3s;
+        }
+
+        .step-circle.done {
+            background: var(--green);
+            color: #fff;
+        }
+
+        .step-circle.active {
+            background: var(--blue);
+            color: #fff;
+            box-shadow: 0 0 0 4px rgba(0, 56, 168, .2);
+        }
+
+        .step-label {
+            font-size: .7rem;
+            font-weight: 600;
+            color: var(--text-light);
+            margin-top: .4rem;
+            display: block;
+        }
+
+        .step-dot .step-circle.active~.step-label,
+        .step-dot .step-circle.done~.step-label {
+            color: var(--blue);
+        }
+
+        /* FORM */
+        .step-panel {
+            display: none;
+        }
+
+        .step-panel.active {
+            display: block;
+        }
+
+        .step-heading {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 1.25rem;
+            padding-bottom: .65rem;
+            border-bottom: 1.5px solid var(--border);
+            color: var(--text);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        @media (max-width: 600px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .form-row-3 {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: .4rem;
+            margin-bottom: .85rem;
+        }
+
+        .form-group label {
+            font-size: .8rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            padding: .65rem .85rem;
+            border: 1.5px solid var(--border);
+            border-radius: 8px;
+            font-family: 'Inter', sans-serif;
+            font-size: .9rem;
+            color: var(--text);
+            transition: border-color .2s;
+            background: var(--white);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--blue);
+            box-shadow: 0 0 0 3px rgba(0, 56, 168, .1);
+        }
+
+        .form-group .hint {
+            font-size: .75rem;
+            color: var(--text-light);
+        }
+
+        .form-group input.error {
+            border-color: var(--red);
+        }
+
+        /* TYPE CARDS */
+        .type-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .type-card {
+            border: 2px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.25rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all .25s;
+        }
+
+        .type-card:hover {
+            border-color: var(--blue-light);
+            background: var(--blue-pale);
+        }
+
+        .type-card.selected {
+            border-color: var(--blue);
+            background: var(--blue-pale);
+        }
+
+        .type-card i {
+            font-size: 1.8rem;
+            color: var(--blue);
+            margin-bottom: .65rem;
+        }
+
+        .type-card h4 {
+            font-size: .9rem;
+            font-weight: 700;
+            margin-bottom: .3rem;
+        }
+
+        .type-card p {
+            font-size: .75rem;
+            color: var(--text-light);
+        }
+
+        /* REQUIREMENTS CHECKLIST */
+        .req-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: .6rem;
+        }
+
+        .req-item {
+            display: flex;
+            align-items: flex-start;
+            gap: .75rem;
+            padding: .65rem;
+            border: 1.5px solid var(--border);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all .2s;
+            font-size: .875rem;
+        }
+
+        .req-item:hover {
+            border-color: var(--blue-light);
+        }
+
+        .req-item.checked {
+            border-color: var(--green);
+            background: #E8F5E9;
+        }
+
+        .req-item input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            flex-shrink: 0;
+            accent-color: var(--green);
+            margin-top: .1rem;
+            cursor: pointer;
+        }
+
+        .req-item span {
+            line-height: 1.5;
+        }
+
+        .req-item .req-required {
+            color: var(--red);
+            font-size: .7rem;
+            font-weight: 600;
+            margin-left: .4rem;
+        }
+
+        /* REVIEW */
+        .review-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: .5rem 1.5rem;
+            background: var(--blue-pale);
+            border-radius: var(--radius);
+            padding: 1.25rem;
+            border: 1.5px solid rgba(0, 56, 168, .15);
+        }
+
+        .review-item span {
+            font-size: .72rem;
+            color: var(--text-light);
+            display: block;
+            margin-bottom: .1rem;
+        }
+
+        .review-item strong {
+            font-size: .88rem;
+            color: var(--text);
+        }
+
+        .checkbox-row {
+            display: flex;
+            align-items: flex-start;
+            gap: .75rem;
+            font-size: .875rem;
+            color: var(--text-light);
+            line-height: 1.6;
+            margin-top: 1.25rem;
+        }
+
+        .checkbox-row input {
+            flex-shrink: 0;
+            margin-top: .3rem;
+            width: 16px;
+            height: 16px;
+            accent-color: var(--blue);
+        }
+
+        /* STEP NAV */
+        .step-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1.75rem;
+            padding-top: 1.25rem;
+            border-top: 1.5px solid var(--border);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: .5rem;
+            padding: .7rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: .9rem;
+            cursor: pointer;
+            border: none;
+            transition: all .25s;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .btn-primary {
+            background: var(--blue);
+            color: #fff;
+        }
+
+        .btn-primary:hover {
+            background: var(--blue-dark);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--border);
+            color: var(--text);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--blue);
+            color: var(--blue);
+        }
+
+        .btn-success {
+            background: var(--green);
+            color: #fff;
+        }
+
+        .btn:disabled {
+            opacity: .5;
+            cursor: not-allowed;
+        }
+
+        /* SUCCESS */
+        .success-box {
+            text-align: center;
+            padding: 2rem 1rem;
+        }
+
+        .success-icon {
+            width: 72px;
+            height: 72px;
+            background: #E8F5E9;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: var(--green);
+            margin-bottom: 1.25rem;
+        }
+
+        .ref-number {
+            background: var(--blue-pale);
+            border: 2px dashed var(--blue);
+            border-radius: var(--radius);
+            padding: 1.25rem;
+            margin: 1.5rem 0;
+        }
+
+        .ref-number .ref-label {
+            font-size: .8rem;
+            color: var(--text-light);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: .06em;
+        }
+
+        .ref-number .ref-code {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--blue);
+            letter-spacing: .04em;
+        }
+
+        /* SIDEBAR */
+        .sidebar-widget {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+            margin-bottom: 1.5rem;
+        }
+
+        .sidebar-widget h3 {
+            font-size: .95rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: .5rem;
+        }
+
+        .sidebar-widget h3 i {
+            color: var(--blue);
+        }
+
+        /* STATUS CHECKER */
+        .status-panel {
+            display: none;
+        }
+
+        .status-panel.active {
+            display: block;
+        }
+
+        .status-result {
+            margin-top: 1.5rem;
+            display: none;
+        }
+
+        .status-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .status-avatar {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: var(--blue-pale);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--blue);
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: .4rem;
+            padding: .35rem .9rem;
+            border-radius: 20px;
+            font-size: .8rem;
+            font-weight: 700;
+        }
+
+        .status-badge.pending {
+            background: #FFF8E1;
+            color: #A67C00;
+        }
+
+        .status-badge.review {
+            background: #E3F2FD;
+            color: #0038A8;
+        }
+
+        .status-badge.exam {
+            background: #F3EEFF;
+            color: #6C3FC5;
+        }
+
+        .status-badge.accepted {
+            background: #E8F5E9;
+            color: #2E7D32;
+        }
+
+        .status-badge.rejected {
+            background: #FFEBEE;
+            color: #C62828;
+        }
+
+        /* TIMELINE */
+        .timeline {
+            position: relative;
+            padding-left: 1.75rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: .65rem;
+            top: .5rem;
+            bottom: .5rem;
+            width: 2px;
+            background: var(--border);
+        }
+
+        .tl-item {
+            position: relative;
+            margin-bottom: 1.25rem;
+        }
+
+        .tl-dot {
+            position: absolute;
+            left: -1.75rem;
+            top: .2rem;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            border: 3px solid var(--border);
+            background: var(--white);
+        }
+
+        .tl-dot.done {
+            border-color: var(--green);
+            background: var(--green);
+        }
+
+        .tl-dot.active {
+            border-color: var(--blue);
+            background: var(--blue);
+        }
+
+        .tl-title {
+            font-size: .88rem;
+            font-weight: 600;
+        }
+
+        .tl-desc {
+            font-size: .78rem;
+            color: var(--text-light);
+            margin-top: .2rem;
+        }
+
+        /* DEADLINE */
+        .deadline-item {
+            display: flex;
+            justify-content: space-between;
+            padding: .6rem 0;
+            border-bottom: 1px solid var(--border);
+            font-size: .85rem;
+        }
+
+        .deadline-item:last-child {
+            border: none;
+        }
+
+        .deadline-date {
+            font-weight: 700;
+            color: var(--blue);
+        }
+
+        /* FOOTER */
+        .enr-footer {
+            background: var(--blue-dark);
+            color: rgba(255, 255, 255, .7);
+            text-align: center;
+            padding: 1.5rem;
+            font-size: .85rem;
+            margin-top: 3rem;
+        }
+
+        .enr-footer a {
+            color: rgba(255, 255, 255, .5);
+            text-decoration: none;
+            margin: 0 .5rem;
+        }
+
+        .enr-footer a:hover {
+            color: #fff;
+        }
+
+        /* TOAST */
+        .toast {
+            position: fixed;
+            bottom: 1.5rem;
+            right: 1.5rem;
+            background: #1A1F36;
+            color: #fff;
+            padding: .85rem 1.5rem;
+            border-radius: 10px;
+            font-size: .9rem;
+            transform: translateY(120%);
+            transition: transform .3s;
+            z-index: 9999;
+            max-width: 340px;
+        }
+
+        .toast.show {
+            transform: translateY(0);
+        }
+
+        .toast.success {
+            background: var(--green);
+        }
+
+        .toast.error {
+            background: var(--red);
+        }
+
+        /* Loading */
+        .loading-spin {
+            display: inline-block;
+            width: 18px;
+            height: 18px;
+            border: 2px solid rgba(255, 255, 255, .4);
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: spin .6s linear infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    
+    <nav class="enr-nav">
+        <a href="index.html" class="enr-nav-logo">
+            <img src="pcshs_logo.png"
+                onerror="this.src='https://via.placeholder.com/38x38/0038A8/FFFFFF?text=P'" alt="PCSHS" />
+            <span>PCSHS — Online Enrollment</span>
+        </a>
+        <div class="enr-nav-links">
+            <a href="index.html"><i class="fas fa-home"></i> Main Site</a>
+            <a href="news.html"><i class="fas fa-newspaper"></i> News</a>
+            <a href="library.html"><i class="fas fa-book"></i> Library</a>
+            <a href="alumni.html"><i class="fas fa-users"></i> Alumni</a>
+            <a href="enroll.html" class="active nav-cta"><i class="fas fa-pencil-alt"></i> Apply</a>
+        </div>
+    </nav>
+
+    
+    <div class="enr-hero">
+        <div class="enr-hero-inner">
+            <span><i class="fas fa-graduation-cap"></i> S.Y. 2025 – 2026 Admissions</span>
+            <h1>Online Application Portal</h1>
+            <p>Apply to Pasig City Science High School — one of the Philippines' premier science high schools.</p>
+            <div class="enr-hero-badges">
+                <span><i class="fas fa-calendar-alt"></i> Deadline: April 30, 2025</span>
+                <span><i class="fas fa-users"></i> 120 Slots Available</span>
+                <span><i class="fas fa-check-circle"></i> Official DepEd School</span>
+            </div>
+        </div>
+    </div>
+
+    
+    <div class="enr-tabs">
+        <div class="enr-tab active" id="tab-apply" onclick="switchTab('apply')"><i class="fas fa-pencil-alt"></i> Apply
+            Now</div>
+        <div class="enr-tab" id="tab-status" onclick="switchTab('status')"><i class="fas fa-search"></i> Check
+            Application Status</div>
+    </div>
+
+    
+    <div class="enr-body">
+
+        
+        <div>
+
+            
+            <div id="panel-apply">
+                <div class="enr-card">
+                    
+                    <div class="step-progress" id="stepProgress">
+                        <div class="step-dot">
+                            <div class="step-circle active" id="sc-1">1</div><span class="step-label">Type</span>
+                        </div>
+                        <div class="step-dot">
+                            <div class="step-circle" id="sc-2">2</div><span class="step-label">Personal</span>
+                        </div>
+                        <div class="step-dot">
+                            <div class="step-circle" id="sc-3">3</div><span class="step-label">Family</span>
+                        </div>
+                        <div class="step-dot">
+                            <div class="step-circle" id="sc-4">4</div><span class="step-label">Academic</span>
+                        </div>
+                        <div class="step-dot">
+                            <div class="step-circle" id="sc-5">5</div><span class="step-label">Requirements</span>
+                        </div>
+                        <div class="step-dot">
+                            <div class="step-circle" id="sc-6">6</div><span class="step-label">Confirm</span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="step-panel active" id="step-1">
+                        <p class="step-heading">Select Applicant Type</p>
+                        <div class="type-grid">
+                            <div class="type-card" id="type-g7" onclick="selectType('Grade 7 Incoming','type-g7')">
+                                <i class="fas fa-child"></i>
+                                <h4>Grade 7 Incoming</h4>
+                                <p>Current Grade 6 students applying for Junior High School</p>
+                            </div>
+                            <div class="type-card" id="type-g11"
+                                onclick="selectType('Grade 11 Senior High','type-g11')">
+                                <i class="fas fa-user-graduate"></i>
+                                <h4>Senior High School</h4>
+                                <p>Current Grade 10 students applying for Senior High</p>
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <label>School Year Applying For *</label>
+                            <select id="appSchoolYear">
+                                <option>S.Y. 2025 – 2026</option>
+                                <option>S.Y. 2026 – 2027</option>
+                            </select>
+                        </div>
+                        <div class="step-nav"><span></span>
+                            <button class="btn btn-primary" onclick="nextStep(1)">Next <i
+                                    class="fas fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+
+                    
+                    <div class="step-panel" id="step-2">
+                        <p class="step-heading">Personal Information</p>
+                        <div class="form-row">
+                            <div class="form-group"><label>First Name *</label><input type="text" id="p-fname"
+                                    placeholder="Juan" /></div>
+                            <div class="form-group"><label>Middle Name</label><input type="text" id="p-mname"
+                                    placeholder="(optional)" /></div>
+                            <div class="form-group"><label>Last Name *</label><input type="text" id="p-lname"
+                                    placeholder="dela Cruz" /></div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group"><label>Date of Birth *</label><input type="date" id="p-dob" /></div>
+                            <div class="form-group"><label>Sex *</label><select id="p-sex">
+                                    <option>Male</option>
+                                    <option>Female</option>
+                                </select></div>
+                            <div class="form-group"><label>Nationality</label><input type="text" id="p-nat"
+                                    value="Filipino" /></div>
+                        </div>
+                        <div class="form-group"><label>Home Address *</label><input type="text" id="p-addr"
+                                placeholder="Unit/House No., Street, Barangay, City" /></div>
+                        <div class="form-row">
+                            <div class="form-group"><label>Barangay *</label><input type="text" id="p-brgy"
+                                    placeholder="Barangay" /></div>
+                            <div class="form-group"><label>City/Municipality *</label><input type="text" id="p-city"
+                                    placeholder="Pasig City" /></div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group"><label>LRN (Learner Reference No.)</label><input type="text"
+                                    id="p-lrn" placeholder="12-digit LRN" /></div>
+                            <div class="form-group"><label>PSA Birth Cert. No. *</label><input type="text" id="p-psa"
+                                    placeholder="e.g. 2014-00123456" /></div>
+                        </div>
+                        <div class="step-nav">
+                            <button class="btn btn-outline" onclick="prevStep(2)"><i class="fas fa-arrow-left"></i>
+                                Back</button>
+                            <button class="btn btn-primary" onclick="nextStep(2)">Next <i
+                                    class="fas fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+
+                    
+                    <div class="step-panel" id="step-3">
+                        <p class="step-heading">Family Background</p>
+                        <div class="form-row">
+                            <div class="form-group"><label>Father's Full Name *</label><input type="text" id="f-father"
+                                    placeholder="Juan dela Cruz Sr." /></div>
+                            <div class="form-group"><label>Father's Occupation</label><input type="text" id="f-foccup"
+                                    placeholder="Occupation" /></div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group"><label>Mother's Full Name *</label><input type="text" id="f-mother"
+                                    placeholder="Maria Santos dela Cruz" /></div>
+                            <div class="form-group"><label>Mother's Occupation</label><input type="text" id="f-moccup"
+                                    placeholder="Occupation" /></div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group"><label>Guardian Name (if applicable)</label><input type="text"
+                                    id="f-guardian" placeholder="Full name" /></div>
+                            <div class="form-group"><label>Relationship to Student</label><select id="f-rel">
+                                    <option>Father</option>
+                                    <option>Mother</option>
+                                    <option>Guardian</option>
+                                </select></div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group"><label>Parent/Guardian Email *</label><input type="email"
+                                    id="f-email" placeholder="parent@email.com" /></div>
+                            <div class="form-group"><label>Parent/Guardian Mobile *</label><input type="tel"
+                                    id="f-phone" placeholder="09XX-XXX-XXXX" /></div>
+                        </div>
+                        <div class="form-group"><label>Home Telephone</label><input type="text" id="f-tel"
+                                placeholder="(02) 8XXX-XXXX" /></div>
+                        <div class="step-nav">
+                            <button class="btn btn-outline" onclick="prevStep(3)"><i class="fas fa-arrow-left"></i>
+                                Back</button>
+                            <button class="btn btn-primary" onclick="nextStep(3)">Next <i
+                                    class="fas fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+
+                    
+                    <div class="step-panel" id="step-4">
+                        <p class="step-heading">Academic Records</p>
+                        <div class="form-group"><label>Current/Previous School *</label><input type="text" id="a-school"
+                                placeholder="School name" /></div>
+                        <div class="form-row">
+                            <div class="form-group"><label>School Division</label><input type="text" id="a-division"
+                                    placeholder="e.g. Pasig City Division" /></div>
+                            <div class="form-group"><label>School Type</label><select id="a-stype">
+                                    <option>Public</option>
+                                    <option>Private</option>
+                                    <option>Parochial</option>
+                                </select></div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group"><label>Current Grade Level *</label><select id="a-grade">
+                                    <option>Grade 6</option>
+                                    <option>Grade 10</option>
+                                    <option>Other</option>
+                                </select></div>
+                            <div class="form-group"><label>General Average (Grade 5 / 9) *</label><input type="number"
+                                    id="a-gwa" step="0.01" min="75" max="100" placeholder="e.g. 95.50" /></div>
+                        </div>
+                        <div class="form-group"><label>Awards & Honors Received</label><textarea id="a-awards" rows="3"
+                                placeholder="List any academic, science, or extracurricular honors…"></textarea></div>
+                        <div class="form-group"><label>Preferred Program Track</label>
+                            <select id="a-track">
+                                <option>Advanced Sciences</option>
+                                <option>Advanced Mathematics</option>
+                                <option>Computer Science & ICT</option>
+                                <option>Research Program</option>
+                                <option>Life Sciences (Biology)</option>
+                                <option>Space & Earth Sciences</option>
+                            </select>
+                        </div>
+                        <div class="step-nav">
+                            <button class="btn btn-outline" onclick="prevStep(4)"><i class="fas fa-arrow-left"></i>
+                                Back</button>
+                            <button class="btn btn-primary" onclick="nextStep(4)">Next <i
+                                    class="fas fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+
+                    
+                    <div class="step-panel" id="step-5">
+                        <p class="step-heading">Requirements Checklist</p>
+                        <p style="font-size:.85rem;color:var(--text-light);margin-bottom:1.25rem">
+                            <i class="fas fa-info-circle" style="color:var(--blue)"></i>
+                            Please gather the following documents. Originals + 1 photocopy each are required upon
+                            submission.
+                            Check each item you have ready.
+                        </p>
+                        <ul class="req-list" id="reqList">
+                            <li class="req-item" onclick="toggleReq(this)"><input type="checkbox" /><span>PSA-certified
+                                    Birth Certificate (original + photocopy) <span
+                                        class="req-required">REQUIRED</span></span></li>
+                            <li class="req-item" onclick="toggleReq(this)"><input type="checkbox" /><span>Report Card /
+                                    Form 138 (Grade 5 & current grade) <span class="req-required">REQUIRED</span></span>
+                            </li>
+                            <li class="req-item" onclick="toggleReq(this)"><input type="checkbox" /><span>Certificate of
+                                    Good Moral Character (current school principal) <span
+                                        class="req-required">REQUIRED</span></span></li>
+                            <li class="req-item" onclick="toggleReq(this)"><input type="checkbox" /><span>2x2 ID photo
+                                    (white background, name tag, 4 copies) <span
+                                        class="req-required">REQUIRED</span></span></li>
+                            <li class="req-item" onclick="toggleReq(this)"><input type="checkbox" /><span>Photocopy of
+                                    parents' valid government ID (any 1)</span></li>
+                            <li class="req-item" onclick="toggleReq(this)"><input type="checkbox" /><span>Medical/Health
+                                    Certificate (issued within 6 months)</span></li>
+                            <li class="req-item" onclick="toggleReq(this)"><input type="checkbox" /><span>Awards &
+                                    Recognition documents (if applicable)</span></li>
+                            <li class="req-item" onclick="toggleReq(this)"><input type="checkbox" /><span>Barangay
+                                    Clearance or Certificate of Residency</span></li>
+                        </ul>
+                        <p style="font-size:.8rem;color:var(--text-light);margin-top:1.25rem">
+                            <i class="fas fa-exclamation-triangle" style="color:var(--gold)"></i>
+                            Physical documents must be submitted to the PCSHS Registrar within 5 days of exam result
+                            release.
+                        </p>
+                        <div class="step-nav">
+                            <button class="btn btn-outline" onclick="prevStep(5)"><i class="fas fa-arrow-left"></i>
+                                Back</button>
+                            <button class="btn btn-primary" onclick="nextStep(5)">Review Application <i
+                                    class="fas fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+
+                    
+                    <div class="step-panel" id="step-6">
+                        <p class="step-heading">Review & Submit</p>
+                        <div class="review-grid" id="reviewGrid"></div>
+                        <div class="checkbox-row">
+                            <input type="checkbox" id="agree-terms" />
+                            <span>I certify that all information provided is accurate and complete. I understand that
+                                misrepresentation will result in disqualification. I agree to the PCSHS <a href="#"
+                                    style="color:var(--blue)">Terms & Conditions</a>.</span>
+                        </div>
+                        <div class="step-nav">
+                            <button class="btn btn-outline" onclick="prevStep(6)"><i class="fas fa-arrow-left"></i>
+                                Back</button>
+                            <button class="btn btn-success" id="submitBtn" onclick="submitApplication()"><i
+                                    class="fas fa-paper-plane"></i> Submit Application</button>
+                        </div>
+                    </div>
+
+                    
+                    <div class="step-panel" id="step-success">
+                        <div class="success-box">
+                            <div class="success-icon"><i class="fas fa-check"></i></div>
+                            <h2>Application Submitted!</h2>
+                            <p style="color:var(--text-light);margin:.5rem 0 0">Your application has been received.
+                                Please save your reference number.</p>
+                            <div class="ref-number">
+                                <div class="ref-label">Your Application Reference Number</div>
+                                <div class="ref-code" id="refNumber">PCSHS-2025-000000</div>
+                            </div>
+                            <p style="font-size:.85rem;color:var(--text-light);margin-bottom:1.5rem">
+                                <i class="fas fa-envelope" style="color:var(--blue)"></i>
+                                A confirmation will be sent to your parent's email address.
+                                Use your reference number to check your application status.
+                            </p>
+                            <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+                                <button class="btn btn-primary" onclick="switchTab('status')"><i
+                                        class="fas fa-search"></i> Check Status</button>
+                                <button class="btn btn-outline" onclick="window.print()"><i class="fas fa-print"></i>
+                                    Print Confirmation</button>
+                                <a href="index.html" class="btn btn-outline"><i class="fas fa-home"></i> Back to
+                                    Website</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            
+            <div id="panel-status" style="display:none">
+                <div class="enr-card">
+                    <h2><i class="fas fa-search" style="color:var(--blue)"></i> Application Status</h2>
+                    <p class="subhead">Enter your reference number to check your application status.</p>
+                    <div class="form-row" style="align-items:flex-end">
+                        <div class="form-group" style="margin:0">
+                            <label>Reference Number</label>
+                            <input type="text" id="checkRefInput" placeholder="e.g. PCSHS-2025-123456"
+                                style="text-transform:uppercase" />
+                        </div>
+                        <button class="btn btn-primary" onclick="checkStatus()" id="checkBtn">
+                            <i class="fas fa-search"></i> Check Status
+                        </button>
+                    </div>
+                    <div id="statusResult" class="status-result">
+                        <hr style="margin:1.5rem 0;border-color:var(--border)" />
+                        <div class="status-header">
+                            <div class="status-avatar" id="statusAvatar">?</div>
+                            <div>
+                                <div style="font-weight:700;font-size:1.05rem" id="statusName">—</div>
+                                <div style="color:var(--text-light);font-size:.85rem" id="statusType">—</div>
+                                <div style="margin-top:.4rem"><span class="status-badge pending" id="statusBadge"><i
+                                            class="fas fa-clock"></i> —</span></div>
+                            </div>
+                        </div>
+                        <div class="timeline" id="statusTimeline"></div>
+                        <div id="statusNote"
+                            style="margin-top:1rem;padding:.85rem;background:var(--gray);border-radius:8px;font-size:.875rem;display:none">
+                        </div>
+                    </div>
+                    <div id="statusNotFound"
+                        style="display:none;text-align:center;padding:2rem;color:var(--text-light)">
+                        <i class="fas fa-search" style="font-size:2rem;opacity:.3"></i>
+                        <p style="margin-top:.75rem">No application found with that reference number.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        
+        <div>
+            <div class="sidebar-widget">
+                <h3><i class="fas fa-calendar-alt"></i> Important Dates</h3>
+                <div class="deadline-item"><span>Application Opens</span><span class="deadline-date">Jan 15, 2025</span>
+                </div>
+                <div class="deadline-item"><span>Application Deadline</span><span class="deadline-date">Apr 30,
+                        2025</span></div>
+                <div class="deadline-item"><span>Entrance Exam</span><span class="deadline-date">May 17, 2025</span>
+                </div>
+                <div class="deadline-item"><span>Results Release</span><span class="deadline-date">Jun 1, 2025</span>
+                </div>
+                <div class="deadline-item"><span>Enrollment Period</span><span class="deadline-date">Jun 10–20,
+                        2025</span></div>
+            </div>
+
+            <div class="sidebar-widget">
+                <h3><i class="fas fa-list-check"></i> Eligibility</h3>
+                <ul style="list-style:none;display:flex;flex-direction:column;gap:.65rem;font-size:.875rem">
+                    <li><i class="fas fa-check-circle" style="color:var(--green);margin-right:.4rem"></i>Currently in
+                        Grade 6 or Grade 10</li>
+                    <li><i class="fas fa-check-circle" style="color:var(--green);margin-right:.4rem"></i>General Average
+                        of 85% and above</li>
+                    <li><i class="fas fa-check-circle" style="color:var(--green);margin-right:.4rem"></i>Resident of
+                        Pasig City (priority)</li>
+                    <li><i class="fas fa-check-circle" style="color:var(--green);margin-right:.4rem"></i>No failing
+                        grades in any subject</li>
+                    <li><i class="fas fa-check-circle" style="color:var(--green);margin-right:.4rem"></i>Good moral
+                        character (no major offenses)</li>
+                </ul>
+            </div>
+
+            <div class="sidebar-widget">
+                <h3><i class="fas fa-question-circle"></i> FAQ</h3>
+                <details style="margin-bottom:.75rem">
+                    <summary style="cursor:pointer;font-size:.875rem;font-weight:600;padding:.4rem 0">Is tuition free?
+                    </summary>
+                    <p style="font-size:.82rem;color:var(--text-light);padding:.5rem 0">Yes! PCSHS is a public school
+                        under DepEd. Education is completely free including textbooks.</p>
+                </details>
+                <details style="margin-bottom:.75rem">
+                    <summary style="cursor:pointer;font-size:.875rem;font-weight:600;padding:.4rem 0">What is the exam
+                        like?</summary>
+                    <p style="font-size:.82rem;color:var(--text-light);padding:.5rem 0">The entrance exam covers
+                        Science, Math, English, and Abstract Reasoning. Duration is 2.5 hours.</p>
+                </details>
+                <details>
+                    <summary style="cursor:pointer;font-size:.875rem;font-weight:600;padding:.4rem 0">Can non-Pasig
+                        residents apply?</summary>
+                    <p style="font-size:.82rem;color:var(--text-light);padding:.5rem 0">Yes, but Pasig City residents
+                        are given priority. Slots for non-residents depend on availability.</p>
+                </details>
+            </div>
+
+            <div class="sidebar-widget" style="background:var(--blue);color:#fff">
+                <h3 style="color:#fff"><i class="fas fa-phone"></i> Need Help?</h3>
+                <p style="font-size:.875rem;opacity:.85;margin-bottom:.85rem">Contact the PCSHS Registrar for
+                    application assistance.</p>
+                <div style="font-size:.85rem;display:flex;flex-direction:column;gap:.5rem">
+                    <div><i class="fas fa-phone" style="margin-right:.4rem;opacity:.7"></i>(02) 8671-8888</div>
+                    <div><i class="fas fa-envelope"
+                            style="margin-right:.4rem;opacity:.7"></i>registrar@pcshs.deped.gov.ph</div>
+                    <div><i class="fas fa-clock" style="margin-right:.4rem;opacity:.7"></i>Mon–Fri, 8AM–5PM</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <footer class="enr-footer">
+        <p>© 2025 Pasig City Science High School — All Rights Reserved</p>
+        <p style="margin-top:.4rem">
+            <a href="index.html">Home</a>
+            <a href="enroll.html">Apply</a>
+            <a href="portal.html">Check Status</a>
+            <a href="index.html#contact">Contact</a>
+            <a href="admin.html">Admin</a>
+        </p>
+    </footer>
+
+    <div class="toast" id="toast"></div>
+
+    
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+    <script src="firebase-config.js"></script>
+    <script src="db.js"></script>
+    <script>
+        /* ============================================================
+           enroll.js — Enrollment Page Logic
+           ============================================================ */
+
+        let currentStep = 1;
+        const TOTAL_STEPS = 6;
+        let selectedType = '';
+        let appRefNumber = '';
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const enrollActive = localStorage.getItem('pcshs_enrollment_active');
+            if (enrollActive === 'false') {
+                const applyPanel = document.getElementById('panel-apply');
+                if (applyPanel) {
+                    applyPanel.innerHTML = `
+                        <div class="enr-card" style="text-align:center;padding:4rem 2rem">
+                            <div style="width:72px;height:72px;background:#fff5f5;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;margin-bottom:1.25rem">
+                                <i class="fas fa-lock" style="font-size:2rem;color:var(--red)"></i>
+                            </div>
+                            <h2>Enrollment is Currently Closed</h2>
+                            <p style="color:var(--text-light);max-width:500px;margin:1rem auto">We are not accepting new applications at this time. Applications for the next academic year will be announced on our News page.<br><br>If you have questions, please contact the Registrar's Office.</p>
+                        </div>
+                    `;
+                }
+            }
+        });
+
+        // ---- TAB SWITCHING ----
+        function switchTab(tab) {
+            document.getElementById('panel-apply').style.display = tab === 'apply' ? 'block' : 'none';
+            document.getElementById('panel-status').style.display = tab === 'status' ? 'block' : 'none';
+            document.getElementById('tab-apply').classList.toggle('active', tab === 'apply');
+            document.getElementById('tab-status').classList.toggle('active', tab === 'status');
+        }
+
+        // ---- TYPE SELECTION ----
+        function selectType(type, cardId) {
+            selectedType = type;
+            document.querySelectorAll('.type-card').forEach(c => c.classList.remove('selected'));
+            document.getElementById(cardId).classList.add('selected');
+        }
+
+        // ---- STEP NAVIGATION ----
+        function gotoStep(from, to) {
+            document.getElementById('step-' + from).classList.remove('active');
+            document.getElementById('step-' + to).classList.add('active');
+            currentStep = to;
+
+            for (let i = 1; i <= TOTAL_STEPS; i++) {
+                const c = document.getElementById('sc-' + i);
+                c.classList.remove('active', 'done');
+                if (i < to) { c.classList.add('done'); c.innerHTML = '<i class="fas fa-check"></i>'; }
+                else if (i === to) { c.classList.add('active'); c.textContent = i; }
+                else c.textContent = i;
+            }
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function nextStep(from) {
+            if (!validateStep(from)) return;
+            if (from === 5) buildReview();
+            gotoStep(from, from + 1);
+        }
+
+        function prevStep(from) { gotoStep(from, from - 1); }
+
+        // ---- VALIDATION ----
+        function validateStep(step) {
+            if (step === 1) {
+                if (!selectedType) { showToast('Please select an applicant type.', 'error'); return false; }
+            }
+            if (step === 2) {
+                const required = ['p-fname', 'p-lname', 'p-dob', 'p-addr', 'p-city', 'p-psa'];
+                for (const id of required) {
+                    const el = document.getElementById(id);
+                    if (!el.value.trim()) { el.classList.add('error'); el.focus(); showToast('Please fill in all required fields.', 'error'); return false; }
+                    else el.classList.remove('error');
+                }
+            }
+            if (step === 3) {
+                const required = ['f-father', 'f-mother', 'f-email', 'f-phone'];
+                for (const id of required) {
+                    const el = document.getElementById(id);
+                    if (!el.value.trim()) { el.classList.add('error'); el.focus(); showToast('Please fill in all required fields.', 'error'); return false; }
+                    else el.classList.remove('error');
+                }
+            }
+            if (step === 4) {
+                const required = ['a-school', 'a-gwa'];
+                for (const id of required) {
+                    const el = document.getElementById(id);
+                    if (!el.value.trim()) { el.classList.add('error'); el.focus(); showToast('Please fill in all required fields.', 'error'); return false; }
+                    else el.classList.remove('error');
+                }
+            }
+            return true;
+        }
+
+        // ---- CHECKLIST ----
+        function toggleReq(item) {
+            const cb = item.querySelector('input[type="checkbox"]');
+            cb.checked = !cb.checked;
+            item.classList.toggle('checked', cb.checked);
+        }
+
+        // ---- BUILD REVIEW SUMMARY ----
+        function buildReview() {
+            const g = id => (document.getElementById(id) || {}).value || '—';
+            const rows = [
+                ['Applicant Type', selectedType],
+                ['School Year', g('appSchoolYear')],
+                ['Full Name', `${g('p-fname')} ${g('p-mname')} ${g('p-lname')}`],
+                ['Date of Birth', g('p-dob')],
+                ['Sex', g('p-sex')],
+                ['Address', g('p-addr') + ', ' + g('p-city')],
+                ['LRN', g('p-lrn') || 'Not provided'],
+                ['PSA Cert. No.', g('p-psa')],
+                ['Father', g('f-father')],
+                ['Mother', g('f-mother')],
+                ['Parent Email', g('f-email')],
+                ['Parent Mobile', g('f-phone')],
+                ['Current School', g('a-school')],
+                ['General Average', g('a-gwa')],
+                ['Preferred Track', g('a-track')],
+                ['Awards', g('a-awards') || 'None'],
+            ];
+            document.getElementById('reviewGrid').innerHTML = rows.map(([k, v]) =>
+                `<div class="review-item"><span>${k}</span><strong>${v}</strong></div>`
+            ).join('');
+        }
+
+        // ---- SUBMIT ----
+        async function submitApplication() {
+            if (!document.getElementById('agree-terms').checked) {
+                showToast('Please agree to the terms and conditions.', 'error'); return;
+            }
+            const btn = document.getElementById('submitBtn');
+            btn.disabled = true;
+            btn.innerHTML = '<span class="loading-spin"></span> Submitting…';
+
+            const g = id => (document.getElementById(id) || {}).value || '';
+            const ref = DB.genRef('PCSHS');
+            const app = {
+                refNumber: ref,
+                status: 'received',
+                type: selectedType,
+                schoolYear: g('appSchoolYear'),
+                fname: g('p-fname'),
+                mname: g('p-mname'),
+                lname: g('p-lname'),
+                fullName: `${g('p-fname')} ${g('p-mname')} ${g('p-lname')}`.trim(),
+                dob: g('p-dob'),
+                sex: g('p-sex'),
+                nationality: g('p-nat'),
+                address: g('p-addr'),
+                barangay: g('p-brgy'),
+                city: g('p-city'),
+                lrn: g('p-lrn'),
+                psaCert: g('p-psa'),
+                father: g('f-father'),
+                fOccup: g('f-foccup'),
+                mother: g('f-mother'),
+                mOccup: g('f-moccup'),
+                guardian: g('f-guardian'),
+                parentEmail: g('f-email'),
+                parentPhone: g('f-phone'),
+                school: g('a-school'),
+                division: g('a-division'),
+                schoolType: g('a-stype'),
+                grade: g('a-grade'),
+                gwa: g('a-gwa'),
+                awards: g('a-awards'),
+                track: g('a-track'),
+                submittedAt: new Date().toLocaleString(),
+            };
+
+            try {
+                await DB.save('applications', app);
+                appRefNumber = ref;
+                document.getElementById('refNumber').textContent = ref;
+                gotoStep(6, 'success');
+                document.getElementById('step-success').classList.add('active');
+                document.getElementById('step-6').classList.remove('active');
+                showToast('Application submitted successfully!', 'success');
+            } catch (err) {
+                console.error(err);
+                showToast('Submission failed. Please try again.', 'error');
+                btn.disabled = false;
+                btn.innerHTML = '<i class="fas fa-paper-plane"></i> Submit Application';
+            }
+        }
+
+        // ---- STATUS CHECKER ----
+        async function checkStatus() {
+            const ref = document.getElementById('checkRefInput').value.trim().toUpperCase();
+            if (!ref) { showToast('Please enter your reference number.', 'error'); return; }
+
+            const btn = document.getElementById('checkBtn');
+            btn.disabled = true;
+            btn.innerHTML = '<span class="loading-spin"></span> Searching…';
+
+            const result = document.getElementById('statusResult');
+            const notFound = document.getElementById('statusNotFound');
+            result.style.display = 'none';
+            notFound.style.display = 'none';
+
+            try {
+                const app = await DB.findOne('applications', 'refNumber', ref);
+                if (!app) {
+                    notFound.style.display = 'block';
+                } else {
+                    result.style.display = 'block';
+                    const nameStr = app.fullName || 'Applicant';
+                    const initials = nameStr.split(/\\s+/).filter(w => w.length > 0).map(w => w[0]).join('').substring(0, 2).toUpperCase();
+                    document.getElementById('statusAvatar').textContent = initials;
+                    document.getElementById('statusName').textContent = nameStr;
+                    document.getElementById('statusType').textContent = `${app.type || 'Applicant'} · Ref: ${app.refNumber}`;
+                    let s = app.status || 'received';
+                    if (s === 'pending') s = 'received';
+                    renderStatusBadge(s);
+                    renderTimeline(s, app);
+                    if (app.statusNote) {
+                        const note = document.getElementById('statusNote');
+                        note.style.display = 'block';
+                        note.innerHTML = `<i class="fas fa-info-circle" style="color:var(--blue);margin-right:.4rem"></i> <strong>Note from Registrar:</strong> ${app.statusNote}`;
+                    }
+                }
+            } catch (err) {
+                console.error("Status check failed:", err);
+                showToast('Error checking status. Please try again.', 'error');
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = '<i class="fas fa-search"></i> Check Status';
+            }
+        }
+
+        function renderStatusBadge(status) {
+            const badge = document.getElementById('statusBadge');
+            const map = {
+                received: { cls: 'pending', icon: 'fa-inbox', label: 'Received' },
+                review: { cls: 'review', icon: 'fa-search', label: 'Under Review' },
+                exam: { cls: 'exam', icon: 'fa-pencil-alt', label: 'Entrance Exam Scheduled' },
+                interview: { cls: 'interview', icon: 'fa-comments', label: 'Interview Scheduled' },
+                accepted: { cls: 'accepted', icon: 'fa-check-circle', label: 'Accepted' },
+                rejected: { cls: 'rejected', icon: 'fa-times-circle', label: 'Not Qualified' },
+            };
+            const s = map[status] || map.received;
+            badge.className = `status-badge ${s.cls}`;
+            badge.innerHTML = `<i class="fas ${s.icon}"></i> ${s.label}`;
+            
+            // Add custom style for interview if not present
+            if (!document.getElementById('interviewStyle')) {
+                const style = document.createElement('style');
+                style.id = 'interviewStyle';
+                style.innerHTML = '.status-badge.interview { background: #FFF3E0; color: #E65100; }';
+                document.head.appendChild(style);
+            }
+        }
+
+        function renderTimeline(status, app) {
+            const steps = [
+                { key: 'received', label: 'Application Received', desc: 'Your application has been received and logged.' },
+                { key: 'review', label: 'Documents Under Review', desc: 'Our registrar is reviewing your submitted information.' },
+                { key: 'exam', label: 'Entrance Exam Scheduled', desc: app && app.examDate ? `Exam scheduled for ${app.examDate}` : 'You will receive exam details via parent email.' },
+                { key: 'interview', label: 'Interview Scheduled', desc: app && app.interviewDate ? `Interview scheduled for ${app.interviewDate}` : 'You have passed the exam. Proceed to interview.' },
+                { key: 'accepted', label: 'Accepted', desc: 'Congratulations! Proceed to enrollment.' },
+            ];
+            const order = ['received', 'review', 'exam', 'interview', 'accepted'];
+            let cur = order.indexOf(status);
+            
+            // If rejected, just show up to current and turn it red/rejected style maybe,
+            // but for now let's just show standard timeline if rejected.
+            if(status === 'rejected') {
+                document.getElementById('statusTimeline').innerHTML = `<div class="tl-item"><div class="tl-dot" style="border-color:var(--red);background:var(--red);"></div><div><div class="tl-title" style="color:var(--red)">Application Unsuccessful</div><div class="tl-desc">Unfortunately, you did not meet the requirements.</div></div></div>`;
+                return;
+            }
+
+            document.getElementById('statusTimeline').innerHTML = steps.map((s, i) => {
+                const cls = i < cur ? 'done' : i === cur ? 'active' : '';
+                return `<div class="tl-item"><div class="tl-dot ${cls}"></div><div><div class="tl-title">${s.label}</div><div class="tl-desc">${s.desc}</div></div></div>`;
+            }).join('');
+        }
+
+        // ---- TOAST ----
+        function showToast(msg, type = '') {
+            const t = document.getElementById('toast');
+            t.textContent = msg;
+            t.className = 'toast ' + type + ' show';
+            setTimeout(() => t.classList.remove('show'), 4000);
+        }
+    </script>
+</body>
+
+</html>

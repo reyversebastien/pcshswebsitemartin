@@ -1,0 +1,1676 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="Pasig City Science High School â€“ Official Website. Excellence in Science, Technology, Engineering, and Mathematics education." />
+  <title>Pasig City Science High School</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Playfair+Display:wght@700;900&family=Outfit:wght@400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <style>
+    body,
+    p,
+    span,
+    a,
+    li,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    button,
+    input,
+    select,
+    textarea {
+      font-family: 'Montserrat', sans-serif !important;
+    }
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+
+<body>
+
+  
+  <div class="utility-bar" id="utilityBar">
+    <div class="utility-inner">
+      <div class="utility-links">
+        <a href="alumni.html">Alumni</a>
+        <a href="library.html">Library</a>
+        <a href="portal.html">Student Portal</a>
+        <a href="faq.html">Contact</a>
+        <a href="admin.html"
+          style="margin-left:0.75rem;padding:0.15rem 0.6rem;background:rgba(255,255,255,0.15);border-radius:4px;font-weight:600;letter-spacing:0.03em;"
+          title="Staff / Admin Login"><i class="fas fa-lock" style="margin-right:4px;font-size:0.7em;"></i>Admin</a>
+      </div>
+      <div class="utility-right">
+        <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" title="Toggle dark mode">
+          <i class="fas fa-moon"></i>
+        </button>
+        <button class="search-toggle" onclick="openSearch()" title="Search">
+          <i class="fas fa-search"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  
+  <div class="search-overlay" id="searchOverlay">
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="Search PCSHSâ€¦" oninput="doSearch(this.value)"
+        autocomplete="off" />
+      <button onclick="closeSearch()"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="search-results" id="searchResults"></div>
+  </div>
+
+  
+  <header class="main-header" id="mainHeader">
+    <div class="header-inner">
+      <a href="#" class="logo-wrap">
+        <img src="pcshs_logo.png"
+          onerror="this.src='https://via.placeholder.com/60x60/7B1113/FFFFFF?text=PCSHS'" alt="PCSHS Logo"
+          class="logo-img" />
+        <div class="logo-text">
+          <span class="logo-main">Pasig City Science High School</span>
+          <span class="logo-sub">Pasig City, Philippines</span>
+        </div>
+      </a>
+      <nav class="main-nav" id="mainNav">
+        <ul>
+          <li class="has-dropdown">
+            <a href="about.html">About <i class="fas fa-chevron-down"></i></a>
+            <div class="dropdown">
+              <a href="about.html#about"><i class="fas fa-school"></i> Our School</a>
+              <a href="about.html#mission"><i class="fas fa-bullseye"></i> Mission &amp; Vision</a>
+              <a href="about.html#history"><i class="fas fa-landmark"></i> History</a>
+              <a href="about.html#administration"><i class="fas fa-user-tie"></i> Administration</a>
+            </div>
+          </li>
+          <li class="has-dropdown">
+            <a href="#academics">Academics <i class="fas fa-chevron-down"></i></a>
+            <div class="dropdown">
+              <a href="#programs"><i class="fas fa-flask"></i> STEM Programs</a>
+              <a href="resources.html"><i class="fas fa-book"></i> Learning Resources</a>
+              <a href="#research"><i class="fas fa-microscope"></i> Research</a>
+              <a href="#honors"><i class="fas fa-trophy"></i> Honors &amp; Awards</a>
+            </div>
+          </li>
+          <li class="has-dropdown">
+            <a href="admissions.html">Admissions <i class="fas fa-chevron-down"></i></a>
+            <div class="dropdown">
+              <a href="admissions.html#steps"><i class="fas fa-pencil-alt"></i> How to Apply</a>
+              <a href="admissions.html#requirements"><i class="fas fa-list-check"></i> Requirements</a>
+              <a href="admissions.html#schedule"><i class="fas fa-calendar"></i> Exam Schedule</a>
+              <a href="enroll.html"><i class="fas fa-clipboard-list"></i> Apply Online</a>
+            </div>
+          </li>
+          <li class="has-dropdown">
+            <a href="clubs.html">Student Life <i class="fas fa-chevron-down"></i></a>
+            <div class="dropdown">
+              <a href="clubs.html"><i class="fas fa-users"></i> Clubs &amp; Orgs</a>
+              <a href="achievers.html"><i class="fas fa-trophy"></i> Pascian Achievers</a>
+              <a href="alumni.html"><i class="fas fa-graduation-cap"></i> Alumni</a>
+              <a href="#events"><i class="fas fa-calendar-star"></i> Events</a>
+            </div>
+          </li>
+          <li><a href="resources.html">Resources</a></li>
+          <li><a href="news.html">News</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+        </ul>
+      </nav>
+      <button class="hamburger" id="hamburger" onclick="toggleMobileNav()" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  
+  <section class="hero" id="hero">
+    <div class="slides-container" id="slidesContainer">
+      <div class="slide active"
+        style="background-image:url('https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=1600&q=80')">
+        <div class="slide-overlay"></div>
+        <div class="slide-content">
+          <span class="slide-label">Welcome to PCSHS</span>
+          <h1>Where Science<br>Meets Excellence</h1>
+          <p>Nurturing the next generation of Filipino scientists, innovators, and leaders through world-class
+            STEM education.</p>
+          <div class="hero-btns">
+            <a href="enroll.html" class="btn btn-maroon">Apply Now</a>
+            <a href="#about" class="btn btn-outline">Learn More</a>
+          </div>
+        </div>
+      </div>
+      <div class="slide"
+        style="background-image:url('https://images.unsplash.com/photo-1562774053-701939374585?w=1600&q=80')">
+        <div class="slide-overlay"></div>
+        <div class="slide-content">
+          <span class="slide-label">Academic Excellence</span>
+          <h1>A Legacy of<br>Scientific Innovation</h1>
+          <p>Home to award-winning research, olympiad champions, and future professionals shaping the
+            Philippines.</p>
+          <div class="hero-btns">
+            <a href="#academics" class="btn btn-maroon">Explore Academics</a>
+            <a href="#research" class="btn btn-outline">Our Research</a>
+          </div>
+        </div>
+      </div>
+      <div class="slide"
+        style="background-image:url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=1600&q=80')">
+        <div class="slide-overlay"></div>
+        <div class="slide-content">
+          <span class="slide-label">Student Life</span>
+          <h1>Thrive Beyond<br>the Classroom</h1>
+          <p>Discover clubs, competitions, arts, sports, and a vibrant school community that shapes future
+            leaders.</p>
+          <div class="hero-btns">
+            <a href="#life" class="btn btn-maroon">Beyond the Classroom</a>
+            <a href="#events" class="btn btn-outline">Upcoming Events</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="slide-nav">
+      <button class="slide-btn active" onclick="goToSlide(0)"></button>
+      <button class="slide-btn" onclick="goToSlide(1)"></button>
+      <button class="slide-btn" onclick="goToSlide(2)"></button>
+    </div>
+    <button class="slide-arrow left" onclick="changeSlide(-1)"><i class="fas fa-chevron-left"></i></button>
+    <button class="slide-arrow right" onclick="changeSlide(1)"><i class="fas fa-chevron-right"></i></button>
+    <div class="hero-scroll-hint">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  
+  <section class="stats-bar">
+    <div class="stats-inner">
+      <div class="stat-item" data-count="2500">
+        <span class="stat-num">0</span><span class="stat-unit">+</span>
+        <span class="stat-label">Students</span>
+      </div>
+      <div class="stat-item" data-count="120">
+        <span class="stat-num">0</span><span class="stat-unit">+</span>
+        <span class="stat-label">Faculty Members</span>
+      </div>
+      <div class="stat-item" data-count="35">
+        <span class="stat-num">0</span><span class="stat-unit">+</span>
+        <span class="stat-label">Years of Excellence</span>
+      </div>
+      <div class="stat-item" data-count="98">
+        <span class="stat-num">0</span><span class="stat-unit">%</span>
+        <span class="stat-label">College Acceptance Rate</span>
+      </div>
+      <div class="stat-item" data-count="500">
+        <span class="stat-num">0</span><span class="stat-unit">+</span>
+        <span class="stat-label">Awards Won</span>
+      </div>
+    </div>
+  </section>
+
+  
+  <div class="alert-banner" id="alertBanner">
+    <div class="alert-inner">
+      <i class="fas fa-bullhorn"></i>
+      <span><strong>Enrollment for S.Y. 2025â€“2026</strong> is now open. <a href="#admissions">Apply online
+          here.</a></span>
+      <button onclick="document.getElementById('alertBanner').style.display='none'"><i
+          class="fas fa-times"></i></button>
+    </div>
+  </div>
+
+  
+  <section class="news-section" id="news">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Latest Updates</span>
+        <h2>News & Announcements</h2>
+        <p>Stay informed with the latest happenings at Pasig City Science High School.</p>
+      </div>
+      <div class="news-grid">
+        <div class="news-card featured reveal">
+          <div class="news-img"
+            style="background-image:url('https://images.unsplash.com/photo-1532094349884-543559b8ef09?w=800&q=80')">
+            <span class="news-cat">Achievement</span>
+          </div>
+          <div class="news-body">
+            <span class="news-date"><i class="fas fa-calendar"></i> February 28, 2025</span>
+            <h3>PCSHS Students Win Gold at National Science Olympiad</h3>
+            <p>Our team of six students clinched three gold medals at the 2025 Philippine National Science Olympiad held
+              in Quezon City, reaffirming PCSHS's standing as one of the country's premier science schools.</p>
+            <a href="news.html" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+        <div class="news-card reveal">
+          <div class="news-img"
+            style="background-image:url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=600&q=80')">
+            <span class="news-cat">Research</span>
+          </div>
+          <div class="news-body">
+            <span class="news-date"><i class="fas fa-calendar"></i> February 20, 2025</span>
+            <h3>Grade 10 Research Team Advances to International Fair</h3>
+            <p>A student research team advances to the Intel ISEF 2025 representing the Philippines.</p>
+            <a href="news.html" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+        <div class="news-card reveal">
+          <div class="news-img"
+            style="background-image:url('https://images.unsplash.com/photo-1509062522246-3755977927d7?w=600&q=80')">
+            <span class="news-cat">Event</span>
+          </div>
+          <div class="news-body">
+            <span class="news-date"><i class="fas fa-calendar"></i> March 5, 2025</span>
+            <h3>SciTech Week 2025: A Celebration of Science & Innovation</h3>
+            <p>Join us for a week-long science festival featuring exhibits, talks, and competitions.</p>
+            <a href="news.html" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+        <div class="news-card reveal">
+          <div class="news-img"
+            style="background-image:url('https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=600&q=80')">
+            <span class="news-cat">Admissions</span>
+          </div>
+          <div class="news-body">
+            <span class="news-date"><i class="fas fa-calendar"></i> March 1, 2025</span>
+            <h3>Entrance Exam Schedule for S.Y. 2025–2026 Released</h3>
+            <p>The official schedule and venues for the PCSHS entrance examination have been announced.</p>
+            <a href="news.html" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="section-footer">
+        <a href="news.html" class="btn btn-outline-dark">View All News <i class="fas fa-arrow-right"></i></a>
+      </div>
+    </div>
+  </section>
+
+  
+  <section class="about-section" id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-images reveal">
+          <img src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=700&q=80" alt="School Building"
+            class="about-img-main" />
+          <img src="https://images.unsplash.com/photo-1564981797816-1043664bf78d?w=400&q=80" alt="Students in Lab"
+            class="about-img-thumb" />
+          <div class="about-badge">
+            <span class="badge-year">Est.</span>
+            <span class="badge-num">1988</span>
+            <span class="badge-text">Year Founded</span>
+          </div>
+        </div>
+        <div class="about-content reveal">
+          <span class="section-tag">About Us</span>
+          <h2>A Center of Excellence in Science Education</h2>
+          <p>Pasig City Science High School (PCSHS) is a public secondary school in Pasig City, Philippines, dedicated
+            to providing a rigorous science and mathematics curriculum to gifted and talented students.</p>
+          <p>As a specialized science high school under the Department of Education, PCSHS prepares students to become
+            future scientists, engineers, and innovators who will contribute to national development and the global
+            knowledge economy.</p>
+          <div class="about-pillars">
+            <div class="pillar"><i class="fas fa-flask"></i><span>Science</span></div>
+            <div class="pillar"><i class="fas fa-calculator"></i><span>Mathematics</span></div>
+            <div class="pillar"><i class="fas fa-robot"></i><span>Technology</span></div>
+            <div class="pillar"><i class="fas fa-cogs"></i><span>Engineering</span></div>
+          </div>
+          <a href="about.html" class="btn btn-primary">Discover More</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+  <section class="mission-section" id="mission">
+    <div class="mission-bg"></div>
+    <div class="container">
+      <div class="section-header light reveal">
+        <span class="section-tag">Our Foundation</span>
+        <h2>Mission, Vision & Core Values</h2>
+      </div>
+      <div class="mv-grid">
+        <div class="mv-card reveal">
+          <div class="mv-icon"><i class="fas fa-eye"></i></div>
+          <h3>Vision</h3>
+          <p>A world-class science high school producing globally competitive, socially responsible, and values-driven
+            graduates who are catalysts for sustainable national development.</p>
+        </div>
+        <div class="mv-card reveal">
+          <div class="mv-icon"><i class="fas fa-rocket"></i></div>
+          <h3>Mission</h3>
+          <p>To provide quality science and mathematics education through innovative instruction, research, and
+            community engagement, developing students into well-rounded, ethical, and scientifically literate
+            individuals.</p>
+        </div>
+        <div class="mv-card reveal">
+          <div class="mv-icon"><i class="fas fa-star"></i></div>
+          <h3>Core Values</h3>
+          <ul class="values-list">
+            <li><i class="fas fa-check"></i> Excellence</li>
+            <li><i class="fas fa-check"></i> Integrity</li>
+            <li><i class="fas fa-check"></i> Innovation</li>
+            <li><i class="fas fa-check"></i> Service</li>
+            <li><i class="fas fa-check"></i> Patriotism</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+  <section class="academics-section" id="academics">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag blue">Academics</span>
+        <h2>World-Class STEM Education</h2>
+        <p>Our curriculum goes beyond the standard K-12 program, featuring advanced coursework, research opportunities,
+          and specialized STEM training.</p>
+      </div>
+      <div class="programs-grid" id="programs">
+        <div class="program-card reveal" onclick="openModal('programModal1')">
+          <div class="program-icon"><i class="fas fa-atom"></i></div>
+          <h3>Advanced Sciences</h3>
+          <p>Physics, Chemistry, Biology — taught at an accelerated, collegiate level with laboratory immersion.</p>
+          <span class="program-link">Learn More <i class="fas fa-arrow-right"></i></span>
+        </div>
+        <div class="program-card reveal" onclick="openModal('programModal2')">
+          <div class="program-icon"><i class="fas fa-infinity"></i></div>
+          <h3>Advanced Mathematics</h3>
+          <p>From Calculus to Statistics and Discrete Math — preparing students for engineering and science tracks.</p>
+          <span class="program-link">Learn More <i class="fas fa-arrow-right"></i></span>
+        </div>
+        <div class="program-card reveal" onclick="openModal('programModal3')">
+          <div class="program-icon"><i class="fas fa-laptop-code"></i></div>
+          <h3>Computer Science & ICT</h3>
+          <p>Programming, algorithms, data science, and robotics — building skills for the digital future.</p>
+          <span class="program-link">Learn More <i class="fas fa-arrow-right"></i></span>
+        </div>
+        <div class="program-card reveal" onclick="openModal('programModal4')">
+          <div class="program-icon"><i class="fas fa-microscope"></i></div>
+          <h3>Research Program</h3>
+          <p>Students conduct independent research under faculty mentors, competing in local and international science
+            fairs.</p>
+          <span class="program-link">Learn More <i class="fas fa-arrow-right"></i></span>
+        </div>
+        <div class="program-card reveal" onclick="openModal('programModal5')">
+          <div class="program-icon"><i class="fas fa-dna"></i></div>
+          <h3>Life Sciences</h3>
+          <p>Specialized track in environmental science, biotechnology, and health sciences for aspiring medical
+            professionals.</p>
+          <span class="program-link">Learn More <i class="fas fa-arrow-right"></i></span>
+        </div>
+        <div class="program-card reveal" onclick="openModal('programModal6')">
+          <div class="program-icon"><i class="fas fa-satellite"></i></div>
+          <h3>Space & Earth Science</h3>
+          <p>Astronomy, geology, meteorology — exploring Earth and beyond through scientific inquiry.</p>
+          <span class="program-link">Learn More <i class="fas fa-arrow-right"></i></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+  <section class="ticker-section" id="honors">
+    <div class="ticker-label"><i class="fas fa-trophy"></i> Recent Awards</div>
+    <div class="ticker-wrap">
+      <div class="ticker-content" id="tickerContent">
+        <span>?? National Science Olympiad – Gold 2025</span>
+        <span>?? Intel ISEF Qualifier 2025</span>
+        <span>?? Math Olympiad Champion 2024</span>
+        <span>?? Regional Chemistry Quiz Bowl Winner 2024</span>
+        <span>??? DepEd Regional Science Fair – 1st Place 2024</span>
+        <span>?? NCR Robotics Competition Champion 2024</span>
+        <span>?? National Statistics Month Quiz – Top 3 2023</span>
+        <span>?? DOST Scholar Awardees – 45 students 2024</span>
+        <span>?? National Science Olympiad – Gold 2025</span>
+        <span>?? Intel ISEF Qualifier 2025</span>
+        <span>?? Math Olympiad Champion 2024</span>
+        <span>?? Regional Chemistry Quiz Bowl Winner 2024</span>
+      </div>
+    </div>
+  </section>
+
+  
+  <section class="research-section" id="research">
+    <div class="container">
+      <div class="research-intro">
+        <div class="research-intro-text reveal">
+          <span class="section-tag">Research & Innovation</span>
+          <h2>Advancing Knowledge, Shaping the Future</h2>
+          <p>At PCSHS, research is not just an activity — it is a core part of our identity. Our students engage in real
+            scientific inquiry, guided by expert faculty mentors, and present their findings at regional, national, and
+            international platforms.</p>
+          <p>From biology to computational science, our research program has produced award-winning studies and
+            positioned PCSHS as a leading science secondary institution in the Philippines.</p>
+          <div class="research-stat-row">
+            <div class="r-stat">
+              <strong>120+</strong>
+              <span>Published Student Studies</span>
+            </div>
+            <div class="r-stat">
+              <strong>45+</strong>
+              <span>International Awards</span>
+            </div>
+            <div class="r-stat">
+              <strong>12</strong>
+              <span>Active Research Labs</span>
+            </div>
+          </div>
+        </div>
+        <div class="research-feature-img reveal">
+          <img src="https://images.unsplash.com/photo-1532094349884-543559b8ef09?w=800&q=80" alt="Research at PCSHS" />
+          <div class="research-feature-badge">
+            <strong>Intel ISEF 2025</strong>
+            PCSHS Grade 10 Qualifier
+          </div>
+        </div>
+      </div>
+      <div class="research-grid">
+        <div class="research-card reveal">
+          <div class="research-img"
+            style="background-image:url('https://images.unsplash.com/photo-1564981797816-1043664bf78d?w=600&q=80')">
+            <span class="research-topic">Biology</span>
+          </div>
+          <div class="research-body">
+            <h4>Antimicrobial Properties of Local Philippine Plants</h4>
+            <p>A Grade 10 team studied native plant extracts as potential antibiotics against drug-resistant bacteria.
+            </p>
+            <div class="research-meta">
+              <span><i class="fas fa-user"></i> Grade 10 – Biology</span>
+              <span><i class="fas fa-trophy"></i> Regional 1st Place</span>
+            </div>
+            <button class="btn btn-sm btn-outline-dark research-expand-btn"
+              onclick="openResearchDetail('r_static_1',event)">View Full Study <i
+                class="fas fa-arrow-right"></i></button>
+          </div>
+        </div>
+        <div class="research-card reveal">
+          <div class="research-img"
+            style="background-image:url('https://images.unsplash.com/photo-1519452635265-7b1fbfd1e4e0?w=600&q=80')">
+            <span class="research-topic">Physics</span>
+          </div>
+          <div class="research-body">
+            <h4>Low-Cost Solar Tracker Using Arduino Microcontrollers</h4>
+            <p>Engineering a solar tracking system using affordable components to increase solar panel efficiency.</p>
+            <div class="research-meta">
+              <span><i class="fas fa-user"></i> Grade 9 – Physics</span>
+              <span><i class="fas fa-trophy"></i> Nat'l Finalist</span>
+            </div>
+            <button class="btn btn-sm btn-outline-dark research-expand-btn"
+              onclick="openResearchDetail('r_static_2',event)">View Full Study <i
+                class="fas fa-arrow-right"></i></button>
+          </div>
+        </div>
+        <div class="research-card reveal">
+          <div class="research-img"
+            style="background-image:url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=600&q=80')">
+            <span class="research-topic">ICT</span>
+          </div>
+          <div class="research-body">
+            <h4>AI-Powered Early Flood Warning System for Pasig River</h4>
+            <p>A machine learning model trained on historical rainfall and water level data to predict flash floods.</p>
+            <div class="research-meta">
+              <span><i class="fas fa-user"></i> Grade 11 – ICT</span>
+              <span><i class="fas fa-trophy"></i> ISEF Qualifier</span>
+            </div>
+            <button class="btn btn-sm btn-outline-dark research-expand-btn"
+              onclick="openResearchDetail('r_static_3',event)">View Full Study <i
+                class="fas fa-arrow-right"></i></button>
+          </div>
+        </div>
+      </div>
+      <div class="section-footer">
+        <a href="resources.html" class="btn btn-primary">View All Research <i class="fas fa-arrow-right"></i></a>
+      </div>
+    </div>
+  </section>
+
+  
+  <section class="skills-section">
+    <div class="container">
+      <div class="skills-grid">
+        <div class="skills-text reveal">
+          <span class="section-tag">By the Numbers</span>
+          <h2>Our Commitment to Excellence</h2>
+          <p>PCSHS consistently achieves top rankings across academic, research, and extracurricular domains. Our track
+            record reflects decades of dedication to producing the best Filipino scientists and thinkers.</p>
+          <a href="#admissions" class="btn btn-outline" style="margin-top:1.5rem">Join Our Community</a>
+        </div>
+        <div class="progress-list reveal">
+          <div class="progress-item">
+            <div class="progress-header">
+              <span class="progress-label">Science Olympiad Success Rate</span>
+              <span class="progress-pct">94%</span>
+            </div>
+            <div class="progress-track">
+              <div class="progress-fill" data-pct="94"></div>
+            </div>
+          </div>
+          <div class="progress-item">
+            <div class="progress-header">
+              <span class="progress-label">College Acceptance Rate</span>
+              <span class="progress-pct">98%</span>
+            </div>
+            <div class="progress-track">
+              <div class="progress-fill" data-pct="98"></div>
+            </div>
+          </div>
+          <div class="progress-item">
+            <div class="progress-header">
+              <span class="progress-label">Research Publication Rate</span>
+              <span class="progress-pct">78%</span>
+            </div>
+            <div class="progress-track">
+              <div class="progress-fill" data-pct="78"></div>
+            </div>
+          </div>
+          <div class="progress-item">
+            <div class="progress-header">
+              <span class="progress-label">DOST Scholarship Recipients</span>
+              <span class="progress-pct">85%</span>
+            </div>
+            <div class="progress-track">
+              <div class="progress-fill" data-pct="85"></div>
+            </div>
+          </div>
+          <div class="progress-item">
+            <div class="progress-header">
+              <span class="progress-label">Student Satisfaction Rate</span>
+              <span class="progress-pct">96%</span>
+            </div>
+            <div class="progress-track">
+              <div class="progress-fill" data-pct="96"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+  <section class="admissions-section" id="admissions">
+    <div class="container">
+      <div class="admissions-inner">
+        <div class="admissions-content reveal">
+          <span class="section-tag">Join Our Community</span>
+          <h2>Admissions</h2>
+          <p>Every year, PCSHS admits the most talented and passionate young minds from Pasig City and nearby areas. Our
+            rigorous selection process ensures that admitted students are ready to thrive in our demanding
+            science-oriented environment.</p>
+          <div class="admission-steps" id="apply">
+            <div class="step">
+              <div class="step-num">01</div>
+              <div class="step-text">
+                <h4>Secure Application Form</h4>
+                <p>Download or pick up the application form from the school registrar or our website.</p>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-num">02</div>
+              <div class="step-text">
+                <h4>Submit Requirements</h4>
+                <p>Submit completed form with required documents before the deadline.</p>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-num">03</div>
+              <div class="step-text">
+                <h4>Take the Entrance Exam</h4>
+                <p>Sit for the PCSHS Entrance Examination covering Math, Science, and English.</p>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-num">04</div>
+              <div class="step-text">
+                <h4>Check Results & Enroll</h4>
+                <p>Successful applicants are notified via the school portal and proceed to enrollment.</p>
+              </div>
+            </div>
+          </div>
+          <a href="enroll.html" class="btn btn-primary"><i class="fas fa-pencil-alt"></i> Apply Online Now</a>
+        </div>
+        <div class="admissions-sidebar" id="requirements">
+          <div class="sidebar-box">
+            <h4><i class="fas fa-list-check"></i> Requirements</h4>
+            <ul>
+              <li><i class="fas fa-check-circle"></i> Duly accomplished application form</li>
+              <li><i class="fas fa-check-circle"></i> Grade 5 & 6 report card (SF9)</li>
+              <li><i class="fas fa-check-circle"></i> Recent 2x2 ID photo (3 copies)</li>
+              <li><i class="fas fa-check-circle"></i> PSA Birth Certificate</li>
+              <li><i class="fas fa-check-circle"></i> Certified true copy of awards (if any)</li>
+              <li><i class="fas fa-check-circle"></i> Medical clearance</li>
+            </ul>
+          </div>
+          <div class="sidebar-box" id="schedule">
+            <h4><i class="fas fa-calendar-alt"></i> Key Dates 2025</h4>
+            <ul class="key-dates">
+              <li><span class="date-label">Applic. Period</span><span>Jan 6 – Feb 14</span></li>
+              <li><span class="date-label">Entrance Exam</span><span>Feb 22, 2025</span></li>
+              <li><span class="date-label">Results Release</span><span>Mar 15, 2025</span></li>
+              <li><span class="date-label">Enrollment</span><span>Apr 7–18, 2025</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+  <section class="gallery-section" id="gallery">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag blue">Gallery</span>
+        <h2>Life at PCSHS</h2>
+        <p>A glimpse into our vibrant school community, facilities, and achievements.</p>
+      </div>
+      <div class="gallery-filters">
+        <button class="filter-btn active" onclick="filterGallery('all', this)">All</button>
+        <button class="filter-btn" onclick="filterGallery('academics', this)">Academics</button>
+        <button class="filter-btn" onclick="filterGallery('events', this)">Events</button>
+        <button class="filter-btn" onclick="filterGallery('sports', this)">Sports</button>
+        <button class="filter-btn" onclick="filterGallery('campus', this)">Campus</button>
+      </div>
+      <div class="gallery-grid" id="galleryGrid">
+        <div class="gal-item" data-cat="academics" onclick="openLightbox(this)">
+          <img src="https://images.unsplash.com/photo-1564981797816-1043664bf78d?w=600&q=80" alt="Lab Work" />
+          <div class="gal-overlay"><i class="fas fa-expand"></i><span>Science Lab</span></div>
+        </div>
+        <div class="gal-item" data-cat="events" onclick="openLightbox(this)">
+          <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&q=80" alt="School Events" />
+          <div class="gal-overlay"><i class="fas fa-expand"></i><span>Science Fair</span></div>
+        </div>
+        <div class="gal-item" data-cat="campus" onclick="openLightbox(this)">
+          <img src="https://images.unsplash.com/photo-1562774053-701939374585?w=600&q=80" alt="Campus" />
+          <div class="gal-overlay"><i class="fas fa-expand"></i><span>Campus View</span></div>
+        </div>
+        <div class="gal-item" data-cat="sports" onclick="openLightbox(this)">
+          <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&q=80" alt="Sports" />
+          <div class="gal-overlay"><i class="fas fa-expand"></i><span>Sports Day</span></div>
+        </div>
+        <div class="gal-item" data-cat="academics" onclick="openLightbox(this)">
+          <img src="https://images.unsplash.com/photo-1519452635265-7b1fbfd1e4e0?w=600&q=80" alt="Research" />
+          <div class="gal-overlay"><i class="fas fa-expand"></i><span>Research Work</span></div>
+        </div>
+        <div class="gal-item" data-cat="events" onclick="openLightbox(this)">
+          <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=600&q=80" alt="Graduation" />
+          <div class="gal-overlay"><i class="fas fa-expand"></i><span>Graduation Day</span></div>
+        </div>
+        <div class="gal-item" data-cat="campus" onclick="openLightbox(this)">
+          <img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=600&q=80" alt="Library" />
+          <div class="gal-overlay"><i class="fas fa-expand"></i><span>School Library</span></div>
+        </div>
+        <div class="gal-item" data-cat="sports" onclick="openLightbox(this)">
+          <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=600&q=80" alt="Sports" />
+          <div class="gal-overlay"><i class="fas fa-expand"></i><span>Team Sports</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+  <section class="life-section" id="life">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Student Life</span>
+        <h2>Beyond the Classroom</h2>
+        <p>At PCSHS, student development extends far beyond academics — we build leaders, artists, athletes, and
+          advocates.</p>
+      </div>
+      <div class="life-grid">
+        <div class="life-card reveal" id="clubs">
+          <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=600&q=80" alt="Clubs" />
+          <div class="life-card-body">
+            <h3>Clubs & Organizations</h3>
+            <p>Alchemist, Constellate, DNE, GAMMA, SYNCTAX, Parallax, Tekmekanismo — find your passion at PCSHS.</p>
+            <a href="clubs.html" class="btn btn-sm btn-outline-dark">Explore Clubs <i
+                class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+        <div class="life-card reveal" id="sports">
+          <img src="https://images.unsplash.com/photo-1546519638-68e109498ffc?w=600&q=80" alt="Sports" />
+          <div class="life-card-body">
+            <h3>Sports & Athletics</h3>
+            <p>Basketball, volleyball, chess, badminton, swimming — compete and grow as a team through Athlitikos.</p>
+            <a href="clubs.html" class="btn btn-sm btn-outline-dark">View Clubs <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+        <div class="life-card reveal">
+          <img src="https://images.unsplash.com/photo-1493836512294-502baa1986e2?w=600&q=80" alt="Arts" />
+          <div class="life-card-body">
+            <h3>Arts & Culture</h3>
+            <p>Theater, choir, visual arts, campus journalism, and cultural festivals celebrating Filipino heritage.</p>
+            <a href="clubs.html" class="btn btn-sm btn-outline-dark">View Clubs <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+  <section class="events-section" id="events">
+    <div class="container">
+      <div class="events-inner">
+        <div class="events-header reveal">
+          <span class="section-tag blue">Events</span>
+          <h2>Upcoming Events</h2>
+        </div>
+        <div class="events-list">
+          <div class="event-item reveal">
+            <div class="event-date"><span class="ev-month">MAR</span><span class="ev-day">10</span></div>
+            <div class="event-info">
+              <h4>SciTech Week 2025 Opening Ceremony</h4>
+              <p><i class="fas fa-map-marker-alt"></i> PCSHS Covered Court &nbsp;|&nbsp; <i class="fas fa-clock"></i>
+                8:00 AM</p>
+              <p style="font-size:0.85rem; color:#6B7280; margin-top:0.4rem;">Join us as we kick off a week filled with scientific exhibits, competitions, and guest talks featuring our brilliant students.</p>
+            </div>
+            <a href="#" class="event-btn">Details</a>
+          </div>
+          <div class="event-item reveal">
+            <div class="event-date"><span class="ev-month">MAR</span><span class="ev-day">15</span></div>
+            <div class="event-info">
+              <h4>Entrance Exam Results Announcement</h4>
+              <p><i class="fas fa-map-marker-alt"></i> School Bulletin & Official Website &nbsp;|&nbsp; <i
+                  class="fas fa-clock"></i> 9:00 AM</p>
+              <p style="font-size:0.85rem; color:#6B7280; margin-top:0.4rem;">Check the online portal and the school bulletin board to discover the successful applicants for the upcoming academic year.</p>
+            </div>
+            <a href="#" class="event-btn">Details</a>
+          </div>
+          <div class="event-item reveal">
+            <div class="event-date"><span class="ev-month">MAR</span><span class="ev-day">22</span></div>
+            <div class="event-info">
+              <h4>Regional Science & Math Congress</h4>
+              <p><i class="fas fa-map-marker-alt"></i> DepEd NCR, Pasig City &nbsp;|&nbsp; <i class="fas fa-clock"></i>
+                All Day</p>
+              <p style="font-size:0.85rem; color:#6B7280; margin-top:0.4rem;">Support our Pascians as they compete and present their research studies against delegates from all over the NCR region.</p>
+            </div>
+            <a href="#" class="event-btn">Details</a>
+          </div>
+          <div class="event-item reveal">
+            <div class="event-date"><span class="ev-month">APR</span><span class="ev-day">07</span></div>
+            <div class="event-info">
+              <h4>Enrollment Period Begins – S.Y. 2025–2026</h4>
+              <p><i class="fas fa-map-marker-alt"></i> Registrar's Office &nbsp;|&nbsp; <i class="fas fa-clock"></i>
+                8:00 AM – 5:00 PM</p>
+              <p style="font-size:0.85rem; color:#6B7280; margin-top:0.4rem;">Incoming Grade 7 and Grade 11 students must submit their physical requirements and formally enroll for the new school year.</p>
+            </div>
+            <a href="#" class="event-btn">Details</a>
+          </div>
+          <div class="event-item reveal">
+            <div class="event-date"><span class="ev-month">APR</span><span class="ev-day">15</span></div>
+            <div class="event-info">
+              <h4>Annual Research Symposium 2025</h4>
+              <p><i class="fas fa-map-marker-alt"></i> PCSHS Auditorium &nbsp;|&nbsp; <i class="fas fa-clock"></i> 7:30
+                AM</p>
+            </div>
+            <a href="#" class="event-btn">Details</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+  <section class="quote-section">
+    <div class="container">
+      <div class="quotes-slider" id="quotesSlider">
+        <div class="quote-slide active">
+          <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+          <p>"PCSHS gave me the foundation to pursue my dream of becoming a research scientist. The rigorous curriculum
+            and passionate teachers made all the difference."</p>
+          <div class="quote-author">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80" alt="Alumni" />
+            <div><strong>Juan dela Cruz</strong><span>PCSHS Batch 2018 – BS Biology, UP Diliman</span></div>
+          </div>
+        </div>
+        <div class="quote-slide">
+          <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+          <p>"Winning at the National Science Olympiad was one of life's greatest moments — and PCSHS prepared me every
+            step of the way."</p>
+          <div class="quote-author">
+            <img src="https://images.unsplash.com/photo-1494790108755-2616b612b2e5?w=100&q=80" alt="Alumni" />
+            <div><strong>Maria Santos</strong><span>PCSHS Batch 2020 – BS Computer Engineering, DLSU</span></div>
+          </div>
+        </div>
+        <div class="quote-slide">
+          <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+          <p>"The research program at PCSHS is world-class. I published my first paper as a Grade 10 student — something
+            I never imagined possible."</p>
+          <div class="quote-author">
+            <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=100&q=80" alt="Alumni" />
+            <div><strong>Miguel Reyes</strong><span>PCSHS Batch 2022 – BS Physics, Ateneo de Manila</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="quote-dots">
+        <button class="q-dot active" onclick="goToQuote(0)"></button>
+        <button class="q-dot" onclick="goToQuote(1)"></button>
+        <button class="q-dot" onclick="goToQuote(2)"></button>
+      </div>
+    </div>
+  </section>
+
+  
+  <section class="faculty-section" id="administration">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag blue">Our Educators</span>
+        <h2>Faculty Spotlight</h2>
+        <p>Meet the dedicated educators who inspire, challenge, and guide our students every day.</p>
+      </div>
+      <div class="faculty-grid">
+        <div class="faculty-card reveal" onclick="openFacultyModal('f1')" style="cursor:pointer">
+          <div class="faculty-img"
+            style="background-image:url('https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&q=80')">
+            <div class="faculty-hover-badge"><i class="fas fa-user"></i> View Profile</div>
+          </div>
+          <div class="faculty-info">
+            <h4>Dr. Ricardo B. Santos</h4>
+            <span>School Principal</span>
+            <p>Ph.D. in Educational Management, award-winning school leader.</p>
+          </div>
+        </div>
+        <div class="faculty-card reveal" onclick="openFacultyModal('f2')" style="cursor:pointer">
+          <div class="faculty-img"
+            style="background-image:url('https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&q=80')">
+            <div class="faculty-hover-badge"><i class="fas fa-user"></i> View Profile</div>
+          </div>
+          <div class="faculty-info">
+            <h4>Ms. Ana P. Reyes</h4>
+            <span>Head, Science Department</span>
+            <p>M.S. in Chemistry, National Science Teacher of the Year 2022.</p>
+          </div>
+        </div>
+        <div class="faculty-card reveal" onclick="openFacultyModal('f3')" style="cursor:pointer">
+          <div class="faculty-img"
+            style="background-image:url('https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&q=80')">
+            <div class="faculty-hover-badge"><i class="fas fa-user"></i> View Profile</div>
+          </div>
+          <div class="faculty-info">
+            <h4>Mr. Carlo T. Lim</h4>
+            <span>Head, Mathematics Department</span>
+            <p>M.S. in Applied Mathematics, national Olympiad coach.</p>
+          </div>
+        </div>
+        <div class="faculty-card reveal" onclick="openFacultyModal('f4')" style="cursor:pointer">
+          <div class="faculty-img"
+            style="background-image:url('https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&q=80')">
+            <div class="faculty-hover-badge"><i class="fas fa-user"></i> View Profile</div>
+          </div>
+          <div class="faculty-info">
+            <h4>Ms. Leah G. Fontaine</h4>
+            <span>Head, ICT Department</span>
+            <p>M.S. in Computer Science, certified Google educator.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+  <section class="contact-section" id="contact">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-info reveal">
+          <span class="section-tag">Get in Touch</span>
+          <h2>Contact Us</h2>
+          <p>We'd love to hear from you. Reach out to us for inquiries, admissions questions, or partnerships.</p>
+          <div class="contact-items">
+            <div class="c-item"><i class="fas fa-map-marker-alt"></i>
+              <div><strong>Address</strong><span>Dr. Sixto Antonio Ave., Pasig City, Metro Manila,
+                  Philippines</span>
+              </div>
+            </div>
+            <div class="c-item"><i class="fas fa-phone"></i>
+              <div><strong>Phone</strong><span>(02) 8671-8888 / (02) 8643-5533</span></div>
+            </div>
+            <div class="c-item"><i class="fas fa-envelope"></i>
+              <div><strong>Email</strong><span>pcshs@deped.gov.ph</span></div>
+            </div>
+            <div class="c-item"><i class="fas fa-clock"></i>
+              <div><strong>Office Hours</strong><span>Mon–Fri: 7:00 AM – 5:00 PM</span></div>
+            </div>
+          </div>
+          <div class="social-links">
+            <a href="#" class="soc-btn" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="soc-btn" title="Twitter/X"><i class="fab fa-x-twitter"></i></a>
+            <a href="#" class="soc-btn" title="YouTube"><i class="fab fa-youtube"></i></a>
+            <a href="#" class="soc-btn" title="Instagram"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+        <div class="contact-form-wrap reveal">
+          <form class="contact-form" onsubmit="submitContact(event)">
+            <h3>Send a Message</h3>
+            <div class="form-row">
+              <div class="form-group"><label>First Name</label><input type="text" id="cfirstname" placeholder="Juan"
+                  required /></div>
+              <div class="form-group"><label>Last Name</label><input type="text" id="clastname" placeholder="dela Cruz"
+                  required /></div>
+            </div>
+            <div class="form-group"><label>Email Address</label><input type="email" id="cemail"
+                placeholder="juan@email.com" required /></div>
+            <div class="form-group">
+              <label>Subject</label>
+              <select id="csubject">
+                <option>Admissions Inquiry</option>
+                <option>Academic Concern</option>
+                <option>Partnership / Sponsorship</option>
+                <option>Media / Press</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="form-group"><label>Message</label><textarea id="cmessage" rows="5"
+                placeholder="Your message here…" required></textarea></div>
+            <button type="submit" class="btn btn-primary" style="width:100%">Send Message <i
+                class="fas fa-paper-plane"></i></button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+  <section class="stay-updated" style="padding: 4rem 0; background: linear-gradient(135deg, #12174a 0%, #0038A8 100%); color: #fff; text-align: center;">
+    <div class="container">
+      <div class="reveal">
+        <h2 style="font-family: 'DM Serif Display', serif; font-size: 2.2rem; margin-bottom: 1rem;">Stay Updated</h2>
+        <p style="color: rgba(255,255,255,0.8); max-width: 600px; margin: 0 auto 2.5rem;">Subscribe to our newsletter or follow us on social media to receive the latest news, events, and academic announcements.</p>
+        
+        <form style="max-width: 500px; margin: 0 auto 3rem; display: flex; gap: 0.5rem;" onsubmit="event.preventDefault(); alert('Thank you for subscribing!');">
+          <input type="email" placeholder="Your Email Address" style="flex: 1; padding: 0.85rem 1.25rem; border-radius: 8px; border: none; font-family: 'Inter', sans-serif;" required />
+          <button type="submit" class="btn btn-maroon" style="padding: 0 2rem; white-space: nowrap;">Subscribe</button>
+        </form>
+
+        <div class="social-links" style="display: flex; justify-content: center; gap: 1.5rem;">
+          <a href="https://www.facebook.com/pcshs.edu" target="_blank" style="color: #fff; font-size: 1.5rem; transition: transform 0.2s;"><i class="fab fa-facebook"></i></a>
+          <a href="#" style="color: #fff; font-size: 1.5rem; transition: transform 0.2s;"><i class="fab fa-x-twitter"></i></a>
+          <a href="#" style="color: #fff; font-size: 1.5rem; transition: transform 0.2s;"><i class="fab fa-youtube"></i></a>
+          <a href="#" style="color: #fff; font-size: 1.5rem; transition: transform 0.2s;"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+  <div class="map-wrap">
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3861.3323058807534!2d121.07684071534015!3d14.580045589815045!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397c805a8b00001%3A0x6bba3bc3dbda76f4!2sPasig%20City%20Science%20High%20School!5e0!3m2!1sen!2sph!4v1684305844889!5m2!1sen!2sph"
+      width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade" title="PCSHS Location">
+    </iframe>
+  </div>
+
+  
+  <footer class="main-footer">
+    <div class="footer-top">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <img src="pcshs_logo.png"
+              onerror="this.src='https://via.placeholder.com/60x60/FFFFFF/7B1113?text=PCSHS'" alt="PCSHS Logo"
+              class="footer-logo" />
+            <h4>Pasig City Science High School</h4>
+            <p>Excellence in Science, Technology, Engineering & Mathematics Education since 1988.</p>
+            <div class="social-links">
+              <a href="#" class="soc-btn"><i class="fab fa-facebook-f"></i></a>
+              <a href="#" class="soc-btn"><i class="fab fa-x-twitter"></i></a>
+              <a href="#" class="soc-btn"><i class="fab fa-youtube"></i></a>
+              <a href="#" class="soc-btn"><i class="fab fa-instagram"></i></a>
+            </div>
+          </div>
+          <div class="footer-links">
+            <h5>Explore</h5>
+            <ul>
+              <li><a href="#about">About PCSHS</a></li>
+              <li><a href="#academics">Academics</a></li>
+              <li><a href="#admissions">Admissions</a></li>
+              <li><a href="#life">Student Life</a></li>
+              <li><a href="#news">News & Events</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </div>
+          <div class="footer-links">
+            <h5>Resources</h5>
+            <ul>
+              <li><a href="#" onclick="openModal('portalModal')">Student Portal</a></li>
+              <li><a href="#" onclick="openModal('libraryModal')">Library</a></li>
+              <li><a href="#" onclick="openModal('facultyModal')">Faculty Portal</a></li>
+              <li><a href="#" onclick="openModal('alumniModal')">Alumni Network</a></li>
+              <li><a href="#">School Calendar</a></li>
+              <li><a href="#">Downloads & Forms</a></li>
+            </ul>
+          </div>
+          <div class="footer-newsletter">
+            <h5>Stay Updated</h5>
+            <p>Subscribe to our newsletter for news, events, and announcements.</p>
+            <form onsubmit="subscribeNewsletter(event)">
+              <input type="email" id="newsletterEmail" placeholder="Your email address" required />
+              <button type="submit">Subscribe <i class="fas fa-arrow-right"></i></button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <p>&copy; 2025 Pasig City Science High School. All Rights Reserved. | Powered by DepEd Pasig City</p>
+        <div class="footer-bottom-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Use</a>
+          <a href="#">Accessibility</a>
+          <a href="#">Sitemap</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  
+  <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to top">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
+  
+  <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+    <button class="lb-close" onclick="closeLightbox()"><i class="fas fa-times"></i></button>
+    <img id="lightboxImg" src="" alt="Gallery Image" />
+    <span id="lightboxCaption"></span>
+  </div>
+
+  
+  <div class="modal-overlay" id="applyModal" onclick="closeModal('applyModal')">
+    <div class="modal modal-wide" onclick="event.stopPropagation()">
+      <button class="modal-close" onclick="closeModal('applyModal')"><i class="fas fa-times"></i></button>
+
+      
+      <div class="mstep-header">
+        <div class="mstep-title">
+          <i class="fas fa-graduation-cap"></i>
+          <div>
+            <h2>Online Application</h2>
+            <p>PCSHS Entrance Exam Application — S.Y. 2025–2026</p>
+          </div>
+        </div>
+        <div class="mstep-progress" id="mstepProgress">
+          <div class="mstep-bar">
+            <div class="mstep-fill" id="mstepFill" style="width:25%"></div>
+          </div>
+          <div class="mstep-labels">
+            <span class="mslabel active" id="msl-1"><span class="msl-num">1</span>Personal</span>
+            <span class="mslabel" id="msl-2"><span class="msl-num">2</span>Academic</span>
+            <span class="mslabel" id="msl-3"><span class="msl-num">3</span>Contact</span>
+            <span class="mslabel" id="msl-4"><span class="msl-num">4</span>Confirm</span>
+          </div>
+        </div>
+      </div>
+
+      
+      <div class="mstep" id="mstep-1">
+        <h3 class="step-heading">Personal Information</h3>
+        <div class="form-row">
+          <div class="form-group"><label>First Name *</label><input type="text" id="app-fname" placeholder="Juan"
+              required /></div>
+          <div class="form-group"><label>Middle Name</label><input type="text" id="app-mname"
+              placeholder="(optional)" /></div>
+          <div class="form-group"><label>Last Name *</label><input type="text" id="app-lname" placeholder="dela Cruz"
+              required /></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label>Date of Birth *</label><input type="date" id="app-dob" required /></div>
+          <div class="form-group"><label>Sex *</label><select id="app-sex">
+              <option>Male</option>
+              <option>Female</option>
+            </select></div>
+          <div class="form-group"><label>Nationality</label><input type="text" id="app-nat" value="Filipino" />
+          </div>
+        </div>
+        <div class="form-group"><label>Home Address *</label><input type="text" id="app-addr"
+            placeholder="House/Unit No., Street, Barangay, City" required /></div>
+        <div class="mstep-nav">
+          <span></span>
+          <button type="button" class="btn btn-primary" onclick="mstepNext(1)">Next <i
+              class="fas fa-arrow-right"></i></button>
+        </div>
+      </div>
+
+      
+      <div class="mstep" id="mstep-2" style="display:none">
+        <h3 class="step-heading">Academic Background</h3>
+        <div class="form-group"><label>Current School *</label><input type="text" id="app-school"
+            placeholder="Name of elementary school" required /></div>
+        <div class="form-row">
+          <div class="form-group"><label>Grade Level *</label><select id="app-grade">
+              <option>Grade 6</option>
+              <option>Grade 5</option>
+            </select></div>
+          <div class="form-group"><label>General Average (Grade 5) *</label><input type="number" id="app-gwa"
+              step="0.01" min="75" max="100" placeholder="e.g. 95.50" required /></div>
+        </div>
+        <div class="form-group"><label>Awards / Honors Received</label><textarea id="app-awards" rows="3"
+            placeholder="List any academic or extracurricular awards..."></textarea></div>
+        <div class="form-group">
+          <label>Preferred Program Track</label>
+          <select id="app-track">
+            <option>Advanced Sciences</option>
+            <option>Advanced Mathematics</option>
+            <option>Computer Science & ICT</option>
+            <option>Research Program</option>
+            <option>Life Sciences</option>
+            <option>Space & Earth Science</option>
+          </select>
+        </div>
+        <div class="mstep-nav">
+          <button type="button" class="btn btn-outline-dark" onclick="mstepPrev(2)"><i class="fas fa-arrow-left"></i>
+            Back</button>
+          <button type="button" class="btn btn-primary" onclick="mstepNext(2)">Next <i
+              class="fas fa-arrow-right"></i></button>
+        </div>
+      </div>
+
+      
+      <div class="mstep" id="mstep-3" style="display:none">
+        <h3 class="step-heading">Contact Information</h3>
+        <div class="form-row">
+          <div class="form-group"><label>Parent/Guardian Name *</label><input type="text" id="app-parent"
+              placeholder="Full name" required /></div>
+          <div class="form-group"><label>Relationship *</label><select id="app-rel">
+              <option>Father</option>
+              <option>Mother</option>
+              <option>Guardian</option>
+            </select></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label>Email Address *</label><input type="email" id="app-email"
+              placeholder="parent@email.com" required /></div>
+          <div class="form-group"><label>Mobile Number *</label><input type="tel" id="app-phone"
+              placeholder="09XX-XXX-XXXX" required /></div>
+        </div>
+        <div class="form-group"><label>Emergency Contact Name</label><input type="text" id="app-emergency"
+            placeholder="(optional)" /></div>
+        <div class="mstep-nav">
+          <button type="button" class="btn btn-outline-dark" onclick="mstepPrev(3)"><i class="fas fa-arrow-left"></i>
+            Back</button>
+          <button type="button" class="btn btn-primary" onclick="mstepNext(3)">Next <i
+              class="fas fa-arrow-right"></i></button>
+        </div>
+      </div>
+
+      
+      <div class="mstep" id="mstep-4" style="display:none">
+        <h3 class="step-heading">Review & Submit</h3>
+        <div class="app-summary" id="appSummary"></div>
+        <div class="form-group" style="margin-top:1.5rem">
+          <label class="checkbox-label">
+            <input type="checkbox" id="app-agree" required />
+            I confirm that all information provided is accurate and I agree to the PCSHS Terms & Conditions.
+          </label>
+        </div>
+        <div class="mstep-nav">
+          <button type="button" class="btn btn-outline-dark" onclick="mstepPrev(4)"><i class="fas fa-arrow-left"></i>
+            Back</button>
+          <button type="button" class="btn btn-primary" onclick="submitApplicationFull()"><i
+              class="fas fa-paper-plane"></i> Submit Application</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="programModal1" onclick="closeModal('programModal1')">
+    <div class="modal" onclick="event.stopPropagation()">
+      <button class="modal-close" onclick="closeModal('programModal1')"><i class="fas fa-times"></i></button>
+      <h2><i class="fas fa-atom"></i> Advanced Sciences</h2>
+      <p>Our Advanced Sciences program immerses students in Physics, Chemistry, and Biology at a level comparable to
+        first-year college courses.</p>
+      <ul style="margin:1.25rem 0;padding-left:1.5rem">
+        <li>Advanced Physics with Lab</li>
+        <li>Organic & Analytical Chemistry</li>
+        <li>Molecular Biology & Genetics</li>
+        <li>Environmental Science</li>
+      </ul>
+      <a href="#admissions" class="btn btn-primary" onclick="closeModal('programModal1')">Apply Now</a>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="programModal2" onclick="closeModal('programModal2')">
+    <div class="modal" onclick="event.stopPropagation()">
+      <button class="modal-close" onclick="closeModal('programModal2')"><i class="fas fa-times"></i></button>
+      <h2><i class="fas fa-infinity"></i> Advanced Mathematics</h2>
+      <p>Students explore Precalculus, Calculus, Statistics, Linear Algebra, and Discrete Mathematics for
+        engineering
+        and science careers.</p>
+      <ul style="margin:1.25rem 0;padding-left:1.5rem">
+        <li>Pre-Calculus & Trigonometry</li>
+        <li>Differential & Integral Calculus</li>
+        <li>Statistics & Probability</li>
+        <li>Competition Mathematics</li>
+      </ul>
+      <a href="#admissions" class="btn btn-primary" onclick="closeModal('programModal2')">Apply Now</a>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="programModal3" onclick="closeModal('programModal3')">
+    <div class="modal" onclick="event.stopPropagation()">
+      <button class="modal-close" onclick="closeModal('programModal3')"><i class="fas fa-times"></i></button>
+      <h2><i class="fas fa-laptop-code"></i> Computer Science & ICT</h2>
+      <p>From programming fundamentals to data science and artificial intelligence, our CS program gives students
+        the
+        tools to build solutions for real-world problems.</p>
+      <ul style="margin:1.25rem 0;padding-left:1.5rem">
+        <li>Python & Java Programming</li>
+        <li>Web Development</li>
+        <li>Data Structures & Algorithms</li>
+        <li>Robotics & Automation</li>
+      </ul>
+      <a href="#admissions" class="btn btn-primary" onclick="closeModal('programModal3')">Apply Now</a>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="programModal4" onclick="closeModal('programModal4')">
+    <div class="modal" onclick="event.stopPropagation()">
+      <button class="modal-close" onclick="closeModal('programModal4')"><i class="fas fa-times"></i></button>
+      <h2><i class="fas fa-microscope"></i> Research Program</h2>
+      <p>Our flagship Research Program trains students to conduct rigorous scientific research under faculty
+        mentors,
+        presenting at symposia and competing at Intel ISEF.</p>
+      <ul style="margin:1.25rem 0;padding-left:1.5rem">
+        <li>Research Methods & Design</li>
+        <li>Statistical Analysis</li>
+        <li>Academic Writing & Publication</li>
+        <li>Science Fair Preparation</li>
+      </ul>
+      <a href="#admissions" class="btn btn-primary" onclick="closeModal('programModal4')">Apply Now</a>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="programModal5" onclick="closeModal('programModal5')">
+    <div class="modal" onclick="event.stopPropagation()">
+      <button class="modal-close" onclick="closeModal('programModal5')"><i class="fas fa-times"></i></button>
+      <h2><i class="fas fa-dna"></i> Life Sciences</h2>
+      <p>For students aspiring to careers in medicine, biology, and environmental science. Our Life Sciences track
+        covers biotechnology, ecology, and health sciences.</p>
+      <a href="#admissions" class="btn btn-primary" onclick="closeModal('programModal5')">Apply Now</a>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="programModal6" onclick="closeModal('programModal6')">
+    <div class="modal" onclick="event.stopPropagation()">
+      <button class="modal-close" onclick="closeModal('programModal6')"><i class="fas fa-times"></i></button>
+      <h2><i class="fas fa-satellite"></i> Space & Earth Science</h2>
+      <p>Explore the universe and our planet through astronomy, geology, meteorology, and oceanography. Students
+        operate
+        our school telescope.</p>
+      <a href="#admissions" class="btn btn-primary" onclick="closeModal('programModal6')">Apply Now</a>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="portalModal" onclick="closeModal('portalModal')">
+    <div class="modal" onclick="event.stopPropagation()">
+      <button class="modal-close" onclick="closeModal('portalModal')"><i class="fas fa-times"></i></button>
+      <h2><i class="fas fa-user-circle"></i> Student Portal Login</h2>
+      <form onsubmit="fakeLogin(event)" style="margin-top:1.5rem">
+        <div class="form-group"><label>Student ID</label><input type="text" placeholder="e.g. 2024-00001" required />
+        </div>
+        <div class="form-group"><label>Password</label><input type="password" placeholder="••••••••" required />
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:100%;margin-top:1rem">Log In <i
+            class="fas fa-sign-in-alt"></i></button>
+      </form>
+      <p style="text-align:center;margin-top:1rem;font-size:.9rem"><a href="#" style="color:var(--orange)">Forgot
+          password?</a></p>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="libraryModal" onclick="closeModal('libraryModal')">
+    <div class="modal" onclick="event.stopPropagation()">
+      <button class="modal-close" onclick="closeModal('libraryModal')"><i class="fas fa-times"></i></button>
+      <h2><i class="fas fa-book-open"></i> PCSHS Library</h2>
+      <p>Access our digital catalog, e-books, journals, and research archives. The PCSHS Library holds over 20,000
+        volumes and subscribes to major scientific journals.</p>
+      <div style="display:flex;gap:1rem;flex-wrap:wrap;margin:1.5rem 0">
+        <div class="stat-mini"><strong>20,000+</strong><span>Books</span></div>
+        <div class="stat-mini"><strong>500+</strong><span>Journals</span></div>
+        <div class="stat-mini"><strong>1,000+</strong><span>Research Papers</span></div>
+      </div>
+      <a href="#" class="btn btn-primary">Open Digital Catalog</a>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="alumniModal" onclick="closeModal('alumniModal')">
+    <div class="modal" onclick="event.stopPropagation()">
+      <button class="modal-close" onclick="closeModal('alumniModal')"><i class="fas fa-times"></i></button>
+      <h2><i class="fas fa-graduation-cap"></i> PCSHS Alumni Network</h2>
+      <p>Connect with thousands of PCSHS alumni now working and studying across the Philippines and the world.</p>
+      <ul style="margin:1.25rem 0;padding-left:1.5rem">
+        <li>Register as an Alumni</li>
+        <li>Connect with Batchmates</li>
+        <li>Mentor Current Students</li>
+        <li>Donate to the Alumni Fund</li>
+      </ul>
+      <a href="#" class="btn btn-primary">Join Network</a>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="facultyModal" onclick="closeModal('facultyModal')">
+    <div class="modal" onclick="event.stopPropagation()">
+      <button class="modal-close" onclick="closeModal('facultyModal')"><i class="fas fa-times"></i></button>
+      <h2><i class="fas fa-chalkboard-teacher"></i> Faculty Portal</h2>
+      <form onsubmit="fakeLogin(event)" style="margin-top:1.5rem">
+        <div class="form-group"><label>Employee ID</label><input type="text" placeholder="e.g. EMP-00001" required />
+        </div>
+        <div class="form-group"><label>Password</label><input type="password" placeholder="••••••••" required />
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:100%;margin-top:1rem">Log In <i
+            class="fas fa-sign-in-alt"></i></button>
+      </form>
+    </div>
+  </div>
+
+  
+  <div class="toast" id="toast"></div>
+
+  
+  <div class="modal-overlay" id="facultyModal-f1" onclick="closeFacultyModal('f1')">
+    <div class="modal faculty-profile-modal" onclick="event.stopPropagation()">
+      <button class="modal-close" onclick="closeFacultyModal('f1')"><i class="fas fa-times"></i></button>
+      <div class="fpm-header">
+        <div class="fpm-img"
+          style="background-image:url('https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&q=80')"></div>
+        <div class="fpm-meta">
+          <h2>Dr. Ricardo B. Santos</h2>
+          <span class="fpm-role"><i class="fas fa-briefcase"></i> School Principal</span>
+          <div class="fpm-tags"><span>Educational Leadership</span><span>STEM Education</span></div>
+        </div>
+      </div>
+      <div class="fpm-body">
+        <div class="fpm-section">
+          <h4><i class="fas fa-user-graduate"></i> Education</h4>
+          <ul>
+            <li>Ph.D. in Educational Management — University of the Philippines</li>
+            <li>M.A. in Educational Leadership — De La Salle University</li>
+          </ul>
+        </div>
+        <div class="fpm-section">
+          <h4><i class="fas fa-trophy"></i> Achievements</h4>
+          <ul>
+            <li>DepEd National Outstanding Principal Award 2021</li>
+            <li>Led PCSHS to AAA accreditation status</li>
+            <li>Spearheaded the PCSHS Research Intensification Program</li>
+          </ul>
+        </div>
+        <div class="fpm-section">
+          <h4><i class="fas fa-envelope"></i> Contact</h4>
+          <p>r.santos@pcshs.deped.gov.ph</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="facultyModal-f2" onclick="closeFacultyModal('f2')">
+    <div class="modal faculty-profile-modal" onclick="event.stopPropagation()">
+      <button class="modal-close" onclick="closeFacultyModal('f2')"><i class="fas fa-times"></i></button>
+      <div class="fpm-header">
+        <div class="fpm-img"
+          style="background-image:url('https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&q=80')"></div>
+        <div class="fpm-meta">
+          <h2>Ms. Ana P. Reyes</h2>
+          <span class="fpm-role"><i class="fas fa-flask"></i> Head, Science Department</span>
+          <div class="fpm-tags"><span>Chemistry</span><span>Research Mentoring</span></div>
+        </div>
+      </div>
+      <div class="fpm-body">
+        <div class="fpm-section">
+          <h4><i class="fas fa-user-graduate"></i> Education</h4>
+          <ul>
+            <li>M.S. in Chemistry — University of the Philippines Diliman</li>
+            <li>B.S. in Chemistry (Cum Laude) — University of Santo Tomas</li>
+          </ul>
+        </div>
+        <div class="fpm-section">
+          <h4><i class="fas fa-trophy"></i> Achievements</h4>
+          <ul>
+            <li>National Science Teacher of the Year 2022</li>
+            <li>Coached 12 national Chemistry Olympiad medalists</li>
+          </ul>
+        </div>
+        <div class="fpm-section">
+          <h4><i class="fas fa-envelope"></i> Contact</h4>
+          <p>a.reyes@pcshs.deped.gov.ph</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="facultyModal-f3" onclick="closeFacultyModal('f3')">
+    <div class="modal faculty-profile-modal" onclick="event.stopPropagation()">
+      <button class="modal-close" onclick="closeFacultyModal('f3')"><i class="fas fa-times"></i></button>
+      <div class="fpm-header">
+        <div class="fpm-img"
+          style="background-image:url('https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&q=80')"></div>
+        <div class="fpm-meta">
+          <h2>Mr. Carlo T. Lim</h2>
+          <span class="fpm-role"><i class="fas fa-infinity"></i> Head, Mathematics Department</span>
+          <div class="fpm-tags"><span>Applied Mathematics</span><span>Olympiad Coach</span></div>
+        </div>
+      </div>
+      <div class="fpm-body">
+        <div class="fpm-section">
+          <h4><i class="fas fa-user-graduate"></i> Education</h4>
+          <ul>
+            <li>M.S. in Applied Mathematics — Ateneo de Manila University</li>
+            <li>B.S. in Mathematics Education — Philippine Normal University</li>
+          </ul>
+        </div>
+        <div class="fpm-section">
+          <h4><i class="fas fa-trophy"></i> Achievements</h4>
+          <ul>
+            <li>National Math Olympiad Team Coach — 4 consecutive years</li>
+            <li>10 national-level gold medalists</li>
+          </ul>
+        </div>
+        <div class="fpm-section">
+          <h4><i class="fas fa-envelope"></i> Contact</h4>
+          <p>c.lim@pcshs.deped.gov.ph</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="facultyModal-f4" onclick="closeFacultyModal('f4')">
+    <div class="modal faculty-profile-modal" onclick="event.stopPropagation()">
+      <button class="modal-close" onclick="closeFacultyModal('f4')"><i class="fas fa-times"></i></button>
+      <div class="fpm-header">
+        <div class="fpm-img"
+          style="background-image:url('https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&q=80')"></div>
+        <div class="fpm-meta">
+          <h2>Ms. Leah G. Fontaine</h2>
+          <span class="fpm-role"><i class="fas fa-laptop-code"></i> Head, ICT Department</span>
+          <div class="fpm-tags"><span>Computer Science</span><span>Google Certified</span></div>
+        </div>
+      </div>
+      <div class="fpm-body">
+        <div class="fpm-section">
+          <h4><i class="fas fa-user-graduate"></i> Education</h4>
+          <ul>
+            <li>M.S. in Computer Science — De La Salle University</li>
+            <li>B.S. in Information Technology — Mapúa University</li>
+          </ul>
+        </div>
+        <div class="fpm-section">
+          <h4><i class="fas fa-trophy"></i> Achievements</h4>
+          <ul>
+            <li>Certified Google for Education Training Specialist</li>
+            <li>Led team to NCR Robotics Championship 2024</li>
+          </ul>
+        </div>
+        <div class="fpm-section">
+          <h4><i class="fas fa-envelope"></i> Contact</h4>
+          <p>l.fontaine@pcshs.deped.gov.ph</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+  <div class="modal-overlay" id="clubsModal" onclick="closeModal('clubsModal')">
+    <div class="modal modal-wide" onclick="event.stopPropagation()">
+      <button class="modal-close" onclick="closeModal('clubsModal')"><i class="fas fa-times"></i></button>
+      <h2><i class="fas fa-users"></i> Clubs &amp; Organizations</h2>
+      <p style="color:var(--text-light);margin:.5rem 0 1.5rem">PCSHS has 20+ official clubs across science, arts, tech,
+        advocacy, and sports.</p>
+      <div class="clubs-grid">
+        <div class="club-card">
+          <div class="club-icon" style="background:#eceef8"><span style="font-size:1.6rem">??</span></div>
+          <h4>Alchemist</h4>
+          <p>Official Chemistry Club. Adviser: Ms. Cheryl Bedano.</p>
+        </div>
+        <div class="club-card">
+          <div class="club-icon" style="background:#eceef8"><span style="font-size:1.6rem">???</span></div>
+          <h4>Civitas</h4>
+          <p>Civic engagement &amp; political awareness club. Adviser: Ms. Adona.</p>
+        </div>
+        <div class="club-card">
+          <div class="club-icon" style="background:#eceef8"><span style="font-size:1.6rem">??</span></div>
+          <h4>Constellate</h4>
+          <p>Official Biology &amp; Astrobiology Club. Advisers: Mr. Domingo &amp; Ms. Fababaer.</p>
+        </div>
+        <div class="club-card">
+          <div class="club-icon" style="background:#eceef8"><span style="font-size:1.6rem">8</span></div>
+          <h4>DNE</h4>
+          <p>Official Mathematics Club. Advisers: Mr. Lara, Ms. Cortezano, Ms. Cello.</p>
+        </div>
+        <div class="club-card">
+          <div class="club-icon" style="background:#eceef8"><span style="font-size:1.6rem">?</span></div>
+          <h4>GAMMA</h4>
+          <p>Official Physics Club. Advisers: Mr. Loreto &amp; Mr. Cos.</p>
+        </div>
+        <div class="club-card">
+          <div class="club-icon" style="background:#eceef8"><span style="font-size:1.6rem">??</span></div>
+          <h4>SYNCTAX</h4>
+          <p>Official Programming &amp; Game Dev Club. Adviser: Ms. Regencia.</p>
+        </div>
+        <div class="club-card">
+          <div class="club-icon" style="background:#eceef8"><span style="font-size:1.6rem">??</span></div>
+          <h4>Tekmekanismo</h4>
+          <p>Official Robotics Club. Adviser: Ms. Secretario.</p>
+        </div>
+        <div class="club-card">
+          <div class="club-icon" style="background:#eceef8"><span style="font-size:1.6rem">??</span></div>
+          <h4>YES-O</h4>
+          <p>Youth for Environment in Schools. Adviser: Mr. Risos.</p>
+        </div>
+        <div class="club-card">
+          <div class="club-icon" style="background:#eceef8"><span style="font-size:1.6rem">??</span></div>
+          <h4>Parallax</h4>
+          <p>Official Research Club. Adviser: Ms. Corsiga.</p>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:1.5rem">
+        <a href="clubs.html" class="btn btn-primary" style="display:inline-flex;align-items:center;gap:.5rem">View All
+          Clubs &amp; Officers <i class="fas fa-arrow-right"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="sportsModal" onclick="closeModal('sportsModal')">
+    <div class="modal modal-wide" onclick="event.stopPropagation()">
+      <button class="modal-close" onclick="closeModal('sportsModal')"><i class="fas fa-times"></i></button>
+      <h2><i class="fas fa-running"></i> Sports &amp; Athletics</h2>
+      <p style="color:var(--text-light);margin:.5rem 0 1.5rem">PCSHS competes at division and regional levels every
+        year.</p>
+      <div class="clubs-grid">
+        <div class="club-card">
+          <div class="club-icon" style="background:#E8F0FE"><i class="fas fa-basketball" style="color:#0038A8"></i>
+          </div>
+          <h4>Basketball</h4>
+          <p>Varsity team in the Pasig City Division Super League.</p>
+        </div>
+        <div class="club-card">
+          <div class="club-icon" style="background:#E0F7FA"><i class="fas fa-volleyball-ball" style="color:#0097A7"></i>
+          </div>
+          <h4>Volleyball</h4>
+          <p>Boys and Girls varsity teams with multiple division titles.</p>
+        </div>
+        <div class="club-card">
+          <div class="club-icon" style="background:#F3EEFF"><i class="fas fa-chess" style="color:#6C3FC5"></i></div>
+          <h4>Chess</h4>
+          <p>National-level chess players representing PCSHS.</p>
+        </div>
+        <div class="club-card">
+          <div class="club-icon" style="background:#FFF8E1"><i class="fas fa-table-tennis-paddle-ball"
+              style="color:#A67C00"></i></div>
+          <h4>Badminton</h4>
+          <p>School badminton team with consistent regional placements.</p>
+        </div>
+        <div class="club-card">
+          <div class="club-icon" style="background:#E8F5E9"><i class="fas fa-swimmer" style="color:#2E7D32"></i></div>
+          <h4>Swimming</h4>
+          <p>Competitive swimming trained at the Pasig City sports complex.</p>
+        </div>
+        <div class="club-card">
+          <div class="club-icon" style="background:#FFEBEE"><i class="fas fa-person-running" style="color:#C62828"></i>
+          </div>
+          <h4>Track &amp; Field</h4>
+          <p>Representing PCSHS at the Palarong Pambansa qualifiers.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="artsModal" onclick="closeModal('artsModal')">
+    <div class="modal modal-wide" onclick="event.stopPropagation()">
+      <button class="modal-close" onclick="closeModal('artsModal')"><i class="fas fa-times"></i></button>
+      <h2><i class="fas fa-masks-theater"></i> Arts &amp; Culture</h2>
+      <p style="color:var(--text-light);margin:.5rem 0 1.5rem">Celebrating Filipino heritage through performing and
+        visual arts.</p>
+      <div class="clubs-grid">
+        <div class="club-card">
+          <div class="club-icon" style="background:#E8F0FE"><i class="fas fa-theater-masks" style="color:#0038A8"></i>
+          </div>
+          <h4>Drama &amp; Theater</h4>
+          <p>Annual school productions and one-act play competitions.</p>
+        </div>
+        <div class="club-card">
+          <div class="club-icon" style="background:#FFF8E1"><i class="fas fa-music" style="color:#A67C00"></i></div>
+          <h4>Band &amp; Orchestra</h4>
+          <p>String and wind ensemble performing at school and civic events.</p>
+        </div>
+        <div class="club-card">
+          <div class="club-icon" style="background:#F3EEFF"><i class="fas fa-person-dancing" style="color:#6C3FC5"></i>
+          </div>
+          <h4>Dance Troupe</h4>
+          <p>Traditional and contemporary Filipino dance performances.</p>
+        </div>
+        <div class="club-card">
+          <div class="club-icon" style="background:#E8F5E9"><i class="fas fa-feather" style="color:#2E7D32"></i></div>
+          <h4>Literary Club</h4>
+          <p>Creative writing, poetry, and the school's literary folio.</p>
+        </div>
+        <div class="club-card">
+          <div class="club-icon" style="background:#FFEBEE"><i class="fas fa-camera" style="color:#C62828"></i></div>
+          <h4>Photography &amp; Film</h4>
+          <p>School yearbook, short film fest, and documentary production.</p>
+        </div>
+        <div class="club-card">
+          <div class="club-icon" style="background:#E0F7FA"><i class="fas fa-newspaper" style="color:#0097A7"></i></div>
+          <h4>School Publication</h4>
+          <p>The official PCSHS student newspaper — The Scientist's Tribune.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+  <script src="firebase-config.js"></script>
+  <script src="db.js"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>

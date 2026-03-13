@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>News & Announcements — PCSHS</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0
+        }
+
+        :root {
+            --blue: #0038A8;
+            --blue-dark: #002580;
+            --blue-light: #1A73E8;
+            --blue-pale: #EEF3FF;
+            --white: #fff;
+            --text: #1A1F36;
+            --text-light: #6B7280;
+            --gray: #F3F5FA;
+            --border: #E2E8F0;
+            --radius: 12px;
+            --shadow: 0 4px 24px rgba(0, 56, 168, .1)
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--gray);
+            color: var(--text)
+        }
+
+        .enr-nav {
+            background: var(--blue-dark);
+            padding: .75rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, .3)
+        }
+
+        .enr-nav-logo {
+            display: flex;
+            align-items: center;
+            gap: .75rem;
+            text-decoration: none
+        }
+
+        .enr-nav-logo img {
+            width: 36px;
+            height: 36px;
+            object-fit: contain
+        }
+
+        .enr-nav-logo span {
+            color: #fff;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            font-size: .95rem
+        }
+
+        .enr-nav-links {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center
+        }
+
+        .enr-nav-links a {
+            color: rgba(255, 255, 255, .7);
+            text-decoration: none;
+            font-size: .875rem;
+            transition: color .2s
+        }
+
+        .enr-nav-links a:hover,
+        .enr-nav-links a.active {
+            color: #fff
+        }
+
+        .page-hero {
+            background: linear-gradient(135deg, var(--blue-dark), var(--blue));
+            padding: 3.5rem 2rem;
+            text-align: center;
+            color: #fff;
+            position: relative;
+            overflow: hidden
+        }
+
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url('https://images.unsplash.com/photo-1562774053-701939374585?w=1400&q=60')center/cover;
+            opacity: .1
+        }
+
+        .page-hero-inner {
+            position: relative
+        }
+
+        .page-hero h1 {
+            font-family: 'DM Serif Display', serif;
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            margin: .75rem 0 .5rem
+        }
+
+        .page-hero p {
+            opacity: .8;
+            font-size: 1rem
+        }
+
+        .page-tag {
+            background: rgba(255, 255, 255, .15);
+            border: 1px solid rgba(255, 255, 255, .3);
+            padding: .3rem 1rem;
+            border-radius: 20px;
+            font-size: .78rem;
+            font-weight: 600;
+            letter-spacing: .07em;
+            text-transform: uppercase
+        }
+
+        .page-body {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2.5rem 1.5rem
+        }
+
+        .filter-bar {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+            align-items: center
+        }
+
+        .filter-bar input {
+            flex: 1;
+            min-width: 220px;
+            padding: .65rem 1rem;
+            border: 1.5px solid var(--border);
+            border-radius: 8px;
+            font-size: .9rem;
+            font-family: 'Inter', sans-serif
+        }
+
+        .filter-bar input:focus {
+            outline: none;
+            border-color: var(--blue)
+        }
+
+        .filter-btn {
+            padding: .5rem 1rem;
+            border: 2px solid var(--border);
+            border-radius: 20px;
+            background: var(--white);
+            font-size: .8rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all .2s;
+            color: var(--text-light)
+        }
+
+        .filter-btn.active,
+        .filter-btn:hover {
+            border-color: var(--blue);
+            color: var(--blue);
+            background: var(--blue-pale)
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 1.5rem
+        }
+
+        .n-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform .25s, box-shadow .25s;
+            cursor: pointer
+        }
+
+        .n-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 32px rgba(0, 56, 168, .18)
+        }
+
+        .n-img {
+            height: 200px;
+            background: center/cover var(--blue-pale);
+            position: relative
+        }
+
+        .n-cat {
+            position: absolute;
+            top: .85rem;
+            left: .85rem;
+            background: var(--blue);
+            color: #fff;
+            padding: .25rem .75rem;
+            border-radius: 20px;
+            font-size: .72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: .05em
+        }
+
+        .n-body {
+            padding: 1.25rem
+        }
+
+        .n-date {
+            font-size: .78rem;
+            color: var(--text-light);
+            margin-bottom: .5rem
+        }
+
+        .n-body h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin-bottom: .5rem;
+            line-height: 1.3
+        }
+
+        .n-body p {
+            font-size: .875rem;
+            color: var(--text-light);
+            line-height: 1.65;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden
+        }
+
+        .n-footer {
+            padding: .75rem 1.25rem;
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: .8rem;
+            color: var(--text-light)
+        }
+
+        .n-read {
+            color: var(--blue);
+            font-weight: 600;
+            font-size: .8rem
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: var(--text-light)
+        }
+
+        .empty-state i {
+            font-size: 3rem;
+            opacity: .25;
+            margin-bottom: 1rem
+        }
+
+        /* Article Modal */
+        .art-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, .6);
+            z-index: 999;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem
+        }
+
+        .art-overlay.open {
+            display: flex
+        }
+
+        .art-modal {
+            background: var(--white);
+            border-radius: var(--radius);
+            max-width: 720px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative
+        }
+
+        .art-img {
+            height: 280px;
+            background: center/cover;
+            position: relative
+        }
+
+        .art-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: rgba(0, 0, 0, .5);
+            color: #fff;
+            border: none;
+            font-size: 1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center
+        }
+
+        .art-content {
+            padding: 2rem 2.25rem 2.5rem
+        }
+
+        .art-content h2 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.75rem;
+            margin: .75rem 0 1rem;
+            line-height: 1.25
+        }
+
+        .art-content p {
+            color: var(--text-light);
+            line-height: 1.85;
+            font-size: .95rem;
+            margin-bottom: 1rem
+        }
+
+        .enr-footer {
+            background: var(--blue-dark);
+            color: rgba(255, 255, 255, .7);
+            text-align: center;
+            padding: 1.5rem;
+            font-size: .85rem;
+            margin-top: 3rem
+        }
+
+        .enr-footer a {
+            color: rgba(255, 255, 255, .5);
+            text-decoration: none;
+            margin: 0 .5rem
+        }
+
+        .enr-footer a:hover {
+            color: #fff
+        }
+
+        .loading-spin {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 2px solid rgba(0, 56, 168, .2);
+            border-top-color: var(--blue);
+            border-radius: 50%;
+            animation: spin .7s linear infinite
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg)
+            }
+        }
+
+        @media(max-width:768px) {
+            .enr-nav-links {
+                display: none
+            }
+
+            .news-grid {
+                grid-template-columns: 1fr
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="enr-nav">
+        <a href="index.html" class="enr-nav-logo">
+            <img src="pcshs_logo.png"
+                onerror="this.src='https://via.placeholder.com/36x36/0038A8/fff?text=P'" alt="PCSHS" />
+            <span>PCSHS</span>
+        </a>
+        <div class="enr-nav-links">
+            <a href="index.html"><i class="fas fa-home"></i> Home</a>
+            <a href="enroll.html"><i class="fas fa-pencil-alt"></i> Apply</a>
+            <a href="alumni.html"><i class="fas fa-users"></i> Alumni</a>
+            <a href="library.html"><i class="fas fa-book"></i> Library</a>
+            <a href="news.html" class="active"><i class="fas fa-newspaper"></i> News</a>
+        </div>
+    </nav>
+
+    <div class="page-hero">
+        <div class="page-hero-inner">
+            <span class="page-tag"><i class="fas fa-newspaper"></i> Newsroom</span>
+            <h1>News & Announcements</h1>
+            <p>Latest news, achievements, and announcements from Pasig City Science High School.</p>
+        </div>
+    </div>
+
+    <div class="page-body">
+        <div class="filter-bar">
+            <input type="text" id="searchInput" placeholder="🔍 Search news…" oninput="filterNews()" />
+            <button class="filter-btn active" data-cat="" onclick="setCategory(this,'')">All</button>
+            <button class="filter-btn" data-cat="Achievement"
+                onclick="setCategory(this,'Achievement')">Achievements</button>
+            <button class="filter-btn" data-cat="Research" onclick="setCategory(this,'Research')">Research</button>
+            <button class="filter-btn" data-cat="Admissions"
+                onclick="setCategory(this,'Admissions')">Admissions</button>
+            <button class="filter-btn" data-cat="Event" onclick="setCategory(this,'Event')">Events</button>
+            <button class="filter-btn" data-cat="Announcement"
+                onclick="setCategory(this,'Announcement')">Announcements</button>
+        </div>
+        <div id="newsGrid" class="news-grid">
+            <div style="text-align:center;padding:3rem;grid-column:1/-1">
+                <div class="loading-spin"></div>
+                <p style="margin-top:1rem;color:var(--text-light)">Loading news…</p>
+            </div>
+        </div>
+    </div>
+
+    
+    <div class="art-overlay" id="artOverlay" onclick="closeArticle(event)">
+        <div class="art-modal">
+            <div class="art-img" id="artImg"><button class="art-close"
+                    onclick="document.getElementById('artOverlay').classList.remove('open');document.body.style.overflow=''"><i
+                        class="fas fa-times"></i></button></div>
+            <div class="art-content">
+                <span
+                    style="font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--blue)"
+                    id="artCat"></span>
+                <h2 id="artTitle"></h2>
+                <p style="font-size:.8rem;color:var(--text-light);margin-bottom:1rem" id="artDate"></p>
+                <div id="artBody"></div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="enr-footer">
+        <p>© 2025 Pasig City Science High School</p>
+        <p style="margin-top:.4rem"><a href="index.html">Home</a><a href="enroll.html">Apply</a><a
+                href="portal.html">Status</a><a href="index.html#contact">Contact</a></p>
+    </footer>
+
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+    <script src="firebase-config.js"></script>
+    <script src="db.js"></script>
+    <script>
+        const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+        function fmtDate(s) { if (!s) return ''; const d = new Date(s); return isNaN(d) ? s : `${MONTHS[d.getMonth()]} ${d.getDate()}, ${d.getFullYear()}`; }
+
+        let allNews = [];
+        let activeCat = '';
+
+        // Static seed news (always shown if DB is empty)
+        const SEED_NEWS = [
+            { id: 'sn1', title: 'PCSHS Students Win Gold at National Science Olympiad 2025', category: 'Achievement', date: '2025-03-05', summary: 'Three PCSHS teams clinched gold medals at the DepEd National Science and Math Olympiad held in Manila.', content: 'Three PCSHS teams clinched gold medals at the DepEd National Science and Math Olympiad held in Manila last March 1-3, 2025. The Biology, Physics, and Chemistry teams each took first place in their respective categories, continuing the school\'s legacy of academic excellence. Team adviser Dr. Ana Reyes expressed pride in the students\' dedication and preparation. The school will be recognized at a special program next week.', img: 'https://images.unsplash.com/photo-1532094349884-543559b8ef09?w=800&q=80', featured: true },
+            { id: 'sn2', title: 'Enrollment for S.Y. 2025–2026 Now Open — Apply Online', category: 'Admissions', date: '2025-02-15', summary: 'PCSHS officially opens online applications for incoming Grade 7 and Senior High School students for S.Y. 2025–2026.', content: 'Pasig City Science High School has officially opened its online application portal for S.Y. 2025–2026. The school is accepting applications from Grade 6 completers (for Grade 7) and Grade 10 completers (for Senior High). The entrance examination is scheduled for May 17, 2025. Interested applicants may apply through the PCSHS Online Enrollment Portal. The deadline for submission of applications is April 30, 2025.', img: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=800&q=80' },
+            { id: 'sn3', title: 'PCSHS Research Team Qualifies for Intel ISEF 2025', category: 'Research', date: '2025-01-28', summary: 'The AI-Powered Flood Warning System project from Grade 11 ICT has been selected as a Philippine representative to Intel ISEF.', content: 'A research project developed by Grade 11 ICT students — an AI-powered early flood warning system for the Pasig River — has been selected to represent the Philippines at the Intel International Science and Engineering Fair (ISEF) 2025. The team of Andrea Lim, Joshua Aguilar, and Maria Kristina Uy will travel to Los Angeles in May. The project uses machine learning to predict flood events up to 6 hours in advance with 91.4% accuracy.', img: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80' },
+            { id: 'sn4', title: 'SciTech Week 2025 Highlights PCSHS Innovation', category: 'Event', date: '2025-03-10', summary: 'The annual SciTech Week showcased student research, robotics demonstrations, and science fair projects across all grade levels.', content: 'PCSHS held its annual SciTech Week from March 10–14, 2025, featuring research presentations, robotics demonstrations, and interactive science exhibits. Over 200 student projects were displayed, covering topics from environmental science to artificial intelligence. The Robotics Club demonstrated their autonomous navigation robot, while the Biology Club exhibited their urban farming hydroponic setup. Parents, alumni, and DepEd officials were among the guests who attended the event.', img: 'https://images.unsplash.com/photo-1546519638-68e109498ffc?w=800&q=80' },
+            { id: 'sn5', title: 'PCSHS Receives AAA Accreditation from DepEd', category: 'Announcement', date: '2025-01-10', summary: 'The school has been awarded the highest AAA accreditation status by the Department of Education for continued excellence.', content: 'The Department of Education has awarded Pasig City Science High School with AAA (Triple A) accreditation — the highest possible rating for public schools in the Philippines. The accreditation team cited the school\'s excellent academic performance, well-equipped laboratories, qualified faculty, and comprehensive student support systems. Principal Dr. Ricardo Santos received the award on behalf of the school community.', img: 'https://images.unsplash.com/photo-1562774053-701939374585?w=800&q=80' },
+        ];
+
+        async function loadNews() {
+            try {
+                let dbNews = await DB.getAll('news');
+                allNews = dbNews.length ? dbNews : SEED_NEWS;
+                renderNews();
+            } catch (e) {
+                allNews = SEED_NEWS;
+                renderNews();
+            }
+        }
+
+        function filterNews() {
+            const q = document.getElementById('searchInput').value.toLowerCase();
+            const filtered = allNews.filter(n =>
+                (!activeCat || n.category === activeCat) &&
+                (n.title.toLowerCase().includes(q) || n.summary.toLowerCase().includes(q))
+            );
+            renderGrid(filtered);
+        }
+
+        function setCategory(btn, cat) {
+            activeCat = cat;
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            filterNews();
+        }
+
+        function renderNews() { filterNews(); }
+
+        function renderGrid(items) {
+            const grid = document.getElementById('newsGrid');
+            if (!items.length) {
+                grid.innerHTML = `<div class="empty-state" style="grid-column:1/-1"><i class="fas fa-newspaper"></i><p>No news found.</p></div>`;
+                return;
+            }
+            grid.innerHTML = items.map(n => `
+    <div class="n-card" onclick="openArticle('${n.id}')">
+      <div class="n-img" style="background-image:url('${n.img || 'https://images.unsplash.com/photo-1532094349884-543559b8ef09?w=600&q=70'}')">
+        <span class="n-cat">${n.category}</span>
+      </div>
+      <div class="n-body">
+        <div class="n-date"><i class="fas fa-calendar"></i> ${fmtDate(n.date)}</div>
+        <h3>${n.title}</h3>
+        <p>${n.summary}</p>
+      </div>
+      <div class="n-footer">
+        <span><i class="fas fa-newspaper"></i> PCSHS Newsroom</span>
+        <span class="n-read">Read More <i class="fas fa-arrow-right"></i></span>
+      </div>
+    </div>
+  `).join('');
+        }
+
+        function openArticle(id) {
+            const n = allNews.find(x => x.id === id); if (!n) return;
+            document.getElementById('artImg').style.backgroundImage = `url('${n.img || ''}')`;
+            document.getElementById('artCat').textContent = n.category;
+            document.getElementById('artTitle').textContent = n.title;
+            document.getElementById('artDate').innerHTML = `<i class="fas fa-calendar"></i> ${fmtDate(n.date)}`;
+            document.getElementById('artBody').innerHTML = (n.content || n.summary).split('\n').map(p => `<p>${p}</p>`).join('');
+            document.getElementById('artOverlay').classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeArticle(e) {
+            if (e.target === document.getElementById('artOverlay')) {
+                document.getElementById('artOverlay').classList.remove('open');
+                document.body.style.overflow = '';
+            }
+        }
+
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape') { document.getElementById('artOverlay').classList.remove('open'); document.body.style.overflow = ''; }
+        });
+
+        loadNews();
+    </script>
+</body>
+
+</html>

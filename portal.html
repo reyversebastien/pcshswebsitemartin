@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Application Status — PCSHS Portal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0
+        }
+
+        :root {
+            --blue: #0038A8;
+            --blue-dark: #002580;
+            --blue-light: #1A73E8;
+            --blue-pale: #EEF3FF;
+            --white: #fff;
+            --text: #1A1F36;
+            --text-light: #6B7280;
+            --gray: #F3F5FA;
+            --border: #E2E8F0;
+            --radius: 12px;
+            --shadow: 0 4px 24px rgba(0, 56, 168, .1);
+            --green: #2E7D32;
+            --red: #C62828;
+            --gold: #A67C00
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--gray);
+            color: var(--text);
+            min-height: 100vh
+        }
+
+        .enr-nav {
+            background: var(--blue-dark);
+            padding: .75rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, .3)
+        }
+
+        .enr-nav-logo {
+            display: flex;
+            align-items: center;
+            gap: .75rem;
+            text-decoration: none
+        }
+
+        .enr-nav-logo img {
+            width: 36px;
+            height: 36px;
+            object-fit: contain
+        }
+
+        .enr-nav-logo span {
+            color: #fff;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            font-size: .95rem
+        }
+
+        .enr-nav-links {
+            display: flex;
+            gap: 1.5rem
+        }
+
+        .enr-nav-links a {
+            color: rgba(255, 255, 255, .7);
+            text-decoration: none;
+            font-size: .875rem;
+            transition: color .2s
+        }
+
+        .enr-nav-links a:hover,
+        .enr-nav-links a.active {
+            color: #fff
+        }
+
+        .page-hero {
+            background: linear-gradient(135deg, var(--blue-dark), var(--blue));
+            padding: 3.5rem 2rem;
+            text-align: center;
+            color: #fff
+        }
+
+        .page-hero h1 {
+            font-family: 'DM Serif Display', serif;
+            font-size: clamp(1.8rem, 4vw, 2.6rem);
+            margin: .75rem 0 .5rem
+        }
+
+        .page-hero p {
+            opacity: .8
+        }
+
+        .page-tag {
+            background: rgba(255, 255, 255, .15);
+            border: 1px solid rgba(255, 255, 255, .3);
+            padding: .3rem 1rem;
+            border-radius: 20px;
+            font-size: .78rem;
+            font-weight: 600;
+            letter-spacing: .07em;
+            text-transform: uppercase
+        }
+
+        .page-body {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 2.5rem 1.5rem
+        }
+
+        .card {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            margin-bottom: 1.5rem
+        }
+
+        .card h2 {
+            font-size: 1.15rem;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            margin-bottom: .4rem
+        }
+
+        .card .sub {
+            color: var(--text-light);
+            font-size: .875rem;
+            margin-bottom: 1.5rem
+        }
+
+        .input-row {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-end
+        }
+
+        .input-row .fg {
+            flex: 1
+        }
+
+        .fg label {
+            display: block;
+            font-size: .8rem;
+            font-weight: 600;
+            margin-bottom: .4rem
+        }
+
+        .fg input {
+            width: 100%;
+            padding: .65rem .85rem;
+            border: 1.5px solid var(--border);
+            border-radius: 8px;
+            font-family: 'Inter', sans-serif;
+            font-size: .9rem;
+            color: var(--text);
+            text-transform: uppercase;
+            transition: border-color .2s
+        }
+
+        .fg input:focus {
+            outline: none;
+            border-color: var(--blue)
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: .5rem;
+            padding: .7rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: .9rem;
+            cursor: pointer;
+            border: none;
+            transition: all .25s;
+            font-family: 'Inter', sans-serif;
+            white-space: nowrap
+        }
+
+        .btn-primary {
+            background: var(--blue);
+            color: #fff
+        }
+
+        .btn-primary:hover {
+            background: var(--blue-dark)
+        }
+
+        .btn:disabled {
+            opacity: .5;
+            cursor: not-allowed
+        }
+
+        /* Result */
+        .result-section {
+            margin-top: 2rem;
+            display: none
+        }
+
+        .app-header {
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: var(--blue-pale);
+            border-radius: var(--radius);
+            border: 1.5px solid rgba(0, 56, 168, .12)
+        }
+
+        .app-avatar {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            background: var(--blue);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            font-weight: 700;
+            font-family: 'Outfit', sans-serif;
+            flex-shrink: 0
+        }
+
+        .app-info h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: .25rem
+        }
+
+        .app-info .app-sub {
+            color: var(--text-light);
+            font-size: .85rem;
+            margin-bottom: .5rem
+        }
+
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: .4rem;
+            padding: .3rem .85rem;
+            border-radius: 20px;
+            font-size: .8rem;
+            font-weight: 700
+        }
+
+        .s-pending {
+            background: #FFF8E1;
+            color: #A67C00
+        }
+
+        .s-review {
+            background: #E3F2FD;
+            color: #0038A8
+        }
+
+        .s-exam {
+            background: #F3EEFF;
+            color: #6C3FC5
+        }
+
+        .s-accepted {
+            background: #E8F5E9;
+            color: #2E7D32
+        }
+
+        .s-interview {
+            background: #FFF3E0;
+            color: #E65100
+        }
+
+        .s-rejected {
+            background: #FFEBEE;
+            color: #C62828
+        }
+
+        /* Timeline */
+        .tl {
+            position: relative;
+            padding-left: 2rem
+        }
+
+        .tl::before {
+            content: '';
+            position: absolute;
+            left: .75rem;
+            top: .5rem;
+            bottom: .5rem;
+            width: 2px;
+            background: var(--border)
+        }
+
+        .tl-item {
+            position: relative;
+            margin-bottom: 1.5rem
+        }
+
+        .tl-dot {
+            position: absolute;
+            left: -2rem;
+            top: .2rem;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            border: 3px solid var(--border);
+            background: var(--white);
+            transition: all .3s
+        }
+
+        .tl-dot.done {
+            border-color: var(--green);
+            background: var(--green)
+        }
+
+        .tl-dot.active {
+            border-color: var(--blue);
+            background: var(--blue);
+            box-shadow: 0 0 0 4px rgba(0, 56, 168, .15)
+        }
+
+        .tl-title {
+            font-size: .9rem;
+            font-weight: 700;
+            color: var(--text)
+        }
+
+        .tl-desc {
+            font-size: .8rem;
+            color: var(--text-light);
+            margin-top: .2rem;
+            line-height: 1.5
+        }
+
+        .tl-date {
+            font-size: .75rem;
+            color: var(--text-light);
+            margin-top: .15rem;
+            font-style: italic
+        }
+
+        /* Detail table */
+        .detail-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: .875rem
+        }
+
+        .detail-table td {
+            padding: .6rem .5rem;
+            border-bottom: 1px solid var(--border)
+        }
+
+        .detail-table td:first-child {
+            font-weight: 600;
+            color: var(--text-light);
+            width: 40%
+        }
+
+        .detail-table tr:last-child td {
+            border: none
+        }
+
+        /* Notice */
+        .notice-box {
+            border-radius: var(--radius);
+            padding: 1rem 1.25rem;
+            font-size: .875rem;
+            display: flex;
+            align-items: flex-start;
+            gap: .75rem;
+            margin-top: 1.5rem
+        }
+
+        .notice-box.info {
+            background: #E3F2FD;
+            border-left: 4px solid var(--blue);
+            color: #0D47A1
+        }
+
+        .notice-box.success {
+            background: #E8F5E9;
+            border-left: 4px solid var(--green);
+            color: #1B5E20
+        }
+
+        .notice-box.warn {
+            background: #FFF8E1;
+            border-left: 4px solid #FFA000;
+            color: #5D4037
+        }
+
+        /* Not found */
+        .not-found {
+            text-align: center;
+            padding: 3rem;
+            color: var(--text-light);
+            display: none
+        }
+
+        .not-found i {
+            font-size: 2.5rem;
+            opacity: .2;
+            margin-bottom: 1rem
+        }
+
+        .loading-spin {
+            display: inline-block;
+            width: 18px;
+            height: 18px;
+            border: 2px solid rgba(255, 255, 255, .4);
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: spin .6s linear infinite
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg)
+            }
+        }
+
+        .enr-footer {
+            background: var(--blue-dark);
+            color: rgba(255, 255, 255, .7);
+            text-align: center;
+            padding: 1.5rem;
+            font-size: .85rem;
+            margin-top: 3rem
+        }
+
+        .enr-footer a {
+            color: rgba(255, 255, 255, .5);
+            text-decoration: none;
+            margin: 0 .5rem
+        }
+
+        @media(max-width:600px) {
+            .input-row {
+                flex-direction: column
+            }
+
+            .enr-nav-links {
+                display: none
+            }
+        }
+
+        /* PRINT PERMIT CSS */
+        @media print {
+            body {
+                background: white;
+            }
+            .enr-nav, .page-hero, .enr-footer, .input-row, h2, .sub {
+                display: none !important;
+            }
+            .card {
+                box-shadow: none !important;
+                border: 1px solid #000;
+                margin-bottom: 20px;
+                padding: 30px;
+                break-inside: avoid;
+            }
+            .btn-print {
+                display: none !important;
+            }
+            .result-section {
+                display: block !important;
+            }
+            .not-found { display: none !important; }
+        }
+
+        .btn-print {
+            margin-top: 1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.6rem 1.25rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            background: #0038A8;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .btn-print:hover {
+            background: #002580;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="enr-nav">
+        <a href="index.html" class="enr-nav-logo">
+            <img src="pcshs_logo.png"
+                onerror="this.src='https://via.placeholder.com/36/0038A8/fff?text=P'" alt="PCSHS" />
+            <span>PCSHS Student Portal</span>
+        </a>
+        <div class="enr-nav-links">
+            <a href="index.html"><i class="fas fa-home"></i> Home</a>
+            <a href="enroll.html"><i class="fas fa-pencil-alt"></i> Apply</a>
+            <a href="news.html"><i class="fas fa-newspaper"></i> News</a>
+            <a href="portal.html" class="active"><i class="fas fa-search"></i> Check Status</a>
+        </div>
+    </nav>
+
+    <div class="page-hero">
+        <span class="page-tag"><i class="fas fa-search"></i> Student Portal</span>
+        <h1>Application Status Tracker</h1>
+        <p>Track your PCSHS admission status using your reference number.</p>
+    </div>
+
+    <div class="page-body">
+        <div class="card">
+            <h2><i class="fas fa-search" style="color:var(--blue);margin-right:.4rem"></i> Check Your Application</h2>
+            <p class="sub">Your reference number was generated when you submitted your application online. It looks like
+                <strong>PCSHS-2025-123456</strong>.</p>
+            <div class="input-row">
+                <div class="fg">
+                    <label>Application Reference Number</label>
+                    <input type="text" id="refInput" placeholder="PCSHS-2025-XXXXXX"
+                        oninput="this.value=this.value.toUpperCase()"
+                        onkeydown="if(event.key==='Enter')checkStatus()" />
+                </div>
+                <button class="btn btn-primary" onclick="checkStatus()" id="checkBtn"><i class="fas fa-search"></i>
+                    Check</button>
+            </div>
+
+            <div id="resultSection" class="result-section">
+                <div class="app-header">
+                    <div class="app-avatar" id="resultAvatar">?</div>
+                    <div class="app-info">
+                        <h3 id="resultName">—</h3>
+                        <div class="app-sub" id="resultMeta">—</div>
+                        <span class="status-badge" id="resultBadge">—</span>
+                    </div>
+                </div>
+
+                <h4
+                    style="margin-bottom:1rem;font-size:.9rem;font-weight:700;color:var(--text-light);text-transform:uppercase;letter-spacing:.06em">
+                    <i class="fas fa-route" style="margin-right:.4rem"></i> Application Timeline</h4>
+                <div class="tl" id="resultTimeline"></div>
+
+                <div id="resultNote"></div>
+                <div id="resultAction"></div>
+            </div>
+
+            <div class="not-found" id="notFound">
+                <i class="fas fa-search-minus"></i>
+                <p>No application found with that reference number.</p>
+                <p style="margin-top:.5rem;font-size:.8rem">Please double-check your reference number or <a
+                        href="enroll.html" style="color:var(--blue)">submit a new application</a>.</p>
+            </div>
+        </div>
+
+        
+        <div class="card" id="detailCard" style="display:none">
+            <h2 style="margin-bottom:1rem">Application Details</h2>
+            <table class="detail-table" id="detailTable"></table>
+        </div>
+
+        <div class="card" style="background:var(--blue-pale);border:1.5px solid rgba(0,56,168,.12)">
+            <h2 style="margin-bottom:.75rem"><i class="fas fa-info-circle"
+                    style="color:var(--blue);margin-right:.4rem"></i> What happens next?</h2>
+            <ol style="padding-left:1.25rem;font-size:.875rem;color:var(--text-light);line-height:2">
+                <li>Application is reviewed by the Registrar's Office (1–2 weeks)</li>
+                <li>Eligible applicants receive an entrance exam schedule via email</li>
+                <li>Entrance Exam: May 17, 2025 at PCSHS Campus</li>
+                <li>Results released via this portal and parent email: June 1, 2025</li>
+                <li>Accepted students must enroll: June 10–20, 2025</li>
+            </ol>
+        </div>
+    </div>
+
+    <footer class="enr-footer">
+        <p>© 2025 Pasig City Science High School</p>
+        <p style="margin-top:.4rem"><a href="index.html">Home</a><a href="enroll.html">Apply</a><a
+                href="news.html">News</a><a href="index.html#contact">Contact</a></p>
+    </footer>
+
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+    <script src="firebase-config.js"></script>
+    <script src="db.js"></script>
+    <script>
+        const STATUS_MAP = {
+            received: { cls: 's-pending', icon: 'fa-inbox', label: 'Received', color: '#A67C00' },
+            review: { cls: 's-review', icon: 'fa-eye', label: 'Under Review', color: '#0038A8' },
+            exam: { cls: 's-exam', icon: 'fa-pencil-alt', label: 'Entrance Exam Scheduled', color: '#6C3FC5' },
+            interview: { cls: 's-interview', icon: 'fa-comments', label: 'Interview Scheduled', color: '#E65100' },
+            accepted: { cls: 's-accepted', icon: 'fa-check-circle', label: 'Accepted – Congratulations!', color: '#2E7D32' },
+            rejected: { cls: 's-rejected', icon: 'fa-times-circle', label: 'Not Qualified', color: '#C62828' },
+        };
+        const ORDER = ['received', 'review', 'exam', 'interview', 'accepted'];
+
+        async function checkStatus() {
+            const ref = document.getElementById('refInput').value.trim().toUpperCase();
+            if (!ref) return;
+            const btn = document.getElementById('checkBtn');
+            btn.disabled = true; btn.innerHTML = '<span class="loading-spin"></span>';
+            document.getElementById('resultSection').style.display = 'none';
+            document.getElementById('notFound').style.display = 'none';
+            document.getElementById('detailCard').style.display = 'none';
+
+            try {
+                const app = await DB.findOne('applications', 'refNumber', ref);
+                if (!app) { document.getElementById('notFound').style.display = 'block'; }
+                else { renderResult(app); }
+            } catch (e) {
+                alert('Error checking status. Please try again.');
+            } finally {
+                btn.disabled = false; btn.innerHTML = '<i class="fas fa-search"></i> Check';
+            }
+        }
+
+        function renderResult(app) {
+            let s = app.status || 'received';
+            if(s === 'pending') s = 'received';
+            const sm = STATUS_MAP[s] || STATUS_MAP.received;
+            const initials = (app.fullName || '?').split(' ').slice(0, 2).map(w => w[0]).join('').toUpperCase();
+
+            document.getElementById('resultAvatar').textContent = initials;
+            document.getElementById('resultAvatar').style.background = sm.color;
+            document.getElementById('resultName').textContent = app.fullName || '—';
+            document.getElementById('resultMeta').innerHTML = `<i class="fas fa-id-card"></i> ${app.refNumber} &nbsp;|&nbsp; <i class="fas fa-users"></i> ${app.type} &nbsp;|&nbsp; <i class="fas fa-calendar"></i> Submitted ${app.submittedAt || '—'}`;
+            const badge = document.getElementById('resultBadge');
+            badge.className = `status-badge ${sm.cls}`;
+            badge.innerHTML = `<i class="fas ${sm.icon}"></i> ${sm.label}`;
+
+            const TL_STEPS = [
+                { key: 'received', label: 'Application Received', desc: 'Your documents are in our system and awaiting review.' },
+                { key: 'review', label: 'Under Review', desc: 'Our registrar is verifying your information and documents.' },
+                { key: 'exam', label: 'Entrance Exam Scheduled', desc: app.examDate ? `Exam scheduled for ${app.examDate}` : 'Check your parent\'s email for exam date and instructions.' },
+                { key: 'interview', label: 'Interview Scheduled', desc: app.interviewDate ? `Interview scheduled for ${app.interviewDate}` : 'You have passed the exam. Check email for interview details.' },
+                { key: 'accepted', label: 'Accepted', desc: 'Congratulations! Please complete enrollment before the deadline.' },
+            ];
+
+            const cur = ORDER.indexOf(s);
+            if(s === 'rejected') {
+                document.getElementById('resultTimeline').innerHTML = `<div class="tl-item"><div class="tl-dot" style="border-color:var(--red);background:var(--red);"></div><div><div class="tl-title" style="color:var(--red)">Application Unsuccessful</div><div class="tl-desc">Unfortunately, you did not meet the requirements.</div></div></div>`;
+            } else {
+                document.getElementById('resultTimeline').innerHTML = TL_STEPS.map((step, i) => {
+                    const dotCls = i < cur ? 'done' : i === cur ? 'active' : '';
+                    return `<div class="tl-item"><div class="tl-dot ${dotCls}"></div><div><div class="tl-title">${step.label}</div><div class="tl-desc">${step.desc}</div></div></div>`;
+                }).join('');
+            }
+
+            const noteEl = document.getElementById('resultNote');
+            if (app.statusNote) {
+                noteEl.innerHTML = `<div class="notice-box info"><i class="fas fa-info-circle" style="flex-shrink:0;margin-top:.1rem"></i><div><strong>Message from Registrar:</strong><br>${app.statusNote}</div></div>`;
+            } else { noteEl.innerHTML = ''; }
+
+            const actionEl = document.getElementById('resultAction');
+            if (s === 'accepted') {
+                const pasckeyId = app.refNumber.replace('PCSHS-20', '').replace('-', '');
+                actionEl.innerHTML = `
+                    <div class="notice-box success"><i class="fas fa-check-circle" style="flex-shrink:0"></i><div><strong>You have been accepted!</strong><br>Please proceed to the PCSHS Registrar's Office for enrollment on June 10–20, 2025. Bring all original requirement documents.</div></div>
+                    <div style="margin-top:1.5rem;padding:2rem;background:var(--blue-dark);color:white;border-radius:12px;text-align:center;box-shadow:var(--shadow)">
+                        <h3 style="margin-bottom:0.5rem;font-family:'Outfit',sans-serif;font-size:1.4rem"><i class="fas fa-id-badge" style="color:var(--gold);margin-right:0.5rem"></i> PASCKEY Student Portal Activation</h3>
+                        <p style="font-size:0.95rem;opacity:0.9;margin-bottom:1.5rem">Your PASCKEY Student Account is ready. You will use this to access online services like the Canteen POS, Clinic Records, and Campus Attendance logs.</p>
+                        <div style="background:rgba(255,255,255,0.1);padding:1.5rem;border-radius:8px;display:inline-block;text-align:left;border:1px solid rgba(255,255,255,0.2)">
+                            <div style="margin-bottom:0.5rem;font-size:1.1rem"><strong>PASCKEY ID:</strong> <span style="font-family:monospace;color:var(--gold)">${pasckeyId}</span></div>
+                            <div style="font-size:1.1rem"><strong>Default Password:</strong> <span style="font-family:monospace">pcshs${new Date().getFullYear()}</span></div>
+                        </div>
+                    </div>
+                `;
+            } else if (s === 'rejected') {
+                actionEl.innerHTML = `<div class="notice-box warn"><i class="fas fa-exclamation-triangle" style="flex-shrink:0"></i><div><strong>Application not qualified this cycle.</strong><br>You may re-apply in the next school year. Contact the Registrar for details.</div></div>`;
+            } else if (s === 'exam') {
+                actionEl.innerHTML = `
+                    <div class="notice-box info"><i class="fas fa-pencil-alt" style="flex-shrink:0"></i><div><strong>Entrance Exam: ${app.examDate || 'May 17, 2025'}</strong><br>Venue: PCSHS Main Campus, Pasig City. Bring your exam permit (print below), 2 pencils, and a valid ID or school ID.</div></div>
+                    <button class="btn-print" onclick="window.print()"><i class="fas fa-print"></i> Print Exam Permit</button>
+                `;
+            } else if (s === 'interview') {
+                actionEl.innerHTML = `
+                    <div class="notice-box info"><i class="fas fa-comments" style="flex-shrink:0"></i><div><strong>Interview details: ${app.interviewDate || 'To be announced'}</strong><br>Be prepared for your interview process at the main campus.</div></div>
+                    <button class="btn-print" onclick="window.print()"><i class="fas fa-print"></i> Print Interview Slip</button>
+                `;
+            } else actionEl.innerHTML = '';
+
+            const fields = [
+                ['Reference Number', app.refNumber], ['Applicant Type', app.type], ['School Year', app.schoolYear],
+                ['Full Name', app.fullName], ['Date of Birth', app.dob], ['Sex', app.sex],
+                ['Address', [app.address, app.barangay, app.city].filter(Boolean).join(', ')],
+                ['LRN', app.lrn || 'Not provided'], ['Current School', app.school],
+                ['Grade Level', app.grade], ['General Average', app.gwa],
+                ['Preferred Track', app.track], ['Parent Email', app.parentEmail],
+                ['Parent Mobile', app.parentPhone], ['Date Submitted', app.submittedAt],
+            ];
+            document.getElementById('detailTable').innerHTML = fields.map(([k, v]) =>
+                `<tr><td>${k}</td><td>${v || '—'}</td></tr>`).join('');
+
+            document.getElementById('resultSection').style.display = 'block';
+            document.getElementById('detailCard').style.display = 'block';
+        }
+
+        // Pre-fill ref from URL param ?ref=PCSHS-2025-XXX
+        const urlRef = new URLSearchParams(location.search).get('ref');
+        if (urlRef) { document.getElementById('refInput').value = urlRef.toUpperCase(); checkStatus(); }
+    </script>
+</body>
+
+</html>

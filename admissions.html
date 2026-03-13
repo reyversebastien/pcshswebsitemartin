@@ -1,0 +1,1310 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description"
+        content="PCSHS Admissions — Learn how to apply to Pasig City Science High School. Step-by-step guide, eligibility requirements, and application process." />
+    <title>Admissions | Pasig City Science High School</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link rel="stylesheet" href="style.css" />
+    <style>
+        /* ===== ADMISSIONS PAGE STYLES ===== */
+        .page-hero {
+            background: linear-gradient(135deg, #0038A8 0%, #12174a 50%, #7B1113 100%);
+            padding: 9rem 0 5rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url('https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=1600&q=60') center/cover no-repeat;
+            opacity: 0.1;
+        }
+
+        .page-hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .page-hero .section-tag {
+            background: rgba(255, 255, 255, 0.15);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 0.35rem 1rem;
+            border-radius: 999px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        .page-hero h1 {
+            font-family: 'DM Serif Display', serif;
+            font-size: clamp(2.2rem, 5vw, 3.8rem);
+            color: #fff;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .page-hero p {
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 1.08rem;
+            max-width: 560px;
+            margin: 0 auto;
+        }
+
+        .breadcrumb-bar {
+            background: #f8f9fc;
+            border-bottom: 1px solid #e8eaf0;
+            padding: 0.75rem 0;
+        }
+
+        .breadcrumb-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.82rem;
+            color: #6B7280;
+        }
+
+        .breadcrumb-inner a {
+            color: #7B1113;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .breadcrumb-inner i {
+            font-size: 0.65rem;
+            color: #aaa;
+        }
+
+        .page-section {
+            padding: 5rem 0;
+        }
+
+        .page-section .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-intro {
+            text-align: center;
+            margin-bottom: 3.5rem;
+        }
+
+        .section-intro .section-tag {
+            background: rgba(123, 17, 19, 0.08);
+            color: #7B1113;
+            padding: 0.3rem 1rem;
+            border-radius: 999px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            display: inline-block;
+            margin-bottom: 0.75rem;
+        }
+
+        .section-intro h2 {
+            font-family: 'DM Serif Display', serif;
+            font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+            color: #12174a;
+            margin-bottom: 0.75rem;
+        }
+
+        .section-intro p {
+            color: #5a6070;
+            max-width: 620px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        /* Overview highlight cards */
+        .overview-highlight {
+            background: linear-gradient(135deg, #12174a, #0038A8);
+            border-radius: 20px;
+            padding: 2.5rem;
+            color: #fff;
+            margin-bottom: 3rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .ov-stat {
+            padding: 1rem;
+            border-right: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .ov-stat:last-child {
+            border-right: none;
+        }
+
+        .ov-stat strong {
+            display: block;
+            font-family: 'DM Serif Display', serif;
+            font-size: 2.2rem;
+            color: #FFD700;
+            margin-bottom: 0.3rem;
+        }
+
+        .ov-stat span {
+            font-size: 0.85rem;
+            opacity: 0.85;
+        }
+
+        /* Eligibility */
+        .eligibility-card {
+            background: #fff;
+            border: 2px solid #0038A8;
+            border-radius: 18px;
+            padding: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .eligibility-card h3 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.5rem;
+            color: #12174a;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .eligibility-card h3 i {
+            color: #0038A8;
+        }
+
+        .eligibility-list {
+            list-style: none;
+            padding: 0;
+            counter-reset: elig;
+        }
+
+        .eligibility-list li {
+            counter-increment: elig;
+            display: flex;
+            gap: 1rem;
+            padding: 0.85rem 0;
+            border-bottom: 1px solid #f0f2f8;
+            font-size: 0.92rem;
+            color: #374151;
+            line-height: 1.65;
+            align-items: flex-start;
+        }
+
+        .eligibility-list li:last-child {
+            border-bottom: none;
+        }
+
+        .elig-num {
+            width: 28px;
+            height: 28px;
+            background: #0038A8;
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.78rem;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .note-box {
+            background: #fff8e1;
+            border-left: 4px solid #FFB300;
+            border-radius: 0 10px 10px 0;
+            padding: 1rem 1.25rem;
+            margin-top: 1.25rem;
+            font-size: 0.88rem;
+            color: #5a4a00;
+        }
+
+        /* Steps */
+        .steps-timeline {
+            position: relative;
+            margin-top: 2.5rem;
+        }
+
+        .steps-timeline::before {
+            content: '';
+            position: absolute;
+            left: 36px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, #0038A8, #7B1113);
+        }
+
+        .step-block {
+            display: flex;
+            gap: 1.75rem;
+            margin-bottom: 2.5rem;
+            position: relative;
+        }
+
+        .step-circle {
+            width: 74px;
+            height: 74px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #0038A8, #12174a);
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 0.6rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            box-shadow: 0 4px 16px rgba(0, 56, 168, 0.3);
+            z-index: 2;
+        }
+
+        .step-circle span:first-child {
+            font-size: 0.55rem;
+            opacity: 0.8;
+        }
+
+        .step-circle span:last-child {
+            font-size: 1.4rem;
+            font-family: 'DM Serif Display', serif;
+            font-style: normal;
+            line-height: 1;
+        }
+
+        .step-body {
+            background: #fff;
+            border: 1px solid #e8eaf0;
+            border-radius: 16px;
+            padding: 1.75rem;
+            flex: 1;
+            transition: box-shadow 0.25s;
+        }
+
+        .step-body:hover {
+            box-shadow: 0 8px 25px rgba(0, 56, 168, 0.1);
+        }
+
+        .step-body h4 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.2rem;
+            color: #12174a;
+            margin-bottom: 0.75rem;
+        }
+
+        .step-body p,
+        .step-body li {
+            font-size: 0.9rem;
+            color: #4B5563;
+            line-height: 1.7;
+        }
+
+        .step-body ul {
+            padding-left: 1.25rem;
+            margin-top: 0.5rem;
+        }
+
+        .step-body .step-highlight {
+            background: #f0f4ff;
+            border-radius: 8px;
+            padding: 0.75rem 1rem;
+            margin-top: 0.75rem;
+            font-size: 0.87rem;
+            color: #0038A8;
+            font-weight: 500;
+        }
+
+        /* Category boxes */
+        .category-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        @media (max-width: 640px) {
+            .category-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .cat-box {
+            border-radius: 10px;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .cat-box.green {
+            background: #e8f5e9;
+            border: 1px solid #a5d6a7;
+        }
+
+        .cat-box.yellow {
+            background: #fffde7;
+            border: 1px solid #fff176;
+        }
+
+        .cat-box.red {
+            background: #fce4ec;
+            border: 1px solid #f48fb1;
+        }
+
+        .cat-box strong {
+            display: block;
+            font-size: 0.9rem;
+            margin-bottom: 0.25rem;
+            color: #12174a;
+        }
+
+        .cat-box span {
+            font-size: 0.78rem;
+            color: #555;
+        }
+
+        /* Envelope example */
+        .envelope-example {
+            background: #FFF9E6;
+            border: 2px dashed #d4a017;
+            border-radius: 14px;
+            padding: 1.5rem;
+            margin-top: 1rem;
+            font-family: monospace;
+            font-size: 0.85rem;
+            color: #5a3f00;
+            line-height: 1.9;
+        }
+
+        .envelope-example strong {
+            display: block;
+            font-size: 0.78rem;
+            color: #7a5c00;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Requirements sidebar layout */
+        .adm-layout {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2.5rem;
+            align-items: start;
+        }
+
+        @media (max-width: 900px) {
+            .adm-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .req-card {
+            background: #fff;
+            border: 1px solid #e8eaf0;
+            border-radius: 16px;
+            padding: 2rem;
+            position: sticky;
+            top: 100px;
+        }
+
+        .req-card h3 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.2rem;
+            color: #12174a;
+            margin-bottom: 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .req-card h3 i {
+            color: #7B1113;
+        }
+
+        .req-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .req-card ul li {
+            display: flex;
+            gap: 0.75rem;
+            align-items: flex-start;
+            padding: 0.6rem 0;
+            font-size: 0.88rem;
+            color: #374151;
+            border-bottom: 1px solid #f5f6fa;
+        }
+
+        .req-card ul li:last-child {
+            border-bottom: none;
+        }
+
+        .req-card ul li i {
+            color: #0038A8;
+            flex-shrink: 0;
+            margin-top: 0.1rem;
+        }
+
+        .req-card .req-note {
+            background: #e8f0ff;
+            border-radius: 8px;
+            padding: 0.85rem;
+            font-size: 0.82rem;
+            color: #1a3580;
+            margin-top: 1rem;
+        }
+
+        /* Links/QR Section */
+        .links-section {
+            background: linear-gradient(135deg, #f8f9fc 0%, #eef1ff 100%);
+            padding: 5rem 0;
+        }
+
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2.5rem;
+        }
+
+        .link-card {
+            background: #fff;
+            border: 1px solid #e8eaf0;
+            border-radius: 18px;
+            padding: 2rem;
+            text-align: center;
+            transition: transform 0.25s, box-shadow 0.25s;
+        }
+
+        .link-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 14px 35px rgba(0, 56, 168, 0.12);
+        }
+
+        .link-icon {
+            width: 64px;
+            height: 64px;
+            border-radius: 16px;
+            background: linear-gradient(135deg, #7B1113, #a01518);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: #fff;
+            margin: 0 auto 1.25rem;
+        }
+
+        .link-card h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #12174a;
+            margin-bottom: 0.5rem;
+        }
+
+        .link-card p {
+            font-size: 0.85rem;
+            color: #6B7280;
+            margin-bottom: 1.25rem;
+            line-height: 1.6;
+        }
+
+        .qr-placeholder {
+            width: 120px;
+            height: 120px;
+            background: #f0f2f8;
+            border: 2px dashed #c0c8e8;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 2.5rem;
+        }
+
+        .link-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: #0038A8;
+            color: #fff;
+            padding: 0.65rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 0.88rem;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
+
+        .link-btn:hover {
+            background: #0030a0;
+        }
+
+        /* Application Form Embed */
+        .form-embed-section {
+            padding: 5rem 0;
+            background: #fff;
+        }
+
+        .form-tabs {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+            border-bottom: 2px solid #e8eaf0;
+        }
+
+        .form-tab {
+            padding: 0.75rem 1.75rem;
+            border-radius: 10px 10px 0 0;
+            background: #f8f9fc;
+            border: 1px solid #e8eaf0;
+            border-bottom: none;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: #6B7280;
+            transition: all 0.2s;
+        }
+
+        .form-tab.active {
+            background: #7B1113;
+            color: #fff;
+            border-color: #7B1113;
+        }
+
+        .form-content {
+            display: none;
+        }
+
+        .form-content.active {
+            display: block;
+        }
+
+        .form-embed-box {
+            background: #f8f9fc;
+            border: 1px solid #e8eaf0;
+            border-radius: 14px;
+            padding: 3rem;
+            text-align: center;
+        }
+
+        .form-embed-box i {
+            font-size: 4rem;
+            color: #7B1113;
+            margin-bottom: 1rem;
+        }
+
+        .form-embed-box h4 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.4rem;
+            color: #12174a;
+            margin-bottom: 0.75rem;
+        }
+
+        .form-embed-box p {
+            color: #6B7280;
+            margin-bottom: 1.5rem;
+            font-size: 0.92rem;
+        }
+
+        .form-embed-box a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: #7B1113;
+            color: #fff;
+            padding: 0.85rem 2rem;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background 0.2s;
+        }
+
+        .form-embed-box a:hover {
+            background: #9a1519;
+        }
+
+        /* Dark mode */
+        body.dark-mode .breadcrumb-bar {
+            background: #1a1f3c;
+            border-color: #2a3060;
+        }
+
+        body.dark-mode .breadcrumb-inner {
+            color: #aaa;
+        }
+
+        body.dark-mode .eligibility-card {
+            background: #1e2447;
+            border-color: #0038A8;
+        }
+
+        body.dark-mode .eligibility-card h3 {
+            color: #e0e6ff;
+        }
+
+        body.dark-mode .eligibility-list li {
+            color: #9aa5cc;
+            border-color: #2a3060;
+        }
+
+        body.dark-mode .step-body {
+            background: #1e2447;
+            border-color: #2a3060;
+        }
+
+        body.dark-mode .step-body h4 {
+            color: #e0e6ff;
+        }
+
+        body.dark-mode .step-body p,
+        .step-body li {
+            color: #9aa5cc;
+        }
+
+        body.dark-mode .req-card {
+            background: #1e2447;
+            border-color: #2a3060;
+        }
+
+        body.dark-mode .req-card h3 {
+            color: #e0e6ff;
+        }
+
+        body.dark-mode .req-card ul li {
+            color: #9aa5cc;
+            border-color: #2a3060;
+        }
+
+        body.dark-mode .links-section {
+            background: #141830;
+        }
+
+        body.dark-mode .link-card {
+            background: #1e2447;
+            border-color: #2a3060;
+        }
+
+        body.dark-mode .link-card h4 {
+            color: #e0e6ff;
+        }
+
+        body.dark-mode .link-card p {
+            color: #9aa5cc;
+        }
+
+        body.dark-mode .form-embed-section {
+            background: #141830;
+        }
+
+        body.dark-mode .form-embed-box {
+            background: #1e2447;
+            border-color: #2a3060;
+        }
+
+        body.dark-mode .form-embed-box h4 {
+            color: #e0e6ff;
+        }
+
+        body.dark-mode .form-embed-box p {
+            color: #9aa5cc;
+        }
+
+        body.dark-mode .section-intro h2 {
+            color: #e0e6ff;
+        }
+
+        body.dark-mode .section-intro p {
+            color: #9aa5cc;
+        }
+
+        body.dark-mode .note-box {
+            background: #2a2410;
+            border-color: #a07800;
+            color: #e0bb60;
+        }
+    </style>
+</head>
+
+<body>
+
+    
+    <div class="utility-bar" id="utilityBar">
+        <div class="utility-inner">
+            <div class="utility-links">
+                <a href="alumni.html">Alumni</a>
+                <a href="library.html">Library</a>
+                <a href="portal.html">Student Portal</a>
+                <a href="faq.html">Contact</a>
+                <a href="admin.html"
+                    style="margin-left:0.75rem;padding:0.15rem 0.6rem;background:rgba(255,255,255,0.15);border-radius:4px;font-weight:600;"
+                    title="Admin Login"><i class="fas fa-lock" style="margin-right:4px;font-size:0.7em;"></i>Admin</a>
+            </div>
+            <div class="utility-right">
+                <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" title="Toggle dark mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    
+    <header class="main-header" id="mainHeader">
+        <div class="header-inner">
+            <a href="index.html" class="logo-wrap">
+                <img src="pcshs_logo.png"
+                    onerror="this.src='https://via.placeholder.com/60x60/7B1113/FFFFFF?text=PCSHS'" alt="PCSHS Logo"
+                    class="logo-img" />
+                <div class="logo-text">
+                    <span class="logo-main">Pasig City Science High School</span>
+                    <span class="logo-sub">Pasig City, Philippines</span>
+                </div>
+            </a>
+            <nav class="main-nav" id="mainNav">
+                <ul>
+                    <li class="has-dropdown">
+                        <a href="about.html">About <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown">
+                            <a href="about.html#overview"><i class="fas fa-school"></i> Our School</a>
+                            <a href="about.html#mission"><i class="fas fa-bullseye"></i> Mission & Vision</a>
+                            <a href="about.html#objectives"><i class="fas fa-list-check"></i> Objectives</a>
+                        </div>
+                    </li>
+                    <li class="has-dropdown">
+                        <a href="index.html#academics">Academics <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown">
+                            <a href="resources.html"><i class="fas fa-book-open"></i> Resources & Modules</a>
+                            <a href="resources.html#subjects"><i class="fas fa-flask"></i> Subject Overview</a>
+                        </div>
+                    </li>
+                    <li class="has-dropdown">
+                        <a href="admissions.html" class="active">Admissions <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown">
+                            <a href="admissions.html#overview"><i class="fas fa-info-circle"></i> Overview</a>
+                            <a href="admissions.html#steps"><i class="fas fa-list-ol"></i> Application Steps</a>
+                            <a href="admissions.html#requirements"><i class="fas fa-file-alt"></i> Requirements</a>
+                            <a href="enroll.html"><i class="fas fa-pencil-alt"></i> Apply Online</a>
+                        </div>
+                    </li>
+                    <li class="has-dropdown">
+                        <a href="index.html#life">Student Life <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown">
+                            <a href="clubs.html"><i class="fas fa-users"></i> Clubs & Orgs</a>
+                            <a href="achievers.html"><i class="fas fa-trophy"></i> Pascian Achievers</a>
+                            <a href="alumni.html"><i class="fas fa-graduation-cap"></i> Alumni</a>
+                        </div>
+                    </li>
+                    <li><a href="news.html">News</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                </ul>
+            </nav>
+            <button class="hamburger" id="hamburger" onclick="toggleMobileNav()" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
+
+    
+    <section class="page-hero">
+        <div class="page-hero-content">
+            <span class="section-tag">Become a Pascian</span>
+            <h1>Admissions</h1>
+            <p>Everything you need to know about applying to Pasig City Science High School — eligibility, steps, and
+                requirements.</p>
+        </div>
+    </section>
+
+    
+    <div class="breadcrumb-bar">
+        <div class="breadcrumb-inner">
+            <a href="index.html"><i class="fas fa-home"></i> Home</a>
+            <i class="fas fa-chevron-right"></i>
+            <span>Admissions</span>
+        </div>
+    </div>
+
+    
+    <section class="page-section" id="overview">
+        <div class="container">
+            <div class="section-intro">
+                <span class="section-tag">Quick Stats</span>
+                <h2>Admission at a Glance</h2>
+                <p>PCSHS admits only the most talented and passionate young minds from Pasig City who meet our rigorous
+                    academic standards.</p>
+            </div>
+            <div class="overview-highlight">
+                <div class="ov-stat">
+                    <strong>245</strong>
+                    <span>Slots for Grade 7</span>
+                </div>
+                <div class="ov-stat">
+                    <strong>85%</strong>
+                    <span>Minimum Grade Average</span>
+                </div>
+                <div class="ov-stat">
+                    <strong>STEM</strong>
+                    <span>Only Strand Offered (SHS)</span>
+                </div>
+                <div class="ov-stat">
+                    <strong>Free</strong>
+                    <span>No Tuition Fees</span>
+                </div>
+                <div class="ov-stat">
+                    <strong>2</strong>
+                    <span>Entry Points: Grade 7 & 11</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+    <section class="page-section" id="steps" style="padding-top: 0; background: #f8f9fc;">
+        <div class="container">
+            <div class="adm-layout">
+
+                
+                <div>
+                    
+                    <div class="section-intro" style="text-align:left; margin-bottom: 2rem;">
+                        <span class="section-tag">Eligibility</span>
+                        <h2>General Eligibility Requirements</h2>
+                    </div>
+
+                    <div class="eligibility-card">
+                        <h3><i class="fas fa-user-check"></i> Who Can Apply?</h3>
+                        <ol class="eligibility-list">
+                            <li>
+                                <div class="elig-num">1</div>
+                                <div>Must be a <strong>Filipino Citizen</strong>.</div>
+                            </li>
+                            <li>
+                                <div class="elig-num">2</div>
+                                <div>A <strong>Grade 6 pupil</strong> from any DepEd-recognized public or private
+                                    elementary school who is a candidate for graduation for the current school year and
+                                    has not yet enrolled in any secondary school.</div>
+                            </li>
+                            <li>
+                                <div class="elig-num">3</div>
+                                <div>
+                                    Must have obtained the following minimum grades:
+                                    <ul style="margin-top:0.5rem; padding-left:1.2rem;">
+                                        <li style="margin-bottom:0.3rem;">For <strong>Grade 5</strong>: final grade of
+                                            at least <strong>85%</strong> in English, Mathematics and Science, and
+                                            <strong>83%</strong> in all other learning areas.</li>
+                                        <li>For <strong>Grade 6</strong>: grade of at least <strong>85%</strong> for the
+                                            first and second quarters in English, Mathematics, and Science, and
+                                            <strong>83%</strong> in all other learning areas.</li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="elig-num">4</div>
+                                <div>Must possess <strong>good moral character</strong>, certified by the school
+                                    principal or guidance counselor.</div>
+                            </li>
+                        </ol>
+                        <div class="note-box">
+                            <strong><i class="fas fa-info-circle"></i> Important Note:</strong> A student can only apply
+                            to <strong>one Science High School</strong> within the National Capital Region. For schools
+                            using letter or descriptive grading systems, a certification of numerical equivalents must
+                            be provided.
+                        </div>
+                    </div>
+
+                    
+                    <div class="eligibility-card" style="border-color: #7B1113; margin-top: 1.5rem;">
+                        <h3><i class="fas fa-home"></i> Proof of Residency</h3>
+                        <p style="font-size:0.9rem; color:#555; margin-bottom:1rem;">Applicants may submit a photocopy
+                            of <strong>ANY ONE</strong> of the following:</p>
+                        <ul style="list-style:none; padding:0;">
+                            <li
+                                style="display:flex; gap:0.75rem; padding:0.5rem 0; font-size:0.9rem; color:#374151; border-bottom:1px solid #f0f2f8;">
+                                <i class="fas fa-id-card" style="color:#7B1113; margin-top:0.1rem;"></i> Valid ID with
+                                residential address</li>
+                            <li
+                                style="display:flex; gap:0.75rem; padding:0.5rem 0; font-size:0.9rem; color:#374151; border-bottom:1px solid #f0f2f8;">
+                                <i class="fas fa-vote-yea" style="color:#7B1113; margin-top:0.1rem;"></i> Latest Voter's
+                                Certification</li>
+                            <li
+                                style="display:flex; gap:0.75rem; padding:0.5rem 0; font-size:0.9rem; color:#374151; border-bottom:1px solid #f0f2f8;">
+                                <i class="fas fa-lightbulb" style="color:#7B1113; margin-top:0.1rem;"></i> Latest
+                                Utility Billing Statement (under parent/guardian's name)</li>
+                            <li style="display:flex; gap:0.75rem; padding:0.5rem 0; font-size:0.9rem; color:#374151;"><i
+                                    class="fas fa-receipt" style="color:#7B1113; margin-top:0.1rem;"></i> Latest Real
+                                Property Tax Receipt</li>
+                        </ul>
+                    </div>
+
+                    
+                    <div class="section-intro" style="text-align:left; margin-top: 3rem; margin-bottom: 2rem;">
+                        <span class="section-tag">Process</span>
+                        <h2>Step-by-Step Application Process</h2>
+                    </div>
+
+                    <div class="steps-timeline">
+
+                        
+                        <div class="step-block">
+                            <div class="step-circle">
+                                <span>Step</span>
+                                <span>01</span>
+                            </div>
+                            <div class="step-body">
+                                <h4>Evaluation of Submitted Documents</h4>
+                                <p>Original and photocopy documents must be placed in a <strong>long brown
+                                        envelope</strong>. Write the following details of the student at the
+                                    <strong>LEFT SIDE</strong> of the brown envelope:</p>
+                                <div class="envelope-example">
+                                    <strong>📋 Sample Envelope Label Format:</strong>
+                                    INCOMING GRADE 7 – PUBLIC<br>
+                                    DELA CRUZ, JUAN SANTOS<br>
+                                    MALE / 0912-345-6789<br>
+                                    PASIG ELEMENTARY SCHOOL
+                                </div>
+                                <p style="margin-top:0.85rem;">Submission of Documentary Requirements shall be submitted
+                                    directly to the <strong>Registrar's Office</strong> from <strong>8:00 AM to 5:00 PM
+                                        (Monday to Friday only)</strong>.</p>
+                            </div>
+                        </div>
+
+                        
+                        <div class="step-block">
+                            <div class="step-circle">
+                                <span>Step</span>
+                                <span>02</span>
+                            </div>
+                            <div class="step-body">
+                                <h4>Administration of Qualifying Examination</h4>
+                                <p>A <strong>computer-based examination</strong> shall be given to student-applicants.
+                                    Before the conduct of examinations, students and parents are required to attend an
+                                    <strong>orientation</strong>.</p>
+                                <p style="margin-top:0.5rem;">The results of the examination shall be released after a
+                                    considerable span of time. Students will be classified into categories:</p>
+                                <div class="category-row">
+                                    <div class="cat-box green">
+                                        <strong>Category A</strong>
+                                        <span>Score 75% and above</span>
+                                    </div>
+                                    <div class="cat-box yellow">
+                                        <strong>Category B</strong>
+                                        <span>Score 60%–74%</span>
+                                    </div>
+                                    <div class="cat-box red">
+                                        <strong>Category C</strong>
+                                        <span>Score below 60%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        
+                        <div class="step-block">
+                            <div class="step-circle">
+                                <span>Step</span>
+                                <span>03</span>
+                            </div>
+                            <div class="step-body">
+                                <h4>Interview</h4>
+                                <p>Students classified in <strong>Category A</strong> will automatically be included in
+                                    the interview. Students from <strong>Category B</strong> will be ranked, and those
+                                    included in the cut-off/absorptive capacity shall be eligible for interview.</p>
+                                <div class="step-highlight">
+                                    <i class="fas fa-info-circle"></i> The on-site interview holds <strong>20%</strong>
+                                    of the overall qualification requirements.
+                                </div>
+                            </div>
+                        </div>
+
+                        
+                        <div class="step-block">
+                            <div class="step-circle" style="background: linear-gradient(135deg, #7B1113, #a01518);">
+                                <span>Step</span>
+                                <span>04</span>
+                            </div>
+                            <div class="step-body">
+                                <h4>Results</h4>
+                                <p>A total of <strong>245 students</strong> will be admitted to Grade 7 based on the
+                                    final ranking determined by:</p>
+                                <ul>
+                                    <li><strong>80%</strong> — Examination results</li>
+                                    <li><strong>20%</strong> — Interview score</li>
+                                </ul>
+                                <p style="margin-top:0.5rem;">Results are posted through <strong>DepEd NCR's website and
+                                        Facebook page</strong>, the school's designated posting place, Official Facebook
+                                    Page, and website, subject to compliance with the Data Privacy Act.</p>
+
+                                <div style="margin-top: 1rem; padding: 1rem; background: #f0f4ff; border-radius: 8px;">
+                                    <p style="font-size:0.87rem; color:#0038A8; font-weight:500;">
+                                        <i class="fas fa-exclamation-circle"></i> <strong>Enrollment Condition:</strong>
+                                        Qualified applicants must present the <strong>FINAL Grade 6 report
+                                            card</strong>, showing compliance with the required grades in all grading
+                                        periods as a condition for confirmation of enrollment.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        
+                        <div class="step-block">
+                            <div class="step-circle" style="background: linear-gradient(135deg, #2e7d32, #388e3c);">
+                                <span>Step</span>
+                                <span>05</span>
+                            </div>
+                            <div class="step-body">
+                                <h4>Confirmation and Enrollment</h4>
+                                <p>Applicants who are included in the final roster must <strong>confirm their acceptance
+                                        and enroll within five (5) working days</strong> from the official release of
+                                    results.</p>
+                                <div class="note-box" style="margin-top:0.75rem;">
+                                    <i class="fas fa-exclamation-triangle"></i> Failure to confirm within the deadline
+                                    shall be considered a <strong>waiver of the slot</strong>, and the slot shall be
+                                    offered to the next qualified applicant in the waiting list.
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                
+                <div id="requirements">
+                    <div class="req-card">
+                        <h3><i class="fas fa-folder-open"></i> Required Documents</h3>
+                        <ul>
+                            <li><i class="fas fa-check-circle"></i> Completed Application Form (Grade 7 or Grade 11)
+                            </li>
+                            <li><i class="fas fa-check-circle"></i> Latest Report Card (SF9/Form 138)</li>
+                            <li><i class="fas fa-check-circle"></i> Must have a final average of at least
+                                <strong>85%</strong></li>
+                            <li><i class="fas fa-check-circle"></i> No grade lower than <strong>80%</strong> in any
+                                subject</li>
+                            <li><i class="fas fa-check-circle"></i> PSA Birth Certificate (original + photocopy)</li>
+                            <li><i class="fas fa-check-circle"></i> Certificate of Good Moral Character</li>
+                            <li><i class="fas fa-check-circle"></i> 2×2 ID Photos (at least 3 copies)</li>
+                            <li><i class="fas fa-check-circle"></i> Proof of Residency in Pasig City (any one)</li>
+                        </ul>
+                        <div class="req-note">
+                            <i class="fas fa-info-circle"></i> Place all documents in a <strong>long brown
+                                envelope</strong> with student details written on the left side.
+                        </div>
+                    </div>
+
+                    <div class="req-card" style="margin-top: 1.5rem; border-top: 4px solid #FFB300;">
+                        <h3><i class="fas fa-calendar-alt" style="color:#FFB300;"></i> Key Dates</h3>
+                        <ul>
+                            <li><i class="fas fa-clock" style="color:#FFB300;"></i> Application Period: <em>To be
+                                    announced</em></li>
+                            <li><i class="fas fa-clock" style="color:#FFB300;"></i> Submission: 8:00 AM – 5:00 PM
+                                (Mon–Fri)</li>
+                            <li><i class="fas fa-clock" style="color:#FFB300;"></i> Orientation: Before exam date</li>
+                            <li><i class="fas fa-clock" style="color:#FFB300;"></i> Results: Posted online + on-site
+                            </li>
+                            <li><i class="fas fa-clock" style="color:#FFB300;"></i> Confirmation: 5 working days from
+                                results</li>
+                        </ul>
+                        <div class="req-note" style="background:#fffde7; color:#5a4a00;">
+                            <i class="fas fa-bullhorn"></i> Watch the official Facebook page for official dates and
+                            announcements.
+                        </div>
+                    </div>
+
+                    <div class="req-card" style="margin-top: 1.5rem;">
+                        <h3><i class="fas fa-book-open"></i> For SHS Applicants</h3>
+                        <ul>
+                            <li><i class="fas fa-atom"></i> Only the <strong>STEM strand</strong> is offered at PCSHS
+                            </li>
+                            <li><i class="fas fa-ban"></i> <strong>No transferees</strong> accepted</li>
+                            <li><i class="fas fa-user-graduate"></i> Only incoming Grade 7 & Grade 11 are accepted</li>
+                            <li><i class="fas fa-peso-sign"></i> Tuition is <strong>completely free</strong></li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    
+    <section class="links-section" id="links">
+        <div class="container">
+            <div class="section-intro">
+                <span class="section-tag">Connect & Apply</span>
+                <h2>Quick Links & QR Codes</h2>
+                <p>Follow our official channels and access application resources easily.</p>
+            </div>
+            <div class="links-grid">
+
+                <div class="link-card">
+                    <div class="link-icon"><i class="fab fa-facebook"></i></div>
+                    <h4>PCSHS Official Facebook Page</h4>
+                    <p>Stay updated with official announcements, news, and events from PCSHS.</p>
+                    <div class="qr-placeholder">📘</div>
+                    <a href="https://www.facebook.com/pcshs.edu" target="_blank" class="link-btn">
+                        <i class="fab fa-facebook"></i> Visit Page
+                    </a>
+                </div>
+
+                <div class="link-card">
+                    <div class="link-icon" style="background: linear-gradient(135deg, #0038A8, #12174a);">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <h4>Application Form – Grade 7</h4>
+                    <p>Download or access the official application form for incoming Grade 7 students.</p>
+                    <div class="qr-placeholder">📋</div>
+                    <a href="enroll.html" class="link-btn" style="background:#0038A8;">
+                        <i class="fas fa-download"></i> Get Form
+                    </a>
+                </div>
+
+                <div class="link-card">
+                    <div class="link-icon" style="background: linear-gradient(135deg, #2e7d32, #388e3c);">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <h4>Application Form – Grade 11</h4>
+                    <p>Download or access the official application form for incoming Grade 11 students.</p>
+                    <div class="qr-placeholder">📋</div>
+                    <a href="enroll.html" class="link-btn" style="background:#2e7d32;">
+                        <i class="fas fa-download"></i> Get Form
+                    </a>
+                </div>
+
+                <div class="link-card">
+                    <div class="link-icon" style="background: linear-gradient(135deg, #e65100, #ef6c00);">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h4>Class List</h4>
+                    <p>View the official class list published by PCSHS on Google Drive.</p>
+                    <div class="qr-placeholder">📂</div>
+                    <a href="https://drive.google.com/drive/folders/1MzRrgoA9UCZt5PU_hQfU-DsF56SePCGE" target="_blank"
+                        class="link-btn" style="background:#e65100;">
+                        <i class="fas fa-external-link-alt"></i> View List
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    
+    <section class="form-embed-section" id="apply">
+        <div class="container">
+            <div class="section-intro">
+                <span class="section-tag">Apply Now</span>
+                <h2>Application Forms</h2>
+                <p>Select your target grade level and access the official PCSHS application form.</p>
+            </div>
+
+            <div class="form-tabs">
+                <button class="form-tab active" id="tab-g7" onclick="switchTab('g7')">Grade 7 Application</button>
+                <button class="form-tab" id="tab-g11" onclick="switchTab('g11')">Grade 11 Application</button>
+            </div>
+
+            <div class="form-content active" id="content-g7">
+                <div class="form-embed-box">
+                    <i class="fas fa-file-signature"></i>
+                    <h4>Grade 7 Application Form</h4>
+                    <p>The official application form for incoming Grade 7 students. Make sure to prepare all required
+                        documents before filling out the form. Submit completed forms to the Registrar's Office.</p>
+                    <a href="enroll.html">
+                        <i class="fas fa-pencil-alt"></i> Fill Out Application Form
+                    </a>
+                </div>
+            </div>
+
+            <div class="form-content" id="content-g11">
+                <div class="form-embed-box">
+                    <i class="fas fa-file-signature"></i>
+                    <h4>Grade 11 Application Form</h4>
+                    <p>The official application form for incoming Grade 11 (SHS-STEM) students. Please ensure you meet
+                        all academic requirements before applying. Submit completed forms to the Registrar's Office.</p>
+                    <a href="enroll.html">
+                        <i class="fas fa-pencil-alt"></i> Fill Out Application Form
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <img src="pcshs_logo.png"
+                    onerror="this.src='https://via.placeholder.com/50x50/7B1113/FFFFFF?text=PCSHS'" alt="PCSHS" />
+                <div>
+                    <strong>Pasig City Science High School</strong>
+                    <small>Rainforest Park, Maybunga, Pasig City</small>
+                </div>
+            </div>
+            <div class="footer-links">
+                <div class="fl-col">
+                    <h4>About</h4>
+                    <a href="about.html#overview">School Overview</a>
+                    <a href="about.html#mission">Mission & Vision</a>
+                </div>
+                <div class="fl-col">
+                    <h4>Admissions</h4>
+                    <a href="admissions.html#eligibility">Eligibility</a>
+                    <a href="admissions.html#steps">Process</a>
+                    <a href="enroll.html">Apply Online</a>
+                </div>
+                <div class="fl-col">
+                    <h4>Quick Links</h4>
+                    <a href="clubs.html">Clubs & Orgs</a>
+                    <a href="achievers.html">Achievers</a>
+                    <a href="faq.html">FAQ & Contact</a>
+                </div>
+                <div class="fl-col">
+                    <h4>Connect</h4>
+                    <a href="https://www.facebook.com/pcshs.edu" target="_blank"><i class="fab fa-facebook"></i>
+                        Facebook</a>
+                    <a href="news.html"><i class="fas fa-newspaper"></i> News</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Pasig City Science High School. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        function switchTab(tab) {
+            document.querySelectorAll('.form-tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.form-content').forEach(c => c.classList.remove('active'));
+            document.getElementById('tab-' + tab).classList.add('active');
+            document.getElementById('content-' + tab).classList.add('active');
+        }
+
+        (function () {
+            if (localStorage.getItem('pcshs_dark') === '1') {
+                document.body.classList.add('dark-mode');
+                const icon = document.querySelector('#themeToggle i');
+                if (icon) { icon.className = 'fas fa-sun'; }
+            }
+        })();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,1090 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clubs & Organizations | PCSHS</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link rel="stylesheet" href="style.css" />
+    <style>
+        .page-hero {
+            background: linear-gradient(135deg, #12174a 0%, #0038A8 60%, #7B1113 100%);
+            padding: 9rem 0 5rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden
+        }
+
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url('https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=1600&q=60') center/cover no-repeat;
+            opacity: .1
+        }
+
+        .page-hero-content {
+            position: relative;
+            z-index: 2
+        }
+
+        .page-hero .ptag {
+            background: rgba(255, 255, 255, .15);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, .3);
+            padding: .35rem 1rem;
+            border-radius: 999px;
+            font-size: .78rem;
+            font-weight: 600;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            display: inline-block;
+            margin-bottom: 1rem
+        }
+
+        .page-hero h1 {
+            font-family: 'DM Serif Display', serif;
+            font-size: clamp(2.2rem, 5vw, 3.8rem);
+            color: #fff;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 20px rgba(0, 0, 0, .4)
+        }
+
+        .page-hero p {
+            color: rgba(255, 255, 255, .85);
+            font-size: 1.08rem;
+            max-width: 560px;
+            margin: 0 auto
+        }
+
+        .breadcrumb-bar {
+            background: #f8f9fc;
+            border-bottom: 1px solid #e8eaf0;
+            padding: .75rem 0
+        }
+
+        .breadcrumb-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            align-items: center;
+            gap: .5rem;
+            font-size: .82rem;
+            color: #6B7280
+        }
+
+        .breadcrumb-inner a {
+            color: #7B1113;
+            text-decoration: none;
+            font-weight: 500
+        }
+
+        .clubs-section {
+            padding: 5rem 0
+        }
+
+        .clubs-section .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem
+        }
+
+        .section-intro {
+            text-align: center;
+            margin-bottom: 3rem
+        }
+
+        .stag {
+            background: rgba(123, 17, 19, .08);
+            color: #7B1113;
+            padding: .3rem 1rem;
+            border-radius: 999px;
+            font-size: .78rem;
+            font-weight: 600;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            display: inline-block;
+            margin-bottom: .75rem
+        }
+
+        .section-intro h2 {
+            font-family: 'DM Serif Display', serif;
+            font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+            color: #12174a;
+            margin-bottom: .75rem
+        }
+
+        .section-intro p {
+            color: #5a6070;
+            max-width: 620px;
+            margin: 0 auto;
+            line-height: 1.7
+        }
+
+        .clubs-filter {
+            display: flex;
+            gap: .5rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 3rem
+        }
+
+        .filter-pill {
+            padding: .5rem 1.25rem;
+            border-radius: 999px;
+            border: 2px solid #e8eaf0;
+            background: #fff;
+            color: #6B7280;
+            font-size: .85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all .2s
+        }
+
+        .filter-pill.active,
+        .filter-pill:hover {
+            background: #7B1113;
+            border-color: #7B1113;
+            color: #fff
+        }
+
+        .clubs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 1.75rem
+        }
+
+        .club-card {
+            background: #fff;
+            border: 1px solid #e8eaf0;
+            border-radius: 18px;
+            overflow: hidden;
+            transition: transform .25s, box-shadow .25s
+        }
+
+        .club-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, .1)
+        }
+
+        .club-header {
+            padding: 1.75rem 1.75rem 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem
+        }
+
+        .club-logo {
+            width: 60px;
+            height: 60px;
+            border-radius: 14px;
+            background: linear-gradient(135deg, #12174a, #0038A8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            flex-shrink: 0;
+            overflow: hidden
+        }
+
+        .club-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover
+        }
+
+        .club-meta h3 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #12174a;
+            margin-bottom: .25rem
+        }
+
+        .club-type {
+            font-size: .72rem;
+            padding: .2rem .6rem;
+            border-radius: 999px;
+            font-weight: 600;
+            letter-spacing: .06em;
+            text-transform: uppercase
+        }
+
+        .academic {
+            background: #e8f0ff;
+            color: #0038A8
+        }
+
+        .non-academic {
+            background: #fce4ec;
+            color: #c62828
+        }
+
+        .sslg {
+            background: #e8f5e9;
+            color: #2e7d32
+        }
+
+        .club-body {
+            padding: 1.25rem 1.75rem
+        }
+
+        .club-body p {
+            font-size: .87rem;
+            color: #4B5563;
+            line-height: 1.7;
+            margin-bottom: 1rem
+        }
+
+        .club-officers {
+            background: #f8f9fc;
+            border-radius: 10px;
+            padding: 1rem;
+            font-size: .8rem
+        }
+
+        .club-officers strong {
+            display: block;
+            color: #12174a;
+            margin-bottom: .5rem;
+            font-size: .78rem;
+            letter-spacing: .06em;
+            text-transform: uppercase
+        }
+
+        .club-officers span {
+            color: #6B7280;
+            line-height: 1.8
+        }
+
+        .club-adviser {
+            display: flex;
+            align-items: center;
+            gap: .5rem;
+            padding: .75rem 1.75rem;
+            border-top: 1px solid #f0f2f8;
+            font-size: .82rem;
+            color: #6B7280
+        }
+
+        .club-adviser i {
+            color: #7B1113
+        }
+
+        .club-card.hidden {
+            display: none
+        }
+
+        body.dark-mode .breadcrumb-bar {
+            background: #1a1f3c;
+            border-color: #2a3060
+        }
+
+        body.dark-mode .club-card {
+            background: #1e2447;
+            border-color: #2a3060
+        }
+
+        body.dark-mode .club-meta h3 {
+            color: #e0e6ff
+        }
+
+        body.dark-mode .club-body p {
+            color: #9aa5cc
+        }
+
+        body.dark-mode .club-officers {
+            background: #141830
+        }
+
+        body.dark-mode .club-officers strong {
+            color: #e0e6ff
+        }
+
+        body.dark-mode .section-intro h2 {
+            color: #e0e6ff
+        }
+
+        body.dark-mode .section-intro p {
+            color: #9aa5cc
+        }
+
+        body.dark-mode .filter-pill {
+            background: #1e2447;
+            border-color: #2a3060;
+            color: #9aa5cc
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="utility-bar" id="utilityBar">
+        <div class="utility-inner">
+            <div class="utility-links">
+                <a href="alumni.html">Alumni</a>
+                <a href="library.html">Library</a>
+                <a href="portal.html">Student Portal</a>
+                <a href="faq.html">Contact</a>
+                <a href="admin.html"
+                    style="margin-left:.75rem;padding:.15rem .6rem;background:rgba(255,255,255,.15);border-radius:4px;font-weight:600;"><i
+                        class="fas fa-lock" style="margin-right:4px;font-size:.7em;"></i>Admin</a>
+            </div>
+            <div class="utility-right">
+                <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" title="Toggle dark mode"><i
+                        class="fas fa-moon"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <header class="main-header" id="mainHeader">
+        <div class="header-inner">
+            <a href="index.html" class="logo-wrap">
+                <img src="pcshs_logo.png"
+                    onerror="this.src='https://via.placeholder.com/60x60/7B1113/FFFFFF?text=PCSHS'" alt="PCSHS Logo"
+                    class="logo-img" />
+                <div class="logo-text"><span class="logo-main">Pasig City Science High School</span><span
+                        class="logo-sub">Pasig City, Philippines</span></div>
+            </a>
+            <nav class="main-nav" id="mainNav">
+                <ul>
+                    <li class="has-dropdown"><a href="about.html">About <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown">
+                            <a href="about.html#overview"><i class="fas fa-school"></i> Our School</a>
+                            <a href="about.html#mission"><i class="fas fa-bullseye"></i> Mission & Vision</a>
+                        </div>
+                    </li>
+                    <li class="has-dropdown"><a href="admissions.html">Admissions <i
+                                class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown">
+                            <a href="admissions.html#steps"><i class="fas fa-list-ol"></i> Application Steps</a>
+                            <a href="enroll.html"><i class="fas fa-pencil-alt"></i> Apply Online</a>
+                        </div>
+                    </li>
+                    <li class="has-dropdown"><a href="clubs.html" class="active">Student Life <i
+                                class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown">
+                            <a href="clubs.html"><i class="fas fa-users"></i> Clubs & Orgs</a>
+                            <a href="achievers.html"><i class="fas fa-trophy"></i> Pascian Achievers</a>
+                            <a href="alumni.html"><i class="fas fa-graduation-cap"></i> Alumni</a>
+                        </div>
+                    </li>
+                    <li><a href="resources.html">Resources</a></li>
+                    <li><a href="news.html">News</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                </ul>
+            </nav>
+            <button class="hamburger" id="hamburger" onclick="toggleMobileNav()"
+                aria-label="Menu"><span></span><span></span><span></span></button>
+        </div>
+    </header>
+
+    <section class="page-hero">
+        <div class="page-hero-content">
+            <span class="ptag">Student Life</span>
+            <h1>Clubs & Organizations</h1>
+            <p>Explore the diverse range of academic, non-academic, and SSLG affiliate clubs that make PCSHS a vibrant
+                learning community.</p>
+        </div>
+    </section>
+
+    <div class="breadcrumb-bar">
+        <div class="breadcrumb-inner">
+            <a href="index.html"><i class="fas fa-home"></i> Home</a>
+            <i class="fas fa-chevron-right"></i>
+            <span>Clubs & Organizations</span>
+        </div>
+    </div>
+
+    <section class="clubs-section">
+        <div class="container">
+            <div class="section-intro">
+                <span class="stag">Pascian Organizations</span>
+                <h2>Find Your Community</h2>
+                <p>PCSHS has a wide variety of clubs and organizations for every interest — from science and mathematics
+                    to arts, faith, and sports.</p>
+            </div>
+
+            <div class="clubs-filter">
+                <button class="filter-pill active" onclick="filterClubs('all', this)">All Clubs</button>
+                <button class="filter-pill" onclick="filterClubs('academic', this)">Academic</button>
+                <button class="filter-pill" onclick="filterClubs('non-academic', this)">Non-Academic</button>
+                <button class="filter-pill" onclick="filterClubs('sslg', this)">SSLG Affiliates</button>
+            </div>
+
+            <div class="clubs-grid" id="clubsGrid">
+
+                
+                <div class="club-card" data-type="academic">
+                    <div class="club-header">
+                        <div class="club-logo">⚗️</div>
+                        <div class="club-meta">
+                            <h3>Alchemist</h3>
+                            <span class="club-type academic">Academic · Chemistry</span>
+                        </div>
+                    </div>
+                    <div class="club-body">
+                        <p>The Alchemist: Chemistry Club is one of the official academic clubs of PCSHS primarily bound
+                            to the concepts and knowledge of Chemistry. The club welcomes avid learners looking to
+                            embrace the world of chemistry and how it functions all around us.</p>
+                        <a href="https://facebook.com/" target="_blank" class="club-fb-link" style="display:inline-block; margin-bottom:1rem; font-size:0.85rem; color:#1877F2; text-decoration:none; font-weight:600;"><i class="fab fa-facebook" style="margin-right:4px;"></i>Visit Facebook Page</a>
+                        <div class="club-officers">
+                            <strong>Officers</strong>
+                            <span>President: Thomas Tupas · VP: Maureen De Luna · Secretary: Ayeizha Valiente ·
+                                Treasurer: Angela Trroza · Auditor: Jared Flores · PIO: Enzo Almonte · PO: Jaimee
+                                Jamena</span>
+                        </div>
+                    </div>
+                    <div class="club-adviser"><i class="fas fa-chalkboard-teacher"></i> Adviser: Ms. Cheryl Bedano</div>
+                </div>
+
+                <div class="club-card" data-type="academic">
+                    <div class="club-header">
+                        <div class="club-logo">🏛️</div>
+                        <div class="club-meta">
+                            <h3>Civitas</h3>
+                            <span class="club-type academic">Academic · Civics</span>
+                        </div>
+                    </div>
+                    <div class="club-body">
+                        <p>Civitas aims to promote civic engagement, political awareness, preservation of culture, and
+                            community service to Pascians. The name originates from Ancient Rome, referring to
+                            citizenship and the individuals that constitute a state.</p>
+                        <a href="https://facebook.com/" target="_blank" class="club-fb-link" style="display:inline-block; margin-bottom:1rem; font-size:0.85rem; color:#1877F2; text-decoration:none; font-weight:600;"><i class="fab fa-facebook" style="margin-right:4px;"></i>Visit Facebook Page</a>
+                        <div class="club-officers">
+                            <strong>Officers</strong>
+                            <span>President: Araziel Salas · VP: Felicity Ania Marie Eclarinal · Secretary: Alyson
+                                Nicole Sison · Treasurer: Sophia Viktoria Cruz · Auditor: Belle Mallory Rebuta · PIO:
+                                John Michael Sardanya · PO: Miguel Vivas</span>
+                        </div>
+                    </div>
+                    <div class="club-adviser"><i class="fas fa-chalkboard-teacher"></i> Adviser: Ms. Ma. Kathleen S.
+                        Adona</div>
+                </div>
+
+                <div class="club-card" data-type="academic">
+                    <div class="club-header">
+                        <div class="club-logo">🔭</div>
+                        <div class="club-meta">
+                            <h3>Constellate</h3>
+                            <span class="club-type academic">Academic · Biology & Astrobiology</span>
+                        </div>
+                    </div>
+                    <div class="club-body">
+                        <p>Constellate is the official biology club branched with astrobiology of PCSHS and a member of
+                            the Pasig City Youth Development Council. Our purpose is to embark on new journeys in
+                            learning and appreciating the science of life.</p>
+                        <a href="https://facebook.com/" target="_blank" class="club-fb-link" style="display:inline-block; margin-bottom:1rem; font-size:0.85rem; color:#1877F2; text-decoration:none; font-weight:600;"><i class="fab fa-facebook" style="margin-right:4px;"></i>Visit Facebook Page</a>
+                        <div class="club-officers">
+                            <strong>Officers</strong>
+                            <span>President: Nickolle Lucero · VP: Riana Ignacio · Secretary: Jerica Cabauatan ·
+                                Treasurer: Mark Fuentes · Auditor: Karl Mamaoag · PIO: Astrid Lorena · PO: Harachel
+                                Hari</span>
+                        </div>
+                    </div>
+                    <div class="club-adviser"><i class="fas fa-chalkboard-teacher"></i> Advisers: Mr. Filmar R. Domingo
+                        & Ms. Caren S. Fababaer</div>
+                </div>
+
+                <div class="club-card" data-type="academic">
+                    <div class="club-header">
+                        <div class="club-logo">∞</div>
+                        <div class="club-meta">
+                            <h3>DNE</h3>
+                            <span class="club-type academic">Academic · Mathematics</span>
+                        </div>
+                    </div>
+                    <div class="club-body">
+                        <p>DNE is the official mathematics club of PCSHS guided by three virtues: Devotion, Nobility,
+                            and Excellence. DNE aspires to provide support and inspiration to all members and math
+                            enthusiasts. The limit Does Not Exist.</p>
+                        <a href="https://facebook.com/" target="_blank" class="club-fb-link" style="display:inline-block; margin-bottom:1rem; font-size:0.85rem; color:#1877F2; text-decoration:none; font-weight:600;"><i class="fab fa-facebook" style="margin-right:4px;"></i>Visit Facebook Page</a>
+                        <div class="club-officers">
+                            <strong>Officers</strong>
+                            <span>President: Daniel G. Ambegia · VP: Steffi Gabrielle P. Castro · Secretary: Evangel R.
+                                Placer · Treasurer: Kean Josiah S. Samson · Auditor: Aaron C. Senica · PIO: Jesus Arnel
+                                M. Cordova Jr. · PO: Hazel Mae B. Tupas</span>
+                        </div>
+                    </div>
+                    <div class="club-adviser"><i class="fas fa-chalkboard-teacher"></i> Advisers: Mr. Joseph Lara, Ms.
+                        Joan Cortezano, Ms. Florida Cello</div>
+                </div>
+
+                <div class="club-card" data-type="academic">
+                    <div class="club-header">
+                        <div class="club-logo">🎤</div>
+                        <div class="club-meta">
+                            <h3>Elite Debate Society</h3>
+                            <span class="club-type academic">Academic · Debate</span>
+                        </div>
+                    </div>
+                    <div class="club-body">
+                        <p>The Elite Debate Society aims to develop students' critical thinking, communicative and
+                            research skills, ethical augmentation, and leadership skills. It promotes awareness of
+                            societal and academic issues through the art of debate.</p>
+                        <a href="https://facebook.com/" target="_blank" class="club-fb-link" style="display:inline-block; margin-bottom:1rem; font-size:0.85rem; color:#1877F2; text-decoration:none; font-weight:600;"><i class="fab fa-facebook" style="margin-right:4px;"></i>Visit Facebook Page</a>
+                        <div class="club-officers">
+                            <strong>Officers</strong>
+                            <span>President: Samiela Puro · VP: Gabrielle Casumbal · Secretary: Nathalie Seda ·
+                                Treasurer: Simona Puro · Auditor: Eugene Ambrocio · PIO: Althea Caluma · PO: Gian
+                                Tan</span>
+                        </div>
+                    </div>
+                    <div class="club-adviser"><i class="fas fa-chalkboard-teacher"></i> Adviser: Mr. Tristan Neil S.
+                        Catapang</div>
+                </div>
+
+                <div class="club-card" data-type="academic">
+                    <div class="club-header">
+                        <div class="club-logo">⚡</div>
+                        <div class="club-meta">
+                            <h3>GAMMA</h3>
+                            <span class="club-type academic">Academic · Physics</span>
+                        </div>
+                    </div>
+                    <div class="club-body">
+                        <p>GAMMA is the official Physics Club of PCSHS, founded in 2018 to promote the value of Physics
+                            in our daily lives. GAMMA not only aims to be informative but also makes physics fun and
+                            interesting for all Pascians.</p>
+                        <a href="https://facebook.com/" target="_blank" class="club-fb-link" style="display:inline-block; margin-bottom:1rem; font-size:0.85rem; color:#1877F2; text-decoration:none; font-weight:600;"><i class="fab fa-facebook" style="margin-right:4px;"></i>Visit Facebook Page</a>
+                        <div class="club-officers">
+                            <strong>Officers</strong>
+                            <span>President: Juan Miguel Villegas · VP: Venice Sy · Secretary: Gabrielle Malapitan ·
+                                Treasurer: Moana Factor · Auditor: Ysmael Ratunil · PO: Aric Vindua</span>
+                        </div>
+                    </div>
+                    <div class="club-adviser"><i class="fas fa-chalkboard-teacher"></i> Advisers: Mr. Mark Angelo Loreto
+                        & Mr. Francis Arman Cos</div>
+                </div>
+
+                <div class="club-card" data-type="academic">
+                    <div class="club-header">
+                        <div class="club-logo">🔬</div>
+                        <div class="club-meta">
+                            <h3>Parallax</h3>
+                            <span class="club-type academic">Academic · Research</span>
+                        </div>
+                    </div>
+                    <div class="club-body">
+                        <p>Parallax is the official research club of PCSHS, guiding students in their pursuit of
+                            research as an essential tool for development and advancement. Parallax promotes the
+                            importance and usefulness of research to gain recognition and spark interest.</p>
+                        <a href="https://facebook.com/" target="_blank" class="club-fb-link" style="display:inline-block; margin-bottom:1rem; font-size:0.85rem; color:#1877F2; text-decoration:none; font-weight:600;"><i class="fab fa-facebook" style="margin-right:4px;"></i>Visit Facebook Page</a>
+                        <div class="club-officers">
+                            <strong>Officers</strong>
+                            <span>Contact club for current officers list.</span>
+                        </div>
+                    </div>
+                    <div class="club-adviser"><i class="fas fa-chalkboard-teacher"></i> Adviser: Ms. Charito Corsiga
+                    </div>
+                </div>
+
+                <div class="club-card" data-type="academic">
+                    <div class="club-header">
+                        <div class="club-logo">✍️</div>
+                        <div class="club-meta">
+                            <h3>Pluma</h3>
+                            <span class="club-type academic">Academic · Filipino</span>
+                        </div>
+                    </div>
+                    <div class="club-body">
+                        <p>Ang Pluma ay ang nag-iisang Filipino club na naglalayong palalimin ang pagmamahal ng mga
+                            Pascians sa kulturang Pilipino. Ito ang nagsisilbing tahanan para sa mga tinig ng kabataan
+                            na may puso para sa bayan.</p>
+                        <a href="https://facebook.com/" target="_blank" class="club-fb-link" style="display:inline-block; margin-bottom:1rem; font-size:0.85rem; color:#1877F2; text-decoration:none; font-weight:600;"><i class="fab fa-facebook" style="margin-right:4px;"></i>Visit Facebook Page</a>
+                        <div class="club-officers">
+                            <strong>Officers</strong>
+                            <span>President: Ritzhelle Galpa · VP: Althea Basal · Secretary: Faye Mojica · Treasurer:
+                                Kimberly Garcia · Auditor: Bheamille Labro · PIO: Alexcy Cruz</span>
+                        </div>
+                    </div>
+                    <div class="club-adviser"><i class="fas fa-chalkboard-teacher"></i> Adviser: Bb. Joanna Marie L.
+                        Martirez</div>
+                </div>
+
+                <div class="club-card" data-type="academic">
+                    <div class="club-header">
+                        <div class="club-logo">📰</div>
+                        <div class="club-meta">
+                            <h3>Scire & Ang Pascian</h3>
+                            <span class="club-type academic">Academic · Campus Publication</span>
+                        </div>
+                    </div>
+                    <div class="club-body">
+                        <p>Scire & Ang Pascian is the official publication of PCSHS, comprised of passionate and
+                            dedicated students committed to telling stories that propagate facts, expose misinformation,
+                            and catalyze change.</p>
+                        <a href="https://facebook.com/" target="_blank" class="club-fb-link" style="display:inline-block; margin-bottom:1rem; font-size:0.85rem; color:#1877F2; text-decoration:none; font-weight:600;"><i class="fab fa-facebook" style="margin-right:4px;"></i>Visit Facebook Page</a>
+                        <div class="club-officers">
+                            <strong>Officers</strong>
+                            <span>President: Romilen Santander · VP: Briana Doctora · Secretary: Iesha Fuentes ·
+                                Treasurer: Ginger Abril · Auditor: Asher Dumapias · PIO: David Cruz · PO: Ashira
+                                Amorin</span>
+                        </div>
+                    </div>
+                    <div class="club-adviser"><i class="fas fa-chalkboard-teacher"></i> Adviser: Ms. Cherry Zerna</div>
+                </div>
+
+                <div class="club-card" data-type="academic">
+                    <div class="club-header">
+                        <div class="club-logo">💻</div>
+                        <div class="club-meta">
+                            <h3>SYNCTAX</h3>
+                            <span class="club-type academic">Academic · Programming</span>
+                        </div>
+                    </div>
+                    <div class="club-body">
+                        <p>Synctax is the first and official PCSHS Programming and Game Development Club. The club
+                            builds a wide range of skill sets in coding, creativity in sprite making and animation, and
+                            game development — because in the digital world, it's all in your imagination!</p>
+                        <a href="https://facebook.com/" target="_blank" class="club-fb-link" style="display:inline-block; margin-bottom:1rem; font-size:0.85rem; color:#1877F2; text-decoration:none; font-weight:600;"><i class="fab fa-facebook" style="margin-right:4px;"></i>Visit Facebook Page</a>
+                        <div class="club-officers">
+                            <strong>Officers</strong>
+                            <span>Contact club for current officers list.</span>
+                        </div>
+                    </div>
+                    <div class="club-adviser"><i class="fas fa-chalkboard-teacher"></i> Adviser: Ms. Elizabeth Regencia
+                    </div>
+                </div>
+
+                <div class="club-card" data-type="academic">
+                    <div class="club-header">
+                        <div class="club-logo">🤖</div>
+                        <div class="club-meta">
+                            <h3>Tekmekanismo</h3>
+                            <span class="club-type academic">Academic · Robotics</span>
+                        </div>
+                    </div>
+                    <div class="club-body">
+                        <p>Tekmekanismo is the robotics club dedicated to creating innovative projects that solve modern
+                            problems. Established over a decade ago, students build robots and compete in various
+                            external competitions. The name combines "Tek" (technology) and "Mekanismo" (mechanism).</p>
+                        <a href="https://facebook.com/" target="_blank" class="club-fb-link" style="display:inline-block; margin-bottom:1rem; font-size:0.85rem; color:#1877F2; text-decoration:none; font-weight:600;"><i class="fab fa-facebook" style="margin-right:4px;"></i>Visit Facebook Page</a>
+                        <div class="club-officers">
+                            <strong>Officers</strong>
+                            <span>President: Nathanael Alberto · VP: Ben Salen · Secretary: Fernance Ferido · Treasurer:
+                                Gabriel Belen · Auditor: Khrystal Caranguian · PO: John Paul Bellas · PIO: Janna
+                                Guansing</span>
+                        </div>
+                    </div>
+                    <div class="club-adviser"><i class="fas fa-chalkboard-teacher"></i> Adviser: Ms. Maria Allen
+                        Secretario</div>
+                </div>
+
+                <div class="club-card" data-type="academic">
+                    <div class="club-header">
+                        <div class="club-logo">🌿</div>
+                        <div class="club-meta">
+                            <h3>YES-O</h3>
+                            <span class="club-type academic">Academic · Environment</span>
+                        </div>
+                    </div>
+                    <div class="club-body">
+                        <p>YES-O (Youth for Environment in Schools-Organization) is established through Department Order
+                            No. 72, s. 2003. We spread awareness of the state of our country's environment through
+                            projects that encourage participation and initiative to preserve Philippine ecology.</p>
+                        <a href="https://facebook.com/" target="_blank" class="club-fb-link" style="display:inline-block; margin-bottom:1rem; font-size:0.85rem; color:#1877F2; text-decoration:none; font-weight:600;"><i class="fab fa-facebook" style="margin-right:4px;"></i>Visit Facebook Page</a>
+                        <div class="club-officers">
+                            <strong>Officers</strong>
+                            <span>President: Belle Abalon · VP: Raphael Rufino · Secretary: Agatha Perico · Treasurer:
+                                Rheann Ocbeña · Auditor: Marchel Sister · PIO: Francheka De Leon · PO: Edward
+                                Chua</span>
+                        </div>
+                    </div>
+                    <div class="club-adviser"><i class="fas fa-chalkboard-teacher"></i> Adviser: Mr. Nico Risos</div>
+                </div>
+
+                
+                <div class="club-card" data-type="non-academic">
+                    <div class="club-header">
+                        <div class="club-logo">🏆</div>
+                        <div class="club-meta">
+                            <h3>Athlitikos</h3>
+                            <span class="club-type non-academic">Non-Academic · Sports</span>
+                        </div>
+                    </div>
+                    <div class="club-body">
+                        <p>PCSHS Athlitikos is the official sports club dedicated to promoting athletic excellence,
+                            school spirit, and student development. The club supports both varsity athletes and casual
+                            players through tryouts, training sessions, and school-wide events.</p>
+                        <a href="https://facebook.com/" target="_blank" class="club-fb-link" style="display:inline-block; margin-bottom:1rem; font-size:0.85rem; color:#1877F2; text-decoration:none; font-weight:600;"><i class="fab fa-facebook" style="margin-right:4px;"></i>Visit Facebook Page</a>
+                        <div class="club-officers">
+                            <strong>Officers</strong>
+                            <span>President: Maxine Mercene · VP: Jomari Quillamar · Secretary: Ryza Tausa · Treasurer:
+                                Ron Acebedo · PIO: Venice Banera · PO: Danica Ramos</span>
+                        </div>
+                    </div>
+                    <div class="club-adviser"><i class="fas fa-chalkboard-teacher"></i> Adviser: Mr. Angelo P. Rafael
+                    </div>
+                </div>
+
+                <div class="club-card" data-type="non-academic">
+                    <div class="club-header">
+                        <div class="club-logo">🚨</div>
+                        <div class="club-meta">
+                            <h3>BERT</h3>
+                            <span class="club-type non-academic">Non-Academic · Disaster Management</span>
+                        </div>
+                    </div>
+                    <div class="club-body">
+                        <p>BERT is an organization of students responsible for disaster management and preparedness. As
+                            part of the SDRRM team, BERT ensures readiness and maintains order in times of emergencies
+                            during school events and activities.</p>
+                        <a href="https://facebook.com/" target="_blank" class="club-fb-link" style="display:inline-block; margin-bottom:1rem; font-size:0.85rem; color:#1877F2; text-decoration:none; font-weight:600;"><i class="fab fa-facebook" style="margin-right:4px;"></i>Visit Facebook Page</a>
+                        <div class="club-officers">
+                            <strong>Officers</strong>
+                            <span>President: Dianah Nieles · VP: Al Francis Salvedia · Secretary: Christina Zamora ·
+                                Treasurer: Reyver Martin · Auditor: John Rovi Saguid · PIO: Jomelene Dizon · PO: Karl
+                                Abner · SHS Head: Neil Lumawig</span>
+                        </div>
+                    </div>
+                    <div class="club-adviser"><i class="fas fa-chalkboard-teacher"></i> Adviser: Mr. Jay M. Cos</div>
+                </div>
+
+                <div class="club-card" data-type="non-academic">
+                    <div class="club-header">
+                        <div class="club-logo">💃</div>
+                        <div class="club-meta">
+                            <h3>Coalition</h3>
+                            <span class="club-type non-academic">Non-Academic · Dance</span>
+                        </div>
+                    </div>
+                    <div class="club-body">
+                        <p>PCSHS Coalition enables students to display understanding of expressions and rhythm. It
+                            promotes participation in dance competitions and enhances students' live performance
+                            creativity through various dance genres.</p>
+                        <a href="https://facebook.com/" target="_blank" class="club-fb-link" style="display:inline-block; margin-bottom:1rem; font-size:0.85rem; color:#1877F2; text-decoration:none; font-weight:600;"><i class="fab fa-facebook" style="margin-right:4px;"></i>Visit Facebook Page</a>
+                        <div class="club-officers">
+                            <strong>Officers</strong>
+                            <span>President: Christine Tekiko · VP: Chelsea Bringuelo · Secretary: Janna Yap ·
+                                Treasurer: Hanns Frias · Auditor: Jhade Alejandro</span>
+                        </div>
+                    </div>
+                    <div class="club-adviser"><i class="fas fa-chalkboard-teacher"></i> Adviser: Ms. Lolita D. Espineda
+                    </div>
+                </div>
+
+                <div class="club-card" data-type="non-academic">
+                    <div class="club-header">
+                        <div class="club-logo">✝️</div>
+                        <div class="club-meta">
+                            <h3>Elevate</h3>
+                            <span class="club-type non-academic">Non-Academic · Faith</span>
+                        </div>
+                    </div>
+                    <div class="club-body">
+                        <p>Elevate is a nationwide student movement. It is our mission to take every Pascian to the next
+                            L.E.V.E.L — Life Empowered through Values, Excellence, and Leadership through His word and
+                            works. Built on the 3 F's: Fun, Family, Faith.</p>
+                        <a href="https://facebook.com/" target="_blank" class="club-fb-link" style="display:inline-block; margin-bottom:1rem; font-size:0.85rem; color:#1877F2; text-decoration:none; font-weight:600;"><i class="fab fa-facebook" style="margin-right:4px;"></i>Visit Facebook Page</a>
+                        <div class="club-officers">
+                            <strong>Officers</strong>
+                            <span>President: Bhea Lattao · VP: Samuel Ramirez · Secretary: Hannah Calingo · Treasurer:
+                                David Credo · Auditor: Nina Zamudio · PIO: Xyrl Remoto · PO: Abiezer Intad</span>
+                        </div>
+                    </div>
+                    <div class="club-adviser"><i class="fas fa-chalkboard-teacher"></i> Adviser: Ms. Sherry Cadiao</div>
+                </div>
+
+                <div class="club-card" data-type="non-academic">
+                    <div class="club-header">
+                        <div class="club-logo">🎵</div>
+                        <div class="club-meta">
+                            <h3>Fermata Pascians</h3>
+                            <span class="club-type non-academic">Non-Academic · Choir</span>
+                        </div>
+                    </div>
+                    <div class="club-body">
+                        <p>Fermata Pascians is the official choir club of PCSHS. We showcase the dedication and
+                            versatility of our students as excellent learners, singers, and performers. The club is a
+                            place where students hone vocal skills and grow in discipline and collaboration.</p>
+                        <a href="https://facebook.com/" target="_blank" class="club-fb-link" style="display:inline-block; margin-bottom:1rem; font-size:0.85rem; color:#1877F2; text-decoration:none; font-weight:600;"><i class="fab fa-facebook" style="margin-right:4px;"></i>Visit Facebook Page</a>
+                        <div class="club-officers">
+                            <strong>Officers</strong>
+                            <span>President: Rhian Shaira D. Inventor · VP: Alberto Nathaniel A. Juson · Secretary: Ira
+                                Jamila B. Dela Cruz · Treasurer: Kaya Margareth V. Ignacio · PIO: Dwayll Mczyre S.
+                                Acabado · PO: Jilian Rex G. Estaco</span>
+                        </div>
+                    </div>
+                    <div class="club-adviser"><i class="fas fa-chalkboard-teacher"></i> Adviser: Ms. Ma. Thea Carmela
+                        Edades</div>
+                </div>
+
+                <div class="club-card" data-type="non-academic">
+                    <div class="club-header">
+                        <div class="club-logo">🏳️‍🌈</div>
+                        <div class="club-meta">
+                            <h3>GAD</h3>
+                            <span class="club-type non-academic">Non-Academic · Gender & Development</span>
+                        </div>
+                    </div>
+                    <div class="club-body">
+                        <p>The Gender and Development Club is a student-led organization dedicated to building a fair,
+                            safe, and inclusive school community. GAD stands for equal opportunities, respect, and
+                            breaking stereotypes for all students regardless of identity.</p>
+                        <a href="https://facebook.com/" target="_blank" class="club-fb-link" style="display:inline-block; margin-bottom:1rem; font-size:0.85rem; color:#1877F2; text-decoration:none; font-weight:600;"><i class="fab fa-facebook" style="margin-right:4px;"></i>Visit Facebook Page</a>
+                        <div class="club-officers">
+                            <strong>Officers</strong>
+                            <span>President: Jillian Dominique M. Cora · VP: Miara Dominique B. Uayan · Secretary: Yanni
+                                Grace Basinga · Treasurer: Allysa Ysabelle Alvarez · Auditor: Deniza Kinch C. Lajara ·
+                                PIO: Kathryn Ann M. Murillo · PO: Ruveline S. Baraquia</span>
+                        </div>
+                    </div>
+                    <div class="club-adviser"><i class="fas fa-chalkboard-teacher"></i> Adviser: Ms. Leilani Lucero
+                    </div>
+                </div>
+
+                <div class="club-card" data-type="non-academic">
+                    <div class="club-header">
+                        <div class="club-logo">🎭</div>
+                        <div class="club-meta">
+                            <h3>Halikatha</h3>
+                            <span class="club-type non-academic">Non-Academic · Theater</span>
+                        </div>
+                    </div>
+                    <div class="club-body">
+                        <p>Halikatha is PCSHS's Theater Club (Ang Teatrong Pascian). Whether you love acting, writing,
+                            performing, or expressing yourself creatively — Halikatha brings stories to life and offers
+                            a stage for everyone.</p>
+                        <a href="https://facebook.com/" target="_blank" class="club-fb-link" style="display:inline-block; margin-bottom:1rem; font-size:0.85rem; color:#1877F2; text-decoration:none; font-weight:600;"><i class="fab fa-facebook" style="margin-right:4px;"></i>Visit Facebook Page</a>
+                        <div class="club-officers">
+                            <strong>Officers</strong>
+                            <span>President: Ashley Sabsilica · VP: Elisha Franco · Secretary: Nelly Magpantay ·
+                                Treasurer: Khailex Montemayor · Auditor: Fukooko Lee · PO: Calvin Ramos · PIO: Marielle
+                                Batulan</span>
+                        </div>
+                    </div>
+                    <div class="club-adviser"><i class="fas fa-chalkboard-teacher"></i> Adviser: Ms. Suzanne Pineda
+                    </div>
+                </div>
+
+                <div class="club-card" data-type="non-academic">
+                    <div class="club-header">
+                        <div class="club-logo">➕</div>
+                        <div class="club-meta">
+                            <h3>Red Cross Youth</h3>
+                            <span class="club-type non-academic">Non-Academic · Humanitarian</span>
+                        </div>
+                    </div>
+                    <div class="club-body">
+                        <p>The Senior (+) Red Cross Youth of PCSHS (established 2023) is a student-led organization
+                            dedicated to promoting humanitarian values, volunteerism, and community service through
+                            health education, disaster preparedness, and outreach programs.</p>
+                        <a href="https://facebook.com/" target="_blank" class="club-fb-link" style="display:inline-block; margin-bottom:1rem; font-size:0.85rem; color:#1877F2; text-decoration:none; font-weight:600;"><i class="fab fa-facebook" style="margin-right:4px;"></i>Visit Facebook Page</a>
+                        <div class="club-officers">
+                            <strong>Officers</strong>
+                            <span>President: Hannah Elnar · VP: Angela Alderete · Secretary: Jiliane Cancio · Treasurer:
+                                Patricia Lovindino · Auditor: Rhyzel Reloza</span>
+                        </div>
+                    </div>
+                    <div class="club-adviser"><i class="fas fa-chalkboard-teacher"></i> Adviser: Ms. Desiree Didulo
+                    </div>
+                </div>
+
+                <div class="club-card" data-type="non-academic">
+                    <div class="club-header">
+                        <div class="club-logo">🎸</div>
+                        <div class="club-meta">
+                            <h3>Resonate</h3>
+                            <span class="club-type non-academic">Non-Academic · Music</span>
+                        </div>
+                    </div>
+                    <div class="club-body">
+                        <p>RESONATE is an organization of student musicians dedicated to expressing creativity and
+                            passion through music. The club provides space for members to collaborate, perform, and grow
+                            — amplifying the voices of young artists within and beyond the school.</p>
+                        <a href="https://facebook.com/" target="_blank" class="club-fb-link" style="display:inline-block; margin-bottom:1rem; font-size:0.85rem; color:#1877F2; text-decoration:none; font-weight:600;"><i class="fab fa-facebook" style="margin-right:4px;"></i>Visit Facebook Page</a>
+                        <div class="club-officers">
+                            <strong>Officers</strong>
+                            <span>President: Shanin Agatha Dorol · VP: Anna Cencia Porwelo · Secretary: Sophia Rilveria
+                                · Treasurer: Chezza Simbulas · Auditor: Rheza Cuizon · PIO: Shemaiah Mangua · PO: Sharon
+                                Natalie Natad</span>
+                        </div>
+                    </div>
+                    <div class="club-adviser"><i class="fas fa-chalkboard-teacher"></i> Adviser: Mr. Hernan A. Barrosa
+                    </div>
+                </div>
+
+                
+                <div class="club-card" data-type="sslg">
+                    <div class="club-header">
+                        <div class="club-logo">🎨</div>
+                        <div class="club-meta">
+                            <h3>Createam</h3>
+                            <span class="club-type sslg">SSLG · Design</span>
+                        </div>
+                    </div>
+                    <div class="club-body">
+                        <p>Createam is a vibrant community of creative minds, where designers and artists come together
+                            to bring ideas into reality through design. The club produces pubmats, posters, and other
+                            visual aids — making messages come across clearly and effectively.</p>
+                        <a href="https://facebook.com/" target="_blank" class="club-fb-link" style="display:inline-block; margin-bottom:1rem; font-size:0.85rem; color:#1877F2; text-decoration:none; font-weight:600;"><i class="fab fa-facebook" style="margin-right:4px;"></i>Visit Facebook Page</a>
+                        <div class="club-officers">
+                            <strong>Officers</strong>
+                            <span>President: Jervy Pascual · VP: Amber Villaruel · Secretary: Justine Clet · Treasurer:
+                                Gabriel Moreno · Auditor: Carl Magsino · PIO: Daphne Amado · PO: Pretzel Tanalgo</span>
+                        </div>
+                    </div>
+                    <div class="club-adviser"><i class="fas fa-chalkboard-teacher"></i> Advisers: Ms. Villa-Michelle De
+                        Vera & Ms. Elizabeth P. Regencia</div>
+                </div>
+
+                <div class="club-card" data-type="sslg">
+                    <div class="club-header">
+                        <div class="club-logo">📸</div>
+                        <div class="club-meta">
+                            <h3>FPS</h3>
+                            <span class="club-type sslg">SSLG · Photography & Videography</span>
+                        </div>
+                    </div>
+                    <div class="club-body">
+                        <p>Filming Pascian Stories creatively documents the events and milestones of PCSHS through
+                            high-quality photography and videography, preserving the school's history and promoting
+                            school pride through meaningful visual storytelling.</p>
+                        <a href="https://facebook.com/" target="_blank" class="club-fb-link" style="display:inline-block; margin-bottom:1rem; font-size:0.85rem; color:#1877F2; text-decoration:none; font-weight:600;"><i class="fab fa-facebook" style="margin-right:4px;"></i>Visit Facebook Page</a>
+                        <div class="club-officers">
+                            <strong>Officers</strong>
+                            <span>President: Bernice Dela Cruz · VP: Chrizette España · Secretary: Moira Cruz ·
+                                Treasurer: Kurt Sarmiento · Auditor: Dominique Abelardo · PIO: Atasha Caluma · PO:
+                                Cassandra Mendoza</span>
+                        </div>
+                    </div>
+                    <div class="club-adviser"><i class="fas fa-chalkboard-teacher"></i> Advisers: Ms. Villa-Michelle De
+                        Vera & Ms. Florisa Cello</div>
+                </div>
+
+                <div class="club-card" data-type="sslg">
+                    <div class="club-header">
+                        <div class="club-logo">🎬</div>
+                        <div class="club-meta">
+                            <h3>Magnus Opus</h3>
+                            <span class="club-type sslg">SSLG · Events Production</span>
+                        </div>
+                    </div>
+                    <div class="club-body">
+                        <p>Magnus Opus serves as the production team of PCSHS. Together with FPS, Createam, Telecast,
+                            and Virtuoso, we work as the creatives team for the SSLG — leading the overall design and
+                            set-up of venues for school events.</p>
+                        <a href="https://facebook.com/" target="_blank" class="club-fb-link" style="display:inline-block; margin-bottom:1rem; font-size:0.85rem; color:#1877F2; text-decoration:none; font-weight:600;"><i class="fab fa-facebook" style="margin-right:4px;"></i>Visit Facebook Page</a>
+                        <div class="club-officers">
+                            <strong>Officers</strong>
+                            <span>President: Janah Carissa R. Salas · VP: Roldane Christen T. Bagsik · Secretary:
+                                Gillian F. Gambon · Financial Head: Queensy May L. Bien</span>
+                        </div>
+                    </div>
+                    <div class="club-adviser"><i class="fas fa-chalkboard-teacher"></i> Advisers: Ms. Villa-Michelle De
+                        Vera & Ms. Carmela C. Abelarde</div>
+                </div>
+
+                <div class="club-card" data-type="sslg">
+                    <div class="club-header">
+                        <div class="club-logo">📡</div>
+                        <div class="club-meta">
+                            <h3>Telecast</h3>
+                            <span class="club-type sslg">SSLG · Livestreaming</span>
+                        </div>
+                    </div>
+                    <div class="club-body">
+                        <p>Telecast is the official technical and livestreaming organization of PCSHS. Members are
+                            trained in camera operation, audio-visual setup, and livestream management — enhancing the
+                            school's digital presence during institutional events.</p>
+                        <a href="https://facebook.com/" target="_blank" class="club-fb-link" style="display:inline-block; margin-bottom:1rem; font-size:0.85rem; color:#1877F2; text-decoration:none; font-weight:600;"><i class="fab fa-facebook" style="margin-right:4px;"></i>Visit Facebook Page</a>
+                        <div class="club-officers">
+                            <strong>Officers</strong>
+                            <span>President: Edreece Desabille · VP: Naomi Bautista · Secretary: Kate Panganiban ·
+                                Treasurer: Ivy De Leon</span>
+                        </div>
+                    </div>
+                    <div class="club-adviser"><i class="fas fa-chalkboard-teacher"></i> Advisers: Ms. Villa-Michelle De
+                        Vera & Ms. Carmela C. Abelarde</div>
+                </div>
+
+                <div class="club-card" data-type="sslg">
+                    <div class="club-header">
+                        <div class="club-logo">🖌️</div>
+                        <div class="club-meta">
+                            <h3>Virtuoso</h3>
+                            <span class="club-type sslg">SSLG · Illustration</span>
+                        </div>
+                    </div>
+                    <div class="club-body">
+                        <p>"We don't make mistakes, just happy little accidents." — Virtuoso is the official
+                            illustrators' club of PCSHS, where creativity knows no limits. Whether you sketch, paint, or
+                            design digitally — Virtuoso has a place for you to express your imagination.</p>
+                        <a href="https://facebook.com/" target="_blank" class="club-fb-link" style="display:inline-block; margin-bottom:1rem; font-size:0.85rem; color:#1877F2; text-decoration:none; font-weight:600;"><i class="fab fa-facebook" style="margin-right:4px;"></i>Visit Facebook Page</a>
+                        <div class="club-officers">
+                            <strong>Officers</strong>
+                            <span>President: Juliana Robles · VP: Hayah Reyes · Secretary: Elise Esteban · Treasurer:
+                                Kayleigh Ang · Auditor: Janna Vergara · PIO: Emy Olmillo</span>
+                        </div>
+                    </div>
+                    <div class="club-adviser"><i class="fas fa-chalkboard-teacher"></i> Adviser: Ms. Via De Los Reyes
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <img src="pcshs_logo.png"
+                    onerror="this.src='https://via.placeholder.com/50x50/7B1113/FFFFFF?text=PCSHS'" alt="PCSHS" />
+                <div><strong>Pasig City Science High School</strong><small>Rainforest Park, Maybunga, Pasig City</small>
+                </div>
+            </div>
+            <div class="footer-links">
+                <div class="fl-col">
+                    <h4>Student Life</h4><a href="clubs.html">Clubs & Orgs</a><a href="achievers.html">Pascian
+                        Achievers</a><a href="alumni.html">Alumni</a>
+                </div>
+                <div class="fl-col">
+                    <h4>Academics</h4><a href="resources.html">Modules</a><a href="resources.html#subjects">Subjects</a>
+                </div>
+                <div class="fl-col">
+                    <h4>Connect</h4><a href="https://www.facebook.com/pcshs.edu" target="_blank"><i
+                            class="fab fa-facebook"></i> Facebook</a><a href="faq.html"><i class="fas fa-envelope"></i>
+                        Contact Us</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Pasig City Science High School. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        function filterClubs(type, btn) {
+            document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+            btn.classList.add('active');
+            document.querySelectorAll('.club-card').forEach(card => {
+                if (type === 'all' || card.dataset.type === type) {
+                    card.classList.remove('hidden');
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+        }
+        (function () {
+            if (localStorage.getItem('pcshs_dark') === '1') {
+                document.body.classList.add('dark-mode');
+                const icon = document.querySelector('#themeToggle i');
+                if (icon) icon.className = 'fas fa-sun';
+            }
+        })();
+    </script>
+    
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+    <script src="firebase-config.js"></script>
+    <script src="db.js"></script>
+</body>
+
+</html>

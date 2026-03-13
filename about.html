@@ -1,0 +1,1307 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description"
+        content="About Pasig City Science High School — Mission, Vision, Objectives, and School Overview." />
+    <title>About PCSHS | Pasig City Science High School</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link rel="stylesheet" href="style.css" />
+    <style>
+        /* ===== ABOUT PAGE SPECIFIC STYLES ===== */
+        .page-hero {
+            background: linear-gradient(135deg, #7B1113 0%, #2c0a0b 50%, #0038A8 100%);
+            padding: 9rem 0 5rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url('https://images.unsplash.com/photo-1562774053-701939374585?w=1600&q=60') center/cover no-repeat;
+            opacity: 0.12;
+        }
+
+        .page-hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .page-hero .section-tag {
+            background: rgba(255, 255, 255, 0.15);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 0.35rem 1rem;
+            border-radius: 999px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        .page-hero h1 {
+            font-family: 'DM Serif Display', serif;
+            font-size: clamp(2.2rem, 5vw, 3.8rem);
+            color: #fff;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .page-hero p {
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 1.08rem;
+            max-width: 560px;
+            margin: 0 auto;
+        }
+
+        /* Breadcrumb */
+        .breadcrumb-bar {
+            background: #f8f9fc;
+            border-bottom: 1px solid #e8eaf0;
+            padding: 0.75rem 0;
+        }
+
+        .breadcrumb-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.82rem;
+            color: #6B7280;
+        }
+
+        .breadcrumb-inner a {
+            color: #7B1113;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .breadcrumb-inner i {
+            font-size: 0.65rem;
+            color: #aaa;
+        }
+
+        /* Overview Section */
+        .about-page-section {
+            padding: 5rem 0;
+        }
+
+        .about-page-section .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-intro {
+            text-align: center;
+            margin-bottom: 3.5rem;
+        }
+
+        .section-intro .section-tag {
+            background: rgba(123, 17, 19, 0.08);
+            color: #7B1113;
+            padding: 0.3rem 1rem;
+            border-radius: 999px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            display: inline-block;
+            margin-bottom: 0.75rem;
+        }
+
+        .section-intro h2 {
+            font-family: 'DM Serif Display', serif;
+            font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+            color: #12174a;
+            margin-bottom: 0.75rem;
+        }
+
+        .section-intro p {
+            color: #5a6070;
+            max-width: 620px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        /* Welcome Box */
+        .welcome-box {
+            background: linear-gradient(135deg, #12174a 0%, #0038A8 100%);
+            border-radius: 20px;
+            padding: 3rem;
+            color: #fff;
+            margin-bottom: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .welcome-box::before {
+            content: '"';
+            position: absolute;
+            top: -0.5rem;
+            left: 1.5rem;
+            font-family: 'DM Serif Display', serif;
+            font-size: 12rem;
+            color: rgba(255, 255, 255, 0.06);
+            line-height: 1;
+        }
+
+        .welcome-box h3 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .welcome-box p {
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.88);
+            font-size: 1.02rem;
+            position: relative;
+        }
+
+        /* Why Choose Cards */
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .why-card {
+            background: #fff;
+            border: 1px solid #e8eaf0;
+            border-radius: 16px;
+            padding: 1.75rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            transition: transform 0.25s, box-shadow 0.25s;
+        }
+
+        .why-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(0, 56, 168, 0.1);
+        }
+
+        .why-icon {
+            width: 46px;
+            height: 46px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #7B1113, #a01518);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+
+        .why-card h4 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #12174a;
+            margin-bottom: 0.35rem;
+        }
+
+        .why-card p {
+            font-size: 0.85rem;
+            color: #6B7280;
+            line-height: 1.6;
+        }
+
+        /* Two-column layout */
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
+            align-items: start;
+        }
+
+        @media (max-width: 768px) {
+            .two-col {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Info Card */
+        .info-card {
+            background: #fff;
+            border: 1px solid #e8eaf0;
+            border-radius: 16px;
+            padding: 2rem;
+        }
+
+        .info-card h3 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.35rem;
+            color: #12174a;
+            margin-bottom: 1.2rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 2px solid #f0f2f8;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .info-card h3 i {
+            color: #7B1113;
+            font-size: 1.1rem;
+        }
+
+        .info-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .info-card ul li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            padding: 0.55rem 0;
+            font-size: 0.9rem;
+            color: #374151;
+            line-height: 1.6;
+            border-bottom: 1px solid #f5f6fa;
+        }
+
+        .info-card ul li:last-child {
+            border-bottom: none;
+        }
+
+        .info-card ul li i {
+            color: #7B1113;
+            margin-top: 0.2rem;
+            font-size: 0.8rem;
+            flex-shrink: 0;
+        }
+
+        .info-card p {
+            color: #374151;
+            line-height: 1.75;
+            font-size: 0.92rem;
+        }
+
+        /* Mission Vision Section */
+        .mv-page-section {
+            background: linear-gradient(135deg, #12174a 0%, #0038A8 100%);
+            padding: 5rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mv-page-section::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .mv-page-section .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .mv-page-header {
+            text-align: center;
+            margin-bottom: 3.5rem;
+        }
+
+        .mv-page-header .section-tag {
+            background: rgba(255, 255, 255, 0.12);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            padding: 0.3rem 1rem;
+            border-radius: 999px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            display: inline-block;
+            margin-bottom: 0.75rem;
+        }
+
+        .mv-page-header h2 {
+            font-family: 'DM Serif Display', serif;
+            font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+            color: #fff;
+        }
+
+        .mv-page-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .mv-page-card {
+            background: rgba(255, 255, 255, 0.07);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 18px;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+            transition: background 0.3s;
+        }
+
+        .mv-page-card:hover {
+            background: rgba(255, 255, 255, 0.12);
+        }
+
+        .mv-page-card .mv-badge {
+            width: 52px;
+            height: 52px;
+            border-radius: 14px;
+            background: rgba(255, 255, 255, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .mv-page-card h3 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.35rem;
+            color: #fff;
+            margin-bottom: 0.85rem;
+        }
+
+        .mv-page-card p,
+        .mv-page-card li {
+            color: rgba(255, 255, 255, 0.82);
+            line-height: 1.75;
+            font-size: 0.91rem;
+        }
+
+        .mv-page-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .mv-page-card ul li {
+            display: flex;
+            gap: 0.6rem;
+            padding: 0.35rem 0;
+            align-items: flex-start;
+        }
+
+        .mv-page-card ul li::before {
+            content: '→';
+            color: rgba(255, 255, 255, 0.5);
+            flex-shrink: 0;
+            margin-top: 0.05rem;
+        }
+
+        /* All objectives */
+        .objectives-section {
+            padding: 5rem 0;
+            background: #f8f9fc;
+        }
+
+        .objectives-section .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .objectives-list {
+            counter-reset: obj;
+            list-style: none;
+            padding: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.25rem;
+            margin-top: 2.5rem;
+        }
+
+        .objectives-list li {
+            counter-increment: obj;
+            background: #fff;
+            border: 1px solid #e8eaf0;
+            border-radius: 14px;
+            padding: 1.5rem 1.5rem 1.5rem 4.5rem;
+            position: relative;
+            color: #374151;
+            font-size: 0.92rem;
+            line-height: 1.7;
+            transition: box-shadow 0.25s;
+        }
+
+        .objectives-list li:hover {
+            box-shadow: 0 6px 20px rgba(0, 56, 168, 0.08);
+        }
+
+        .objectives-list li::before {
+            content: counter(obj, decimal-leading-zero);
+            position: absolute;
+            left: 1.25rem;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: rgba(123, 17, 19, 0.15);
+            font-family: 'DM Serif Display', serif;
+        }
+
+        /* Facilities */
+        .facilities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.25rem;
+            margin-top: 2.5rem;
+        }
+
+        .facility-card {
+            background: #fff;
+            border: 1px solid #e8eaf0;
+            border-radius: 16px;
+            overflow: hidden;
+            transition: transform 0.25s, box-shadow 0.25s;
+            text-align: center;
+        }
+
+        .facility-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 14px 35px rgba(0, 0, 0, 0.1);
+        }
+
+        .facility-img {
+            height: 150px;
+            background: linear-gradient(135deg, #12174a, #0038A8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+        }
+
+        .facility-body {
+            padding: 1.25rem;
+        }
+
+        .facility-body h4 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #12174a;
+        }
+
+        /* Hymn Section */
+        .hymn-section {
+            padding: 5rem 0;
+            background: #fff;
+        }
+
+        .hymn-section .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .hymn-box {
+            background: linear-gradient(135deg, #7B1113 0%, #a01518 100%);
+            border-radius: 20px;
+            padding: 3.5rem;
+            text-align: center;
+            color: #fff;
+            max-width: 700px;
+            margin: 2.5rem auto 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hymn-box::before {
+            content: '♪';
+            position: absolute;
+            top: -1rem;
+            left: 1rem;
+            font-size: 10rem;
+            opacity: 0.06;
+        }
+
+        .hymn-box h3 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.6rem;
+            margin-bottom: 0.35rem;
+        }
+
+        .hymn-box .hymn-subtitle {
+            font-size: 0.85rem;
+            opacity: 0.7;
+            margin-bottom: 2rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        .hymn-verse {
+            font-style: italic;
+            line-height: 2;
+            font-size: 0.97rem;
+            opacity: 0.92;
+            position: relative;
+            text-align: left;
+        }
+
+        .hymn-box .hymn-note {
+            margin-top: 1.5rem;
+            font-size: 0.78rem;
+            opacity: 0.55;
+            font-style: normal;
+        }
+
+        /* CTA */
+        .about-cta {
+            background: linear-gradient(135deg, #f8f9fc 0%, #eef1ff 100%);
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .about-cta .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .about-cta h2 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2rem;
+            color: #12174a;
+            margin-bottom: 1rem;
+        }
+
+        .about-cta p {
+            color: #6B7280;
+            margin-bottom: 2rem;
+            line-height: 1.7;
+        }
+
+        .cta-btns {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-maroon-solid {
+            background: #7B1113;
+            color: #fff;
+            padding: 0.85rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: background 0.2s, transform 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-maroon-solid:hover {
+            background: #9a1519;
+            transform: translateY(-2px);
+        }
+
+        .btn-outline-maroon {
+            background: transparent;
+            color: #7B1113;
+            padding: 0.85rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            border: 2px solid #7B1113;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-outline-maroon:hover {
+            background: #7B1113;
+            color: #fff;
+        }
+
+        /* Dark mode */
+        body.dark-mode .breadcrumb-bar {
+            background: #1a1f3c;
+            border-color: #2a3060;
+        }
+
+        body.dark-mode .breadcrumb-inner {
+            color: #aaa;
+        }
+
+        body.dark-mode .why-card,
+        body.dark-mode .info-card {
+            background: #1e2447;
+            border-color: #2a3060;
+        }
+
+        body.dark-mode .why-card h4,
+        body.dark-mode .info-card h3 {
+            color: #e0e6ff;
+        }
+
+        body.dark-mode .why-card p,
+        body.dark-mode .info-card p,
+        body.dark-mode .info-card ul li {
+            color: #9aa5cc;
+        }
+
+        body.dark-mode .section-intro h2 {
+            color: #e0e6ff;
+        }
+
+        body.dark-mode .section-intro p {
+            color: #9aa5cc;
+        }
+
+        body.dark-mode .objectives-section {
+            background: #141830;
+        }
+
+        body.dark-mode .objectives-list li {
+            background: #1e2447;
+            border-color: #2a3060;
+            color: #9aa5cc;
+        }
+
+        body.dark-mode .facility-card {
+            background: #1e2447;
+            border-color: #2a3060;
+        }
+
+        body.dark-mode .facility-body h4 {
+            color: #e0e6ff;
+        }
+
+        body.dark-mode .about-cta {
+            background: #141830;
+        }
+
+        body.dark-mode .about-cta h2 {
+            color: #e0e6ff;
+        }
+
+        body.dark-mode .about-cta p {
+            color: #9aa5cc;
+        }
+
+        /* Logo Breakdown Styles */
+        .logo-breakdown-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            margin-top: 3rem;
+        }
+        .logo-main-img {
+            max-width: 300px;
+            margin: 0 auto;
+            display: block;
+        }
+        .logo-parts {
+            display: grid;
+            gap: 1.5rem;
+        }
+        .logo-part {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+        .logo-part-icon {
+            color: #7B1113;
+            font-size: 1.25rem;
+            margin-top: 0.2rem;
+        }
+        .logo-part h4 {
+            color: #12174a;
+            margin-bottom: 0.25rem;
+        }
+        .logo-part p {
+            font-size: 0.9rem;
+            color: #5a6070;
+            line-height: 1.6;
+        }
+
+        /* Org Structure Styles */
+        .org-chart {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        .org-level {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .org-node {
+            background: #fff;
+            border: 2px solid #7B1113;
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            min-width: 200px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+        .org-node strong {
+            display: block;
+            color: #7B1113;
+            margin-bottom: 0.25rem;
+        }
+        .org-node span {
+            font-size: 0.85rem;
+            color: #6B7280;
+        }
+        .org-line {
+            width: 2px;
+            height: 2rem;
+            background: #cbd5e1;
+        }
+
+        @media (max-width: 768px) {
+            .logo-breakdown-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    
+    <div class="utility-bar" id="utilityBar">
+        <div class="utility-inner">
+            <div class="utility-links">
+                <a href="alumni.html">Alumni</a>
+                <a href="library.html">Library</a>
+                <a href="portal.html">Student Portal</a>
+                <a href="faq.html">Contact</a>
+                <a href="admin.html"
+                    style="margin-left:0.75rem;padding:0.15rem 0.6rem;background:rgba(255,255,255,0.15);border-radius:4px;font-weight:600;letter-spacing:0.03em;"
+                    title="Staff / Admin Login"><i class="fas fa-lock"
+                        style="margin-right:4px;font-size:0.7em;"></i>Admin</a>
+            </div>
+            <div class="utility-right">
+                <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" title="Toggle dark mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    
+    <header class="main-header" id="mainHeader">
+        <div class="header-inner">
+            <a href="index.html" class="logo-wrap">
+                <img src="pcshs_logo.png"
+                    onerror="this.src='https://via.placeholder.com/60x60/7B1113/FFFFFF?text=PCSHS'" alt="PCSHS Logo"
+                    class="logo-img" />
+                <div class="logo-text">
+                    <span class="logo-main">Pasig City Science High School</span>
+                    <span class="logo-sub">Pasig City, Philippines</span>
+                </div>
+            </a>
+            <nav class="main-nav" id="mainNav">
+                <ul>
+                    <li class="has-dropdown">
+                        <a href="about.html">About <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown">
+                            <a href="about.html#overview"><i class="fas fa-school"></i> Our School</a>
+                            <a href="about.html#logo"><i class="fas fa-circle-info"></i> Logo Symbols</a>
+                            <a href="about.html#org"><i class="fas fa-sitemap"></i> Org Structure</a>
+                            <a href="about.html#mission"><i class="fas fa-bullseye"></i> Mission & Vision</a>
+                            <a href="about.html#objectives"><i class="fas fa-list-check"></i> Objectives</a>
+                            <a href="about.html#hymn"><i class="fas fa-music"></i> School Hymn</a>
+                        </div>
+                    </li>
+                    <li class="has-dropdown">
+                        <a href="index.html#academics">Academics <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown">
+                            <a href="resources.html"><i class="fas fa-book-open"></i> Resources & Modules</a>
+                            <a href="resources.html#subjects"><i class="fas fa-flask"></i> Subject Overview</a>
+                            <a href="resources.html#videos"><i class="fas fa-video"></i> Video Lessons</a>
+                        </div>
+                    </li>
+                    <li class="has-dropdown">
+                        <a href="admissions.html">Admissions <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown">
+                            <a href="admissions.html#overview"><i class="fas fa-info-circle"></i> Overview</a>
+                            <a href="admissions.html#steps"><i class="fas fa-list-ol"></i> Application Steps</a>
+                            <a href="admissions.html#requirements"><i class="fas fa-file-alt"></i> Requirements</a>
+                            <a href="enroll.html"><i class="fas fa-pencil-alt"></i> Apply Online</a>
+                        </div>
+                    </li>
+                    <li class="has-dropdown">
+                        <a href="index.html#life">Student Life <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown">
+                            <a href="clubs.html"><i class="fas fa-users"></i> Clubs & Orgs</a>
+                            <a href="achievers.html"><i class="fas fa-trophy"></i> Pascian Achievers</a>
+                            <a href="alumni.html"><i class="fas fa-graduation-cap"></i> Alumni</a>
+                        </div>
+                    </li>
+                    <li><a href="news.html">News</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                </ul>
+            </nav>
+            <button class="hamburger" id="hamburger" onclick="toggleMobileNav()" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
+
+    
+    <section class="page-hero">
+        <div class="page-hero-content">
+            <span class="section-tag">Who We Are</span>
+            <h1>About PCSHS</h1>
+            <p>Discover the mission, vision, and spirit that drives Pasig City Science High School toward excellence.
+            </p>
+        </div>
+    </section>
+
+    
+    <div class="breadcrumb-bar">
+        <div class="breadcrumb-inner">
+            <a href="index.html"><i class="fas fa-home"></i> Home</a>
+            <i class="fas fa-chevron-right"></i>
+            <span>About</span>
+        </div>
+    </div>
+
+    
+    <section class="about-page-section" id="overview">
+        <div class="container">
+
+            <div class="section-intro">
+                <span class="section-tag">School Overview</span>
+                <h2>Welcome to Pasig City Science High School</h2>
+                <p>A premier public science high school dedicated to excellence in STEM education.</p>
+            </div>
+
+            <div class="welcome-box">
+                <h3>Welcome to PCSHS</h3>
+                <p>
+                    Welcome to Pasig City Science High School (PCSHS), a premier public science high school dedicated to
+                    excellence in Science, Technology, Engineering, and Mathematics (STEM). Serving both Junior High
+                    School
+                    and Senior High School students, PCSHS provides a focused academic environment that challenges
+                    learners to
+                    reach their highest potential. Our STEM-centered curriculum strengthens analytical thinking,
+                    innovation,
+                    and problem-solving skills. We cultivate discipline, integrity, and leadership among our students.
+                    At
+                    PCSHS, we prepare future scientists, engineers, and professionals to contribute meaningfully to
+                    society.
+                </p>
+            </div>
+
+            
+            <div class="section-intro" style="margin-top: 3rem;">
+                <span class="section-tag">Why Choose Us</span>
+                <h2>Why Choose Pasig City Science High School?</h2>
+            </div>
+
+            <div class="why-grid">
+                <div class="why-card">
+                    <div class="why-icon"><i class="fas fa-atom"></i></div>
+                    <div>
+                        <h4>Specialized STEM Curriculum</h4>
+                        <p>An advanced, specialized curriculum focused on Science, Technology, Engineering &
+                            Mathematics.</p>
+                    </div>
+                </div>
+                <div class="why-card">
+                    <div class="why-icon"><i class="fas fa-star"></i></div>
+                    <div>
+                        <h4>Strong Academic Culture</h4>
+                        <p>A school culture that promotes excellence, discipline, and intellectual rigor in every
+                            subject.</p>
+                    </div>
+                </div>
+                <div class="why-card">
+                    <div class="why-icon"><i class="fas fa-medal"></i></div>
+                    <div>
+                        <h4>Competitive Excellence</h4>
+                        <p>A competitive environment that maximizes student potential and prepares them for national and
+                            international competitions.</p>
+                    </div>
+                </div>
+                <div class="why-card">
+                    <div class="why-icon"><i class="fas fa-trophy"></i></div>
+                    <div>
+                        <h4>Academic Competitions</h4>
+                        <p>Active participation and award-winning track record in science fairs, olympiads, and research
+                            events.</p>
+                    </div>
+                </div>
+                <div class="why-card">
+                    <div class="why-icon"><i class="fas fa-users-cog"></i></div>
+                    <div>
+                        <h4>Holistic Development</h4>
+                        <p>Leadership programs, co-curricular activities, and community involvement shape well-rounded
+                            graduates.</p>
+                    </div>
+                </div>
+            </div>
+
+            
+            <div class="two-col">
+                <div class="info-card">
+                    <h3><i class="fas fa-graduation-cap"></i> Academic Strengths</h3>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> Enhanced Mathematics and Science programs</li>
+                        <li><i class="fas fa-check-circle"></i> Inquiry-based and research-oriented learning approach
+                        </li>
+                        <li><i class="fas fa-check-circle"></i> Specialized STEM electives — Electromagnetism, Robotics,
+                            Human Anatomy and Physiology, Consumer Chemistry</li>
+                        <li><i class="fas fa-check-circle"></i> Training for academic contests and science fairs</li>
+                        <li><i class="fas fa-check-circle"></i> Development of critical thinking and advanced
+                            problem-solving skills</li>
+                    </ul>
+                </div>
+                <div class="info-card">
+                    <h3><i class="fas fa-building"></i> Facilities Highlights</h3>
+                    <ul>
+                        <li><i class="fas fa-running"></i> Gymnasium for assemblies, sports, and school programs</li>
+                        <li><i class="fas fa-tree"></i> School Grounds for outdoor activities and events</li>
+                        <li><i class="fas fa-flask"></i> Fully equipped Science Laboratories</li>
+                        <li><i class="fas fa-laptop"></i> Computer Laboratories with modern equipment</li>
+                        <li><i class="fas fa-book-open"></i> School Library with academic resources</li>
+                    </ul>
+                </div>
+            </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    
+    <section class="about-page-section" id="logo" style="background: #f8f9fc;">
+        <div class="container">
+            <div class="section-intro">
+                <span class="section-tag">Our Identity</span>
+                <h2>The PCSHS Logo Breakdown</h2>
+                <p>Every element in our seal tells the story of our commitment to excellence, science, and the Filipino youth.</p>
+            </div>
+            
+            <div class="logo-breakdown-grid">
+                <div>
+                    <img src="pcshs_logo.png" onerror="this.src='https://via.placeholder.com/300x300/7B1113/FFFFFF?text=PCSHS+LOGO'" alt="PCSHS Logo" class="logo-main-img" />
+                </div>
+                <div class="logo-parts">
+                    <div class="logo-part">
+                        <i class="fas fa-shield-halved logo-part-icon"></i>
+                        <div>
+                            <h4>The Shield</h4>
+                            <p>Represents protection of our students' future and the solid foundation of excellence we provide.</p>
+                        </div>
+                    </div>
+                    <div class="logo-part">
+                        <i class="fas fa-atom logo-part-icon"></i>
+                        <div>
+                            <h4>The Atom</h4>
+                            <p>Symbolizes our specialized focus on Science, Technology, Engineering, and Mathematics (STEM).</p>
+                        </div>
+                    </div>
+                    <div class="logo-part">
+                        <i class="fas fa-book-open logo-part-icon"></i>
+                        <div>
+                            <h4>The Book & Lamp</h4>
+                            <p>Knowledge and enlightenment through education, lighting the way for the youth of Pasig.</p>
+                        </div>
+                    </div>
+                    <div class="logo-part">
+                        <i class="fas fa-palette logo-part-icon"></i>
+                        <div>
+                            <h4>Maroon & Blue</h4>
+                            <p>Maroon signifies passion and bravery; Blue represents depth, stability, and scientific wisdom.</p>
+                        </div>
+                    </div>
+                    <div class="logo-part">
+                        <i class="fas fa-calendar-days logo-part-icon"></i>
+                        <div>
+                            <h4>1988</h4>
+                            <p>Commemorates the founding year of Pasig City Science High School as a beacon of learning.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+    <section class="about-page-section" id="org">
+        <div class="container">
+            <div class="section-intro">
+                <span class="section-tag">Leadership</span>
+                <h2>Organizational Structure</h2>
+                <p>Collaborative leadership working together to provide the best science education in the country.</p>
+            </div>
+
+            <div class="org-chart">
+                <div class="org-node">
+                    <strong>Dr. Ricardo B. Santos</strong>
+                    <span>School Principal</span>
+                </div>
+                <div class="org-line"></div>
+                <div class="org-level">
+                    <div class="org-node">
+                        <strong>Ms. Ana P. Reyes</strong>
+                        <span>Science Dept. Head</span>
+                    </div>
+                    <div class="org-node">
+                        <strong>Mr. Carlo T. Lim</strong>
+                        <span>Math Dept. Head</span>
+                    </div>
+                    <div class="org-node">
+                        <strong>Ms. Leah G. Fontaine</strong>
+                        <span>ICT Dept. Head</span>
+                    </div>
+                </div>
+                <div class="org-line"></div>
+                <div class="org-node">
+                    <strong>Pascian Educators</strong>
+                    <span>Teaching Faculty</span>
+                </div>
+                <div class="org-line"></div>
+                <div class="org-node" style="border-style: dashed; border-color: #0038A8;">
+                    <strong>Pascian Students</strong>
+                    <span>Scholars of Pasig</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+    <section class="mv-page-section" id="mission">
+        <div class="container">
+            <div class="mv-page-header">
+                <span class="section-tag">Our Foundation</span>
+                <h2>Mission, Vision & Core Values</h2>
+            </div>
+            <div class="mv-page-grid">
+                <div class="mv-page-card">
+                    <div class="mv-badge">🚀</div>
+                    <h3>Mission</h3>
+                    <p>PCSHS is committed to fully developing well-rounded, Science and Technology-oriented students —
+                        nurturing gender-sensitive persons and future leaders with a vision for excellence.</p>
+                </div>
+                <div class="mv-page-card">
+                    <div class="mv-badge">🌏</div>
+                    <h3>Vision</h3>
+                    <p>Pasig City Science High School (PCSHS) is envisioned to be a world-class institution that is
+                        globally and locally competitive and responsive to the ever-changing needs of the times,
+                        especially
+                        in the fields of Science and Technology.</p>
+                </div>
+                <div class="mv-page-card">
+                    <div class="mv-badge">⭐</div>
+                    <h3>Core Values</h3>
+                    <ul>
+                        <li>Excellence in Science and Technology Education</li>
+                        <li>Integrity and Moral Uprightness</li>
+                        <li>Innovation and Creative Thinking</li>
+                        <li>Service to Community and Nation</li>
+                        <li>Patriotism and Filipino Identity</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+    <section class="objectives-section" id="objectives">
+        <div class="container">
+            <div class="section-intro">
+                <span class="section-tag">School Objectives</span>
+                <h2>Our Primary Objectives</h2>
+                <p>As a premier public science high school, PCSHS is guided by these core institutional objectives.</p>
+            </div>
+            <ol class="objectives-list">
+                <li>Offer scholarship grants to deserving gifted students in Pasig City who demonstrate exceptional
+                    aptitude in Science and Mathematics.</li>
+                <li>Provide a high quality curriculum and instruction enriched with varied Science and Technology
+                    courses beyond the standard K-12 program.</li>
+                <li>Emphasize high standards of learning and high levels of learning skills such as critical and
+                    creative thinking and problem solving.</li>
+                <li>Provide state-of-the-art facilities that enhance interactive and hands-on learning experiences for
+                    all students.</li>
+                <li>Harness to the fullest the artistic, athletic, managerial and/or leadership talents of the students
+                    as well as their conscientious stewardship of the environment.</li>
+                <li>Inculcate among the students the values and virtues in life necessary in their interrelationships
+                    with selves, others, country, and God.</li>
+            </ol>
+        </div>
+    </section>
+
+    
+    <section class="about-page-section" style="padding-top: 3rem; padding-bottom: 5rem; background: #fff;">
+        <div class="container">
+            <div class="section-intro">
+                <span class="section-tag">Campus</span>
+                <h2>Our Facilities</h2>
+                <p>State-of-the-art learning spaces designed to support hands-on discovery and academic excellence.</p>
+            </div>
+            <div class="facilities-grid">
+                <div class="facility-card">
+                    <div class="facility-img">🏋️</div>
+                    <div class="facility-body">
+                        <h4>Gymnasium</h4>
+                    </div>
+                </div>
+                <div class="facility-card">
+                    <div class="facility-img">🌿</div>
+                    <div class="facility-body">
+                        <h4>School Grounds</h4>
+                    </div>
+                </div>
+                <div class="facility-card">
+                    <div class="facility-img">🔬</div>
+                    <div class="facility-body">
+                        <h4>Science Laboratories</h4>
+                    </div>
+                </div>
+                <div class="facility-card">
+                    <div class="facility-img">💻</div>
+                    <div class="facility-body">
+                        <h4>Computer Laboratories</h4>
+                    </div>
+                </div>
+                <div class="facility-card">
+                    <div class="facility-img">📚</div>
+                    <div class="facility-body">
+                        <h4>School Library</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+    <section class="hymn-section" id="hymn">
+        <div class="container">
+            <div class="section-intro">
+                <span class="section-tag">Our Identity</span>
+                <h2>School Hymn</h2>
+                <p>The PCSHS Hymn reflects the school's spirit of service, excellence, and patriotism.</p>
+            </div>
+            <div class="hymn-box">
+                <h3>PCSHS Hymn</h3>
+                <p class="hymn-subtitle">Pasig City Science High School</p>
+                <div class="hymn-verse">
+                    Pasig City Science High School,<br>
+                    Beacon of knowledge, pride of our land,<br>
+                    Nurturing minds with wisdom and truth,<br>
+                    Guided by faith and God's gentle hand.<br><br>
+
+                    Through the halls of science we venture,<br>
+                    With hearts full of courage and zeal,<br>
+                    Building a nation of tomorrow,<br>
+                    With love for our country so real.<br><br>
+
+                    Science, Technology, and Service,<br>
+                    Our banner we proudly raise high,<br>
+                    PCSHS, forever our home,<br>
+                    Our beacon beneath the Philippine sky.
+                </div>
+                <p class="hymn-note">* Official hymn lyrics — for updates, contact the Registrar's Office.</p>
+            </div>
+        </div>
+    </section>
+
+    
+    <section class="about-cta">
+        <div class="container">
+            <h2>Ready to Be Part of Our Community?</h2>
+            <p>Join thousands of Pascians who have gone on to become innovators, scientists, and leaders shaping the
+                Philippines and the world.</p>
+            <div class="cta-btns">
+                <a href="admissions.html" class="btn-maroon-solid"><i class="fas fa-pencil-alt"></i> Apply for
+                    Admission</a>
+                <a href="faq.html" class="btn-outline-maroon"><i class="fas fa-question-circle"></i> Read FAQs</a>
+            </div>
+        </div>
+    </section>
+
+    
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <img src="pcshs_logo.png"
+                    onerror="this.src='https://via.placeholder.com/50x50/7B1113/FFFFFF?text=PCSHS'" alt="PCSHS" />
+                <div>
+                    <strong>Pasig City Science High School</strong>
+                    <small>Rainforest Park, Maybunga, Pasig City</small>
+                </div>
+            </div>
+            <div class="footer-links">
+                <div class="fl-col">
+                    <h4>About</h4>
+                    <a href="about.html#overview">School Overview</a>
+                    <a href="about.html#mission">Mission & Vision</a>
+                    <a href="about.html#objectives">Objectives</a>
+                </div>
+                <div class="fl-col">
+                    <h4>Academics</h4>
+                    <a href="resources.html">Modules</a>
+                    <a href="resources.html#subjects">Subject Overview</a>
+                    <a href="resources.html#videos">Video Lessons</a>
+                </div>
+                <div class="fl-col">
+                    <h4>Quick Links</h4>
+                    <a href="admissions.html">Admissions</a>
+                    <a href="clubs.html">Clubs & Orgs</a>
+                    <a href="alumni.html">Alumni</a>
+                    <a href="faq.html">FAQ & Contact</a>
+                </div>
+                <div class="fl-col">
+                    <h4>Connect</h4>
+                    <a href="https://www.facebook.com/pcshs.edu" target="_blank"><i class="fab fa-facebook"></i>
+                        Facebook Page</a>
+                    <a href="portal.html"><i class="fas fa-user"></i> Student Portal</a>
+                    <a href="library.html"><i class="fas fa-book"></i> Library</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Pasig City Science High School. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Theme persistence
+        (function () {
+            if (localStorage.getItem('pcshs_dark') === '1') {
+                document.body.classList.add('dark-mode');
+                const icon = document.querySelector('#themeToggle i');
+                if (icon) { icon.className = 'fas fa-sun'; }
+            }
+        })();
+    </script>
+</body>
+
+</html>

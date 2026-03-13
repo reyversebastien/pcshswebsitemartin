@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Library — PCSHS</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0
+        }
+
+        :root {
+            --blue: #0038A8;
+            --blue-dark: #002580;
+            --blue-pale: #EEF3FF;
+            --white: #fff;
+            --text: #1A1F36;
+            --text-light: #6B7280;
+            --gray: #F3F5FA;
+            --border: #E2E8F0;
+            --radius: 12px;
+            --shadow: 0 4px 24px rgba(0, 56, 168, .1)
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--gray);
+            color: var(--text)
+        }
+
+        .enr-nav {
+            background: var(--blue-dark);
+            padding: .75rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, .3)
+        }
+
+        .enr-nav-logo {
+            display: flex;
+            align-items: center;
+            gap: .75rem;
+            text-decoration: none
+        }
+
+        .enr-nav-logo img {
+            width: 36px;
+            height: 36px;
+            object-fit: contain
+        }
+
+        .enr-nav-logo span {
+            color: #fff;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            font-size: .95rem
+        }
+
+        .enr-nav-links {
+            display: flex;
+            gap: 1.5rem
+        }
+
+        .enr-nav-links a {
+            color: rgba(255, 255, 255, .7);
+            text-decoration: none;
+            font-size: .875rem;
+            transition: color .2s
+        }
+
+        .enr-nav-links a:hover,
+        .enr-nav-links a.active {
+            color: #fff
+        }
+
+        .page-hero {
+            background: linear-gradient(135deg, var(--blue-dark), var(--blue));
+            padding: 3.5rem 2rem;
+            text-align: center;
+            color: #fff;
+            position: relative;
+            overflow: hidden
+        }
+
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url('https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=1400&q=60')center/cover;
+            opacity: .1
+        }
+
+        .page-hero-inner {
+            position: relative
+        }
+
+        .page-hero h1 {
+            font-family: 'DM Serif Display', serif;
+            font-size: clamp(1.8rem, 4vw, 2.6rem);
+            margin: .75rem 0 .5rem
+        }
+
+        .page-tag {
+            background: rgba(255, 255, 255, .15);
+            border: 1px solid rgba(255, 255, 255, .3);
+            padding: .3rem 1rem;
+            border-radius: 20px;
+            font-size: .78rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: .07em
+        }
+
+        .page-body {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2.5rem 1.5rem
+        }
+
+        .search-wrap {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 1.5rem 2rem;
+            box-shadow: var(--shadow);
+            margin-bottom: 2rem;
+            display: flex;
+            gap: 1rem;
+            align-items: flex-end;
+            flex-wrap: wrap
+        }
+
+        .search-wrap .fg {
+            flex: 1;
+            min-width: 200px
+        }
+
+        .search-wrap .fg label {
+            display: block;
+            font-size: .8rem;
+            font-weight: 600;
+            margin-bottom: .4rem
+        }
+
+        .search-wrap .fg input,
+        .search-wrap .fg select {
+            width: 100%;
+            padding: .65rem .9rem;
+            border: 1.5px solid var(--border);
+            border-radius: 8px;
+            font-family: 'Inter', sans-serif;
+            font-size: .9rem;
+            transition: border-color .2s
+        }
+
+        .search-wrap .fg input:focus,
+        .search-wrap .fg select:focus {
+            outline: none;
+            border-color: var(--blue)
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: .5rem;
+            padding: .7rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: .9rem;
+            cursor: pointer;
+            border: none;
+            transition: all .25s;
+            font-family: 'Inter', sans-serif
+        }
+
+        .btn-primary {
+            background: var(--blue);
+            color: #fff
+        }
+
+        .btn-primary:hover {
+            background: var(--blue-dark)
+        }
+
+        /* Categories */
+        .cat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2.5rem
+        }
+
+        .cat-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 1.25rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all .25s;
+            border: 2px solid var(--border);
+            box-shadow: var(--shadow)
+        }
+
+        .cat-card:hover,
+        .cat-card.active {
+            border-color: var(--blue);
+            background: var(--blue-pale)
+        }
+
+        .cat-card i {
+            font-size: 1.8rem;
+            color: var(--blue);
+            margin-bottom: .65rem
+        }
+
+        .cat-card h4 {
+            font-size: .88rem;
+            font-weight: 700;
+            margin-bottom: .2rem
+        }
+
+        .cat-card span {
+            font-size: .75rem;
+            color: var(--text-light)
+        }
+
+        /* Books */
+        .books-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 1.25rem
+        }
+
+        .book-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform .25s
+        }
+
+        .book-card:hover {
+            transform: translateY(-3px)
+        }
+
+        .book-cover {
+            height: 140px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem
+        }
+
+        .book-body {
+            padding: 1rem
+        }
+
+        .book-body h4 {
+            font-size: .9rem;
+            font-weight: 700;
+            margin-bottom: .3rem;
+            line-height: 1.3
+        }
+
+        .book-body .b-author {
+            font-size: .78rem;
+            color: var(--text-light);
+            margin-bottom: .45rem
+        }
+
+        .book-body .b-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: .3rem;
+            font-size: .72rem;
+            font-weight: 700;
+            padding: .2rem .6rem;
+            border-radius: 12px
+        }
+
+        .b-avail {
+            background: #E8F5E9;
+            color: #2E7D32
+        }
+
+        .b-out {
+            background: #FFEBEE;
+            color: #C62828
+        }
+
+        .b-digital {
+            background: var(--blue-pale);
+            color: var(--blue)
+        }
+
+        /* Digital resources */
+        .res-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.25rem;
+            margin-top: 2rem
+        }
+
+        .res-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 1.25rem;
+            box-shadow: var(--shadow);
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem
+        }
+
+        .res-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            flex-shrink: 0
+        }
+
+        .res-card h4 {
+            font-size: .9rem;
+            font-weight: 700;
+            margin-bottom: .3rem
+        }
+
+        .res-card p {
+            font-size: .8rem;
+            color: var(--text-light);
+            line-height: 1.5
+        }
+
+        .res-card a {
+            font-size: .78rem;
+            font-weight: 600;
+            color: var(--blue);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: .3rem;
+            margin-top: .5rem
+        }
+
+        .section-head {
+            margin: 2.5rem 0 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: .75rem
+        }
+
+        .section-head h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.15rem;
+            font-weight: 700
+        }
+
+        .section-head span {
+            font-size: .8rem;
+            color: var(--text-light)
+        }
+
+        .enr-footer {
+            background: var(--blue-dark);
+            color: rgba(255, 255, 255, .7);
+            text-align: center;
+            padding: 1.5rem;
+            font-size: .85rem;
+            margin-top: 3rem
+        }
+
+        .enr-footer a {
+            color: rgba(255, 255, 255, .5);
+            text-decoration: none;
+            margin: 0 .5rem
+        }
+
+        @media(max-width:600px) {
+            .enr-nav-links {
+                display: none
+            }
+
+            .cat-grid {
+                grid-template-columns: repeat(3, 1fr)
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="enr-nav">
+        <a href="index.html" class="enr-nav-logo">
+            <img src="pcshs_logo.png"
+                onerror="this.src='https://via.placeholder.com/36/0038A8/fff?text=P'" alt="PCSHS" />
+            <span>PCSHS Library</span>
+        </a>
+        <div class="enr-nav-links">
+            <a href="index.html"><i class="fas fa-home"></i> Home</a>
+            <a href="enroll.html"><i class="fas fa-pencil-alt"></i> Apply</a>
+            <a href="news.html"><i class="fas fa-newspaper"></i> News</a>
+            <a href="alumni.html"><i class="fas fa-users"></i> Alumni</a>
+            <a href="library.html" class="active"><i class="fas fa-book"></i> Library</a>
+        </div>
+    </nav>
+
+    <div class="page-hero">
+        <div class="page-hero-inner">
+            <span class="page-tag"><i class="fas fa-book"></i> Media Resource Center</span>
+            <h1>PCSHS Library</h1>
+            <p>Over 15,000 volumes of books, journals, and digital resources for PCSHS students and faculty.</p>
+        </div>
+    </div>
+
+    <div class="page-body">
+        
+        <div class="search-wrap">
+            <div class="fg"><label>Search Books & Resources</label><input type="text" id="bookSearch"
+                    placeholder="Title, author, or subject…" oninput="filterBooks()" /></div>
+            <div class="fg" style="max-width:200px"><label>Category</label>
+                <select id="bookCat" onchange="filterBooks()">
+                    <option value="">All Categories</option>
+                    <option>Science</option>
+                    <option>Mathematics</option>
+                    <option>Technology</option>
+                    <option>Filipino</option>
+                    <option>English</option>
+                    <option>Social Science</option>
+                    <option>Reference</option>
+                </select>
+            </div>
+            <button class="btn btn-primary" onclick="filterBooks()"><i class="fas fa-search"></i> Search</button>
+        </div>
+
+        
+        <div class="cat-grid">
+            <div class="cat-card active" onclick="setBookCat(this,'')"><i class="fas fa-th-large"></i>
+                <h4>All</h4><span>15,240 items</span>
+            </div>
+            <div class="cat-card" onclick="setBookCat(this,'Science')"><i class="fas fa-flask"></i>
+                <h4>Science</h4><span>4,820 volumes</span>
+            </div>
+            <div class="cat-card" onclick="setBookCat(this,'Mathematics')"><i class="fas fa-calculator"></i>
+                <h4>Mathematics</h4><span>2,310 volumes</span>
+            </div>
+            <div class="cat-card" onclick="setBookCat(this,'Technology')"><i class="fas fa-laptop-code"></i>
+                <h4>Technology</h4><span>1,890 volumes</span>
+            </div>
+            <div class="cat-card" onclick="setBookCat(this,'English')"><i class="fas fa-book-open"></i>
+                <h4>English</h4><span>1,450 volumes</span>
+            </div>
+            <div class="cat-card" onclick="setBookCat(this,'Filipino')"><i class="fas fa-scroll"></i>
+                <h4>Filipino</h4><span>980 volumes</span>
+            </div>
+            <div class="cat-card" onclick="setBookCat(this,'Reference')"><i class="fas fa-atlas"></i>
+                <h4>Reference</h4><span>3,790 volumes</span>
+            </div>
+        </div>
+
+        
+        <div class="section-head">
+            <h2><i class="fas fa-book" style="color:var(--blue)"></i> Book Catalog</h2><span id="bookCount">Showing all
+                items</span>
+        </div>
+        <div class="books-grid" id="booksGrid"></div>
+
+        
+        <div class="section-head">
+            <h2><i class="fas fa-globe" style="color:var(--blue)"></i> Digital Resources</h2>
+        </div>
+        <div class="res-grid">
+            <div class="res-card">
+                <div class="res-icon" style="background:#E3F2FD"><i class="fas fa-database" style="color:#0038A8"></i>
+                </div>
+                <div>
+                    <h4>DepEd Learning Portal</h4>
+                    <p>Official learning resources, modules, and digital textbooks from the Department of Education.</p>
+                    <a href="https://lms.deped.gov.ph" target="_blank">Visit Portal <i
+                            class="fas fa-external-link-alt"></i></a>
+                </div>
+            </div>
+            <div class="res-card">
+                <div class="res-icon" style="background:#E8F5E9"><i class="fas fa-flask" style="color:#2E7D32"></i>
+                </div>
+                <div>
+                    <h4>DOST Science Resources</h4>
+                    <p>Scientific research databases, journals, and publications from the Department of Science and
+                        Technology.</p><a href="https://www.dost.gov.ph" target="_blank">Visit Site <i
+                            class="fas fa-external-link-alt"></i></a>
+                </div>
+            </div>
+            <div class="res-card">
+                <div class="res-icon" style="background:#FFF8E1"><i class="fab fa-google" style="color:#A67C00"></i>
+                </div>
+                <div>
+                    <h4>Google Scholar</h4>
+                    <p>Search academic papers, theses, books, and conference papers for research projects.</p><a
+                        href="https://scholar.google.com" target="_blank">Open Scholar <i
+                            class="fas fa-external-link-alt"></i></a>
+                </div>
+            </div>
+            <div class="res-card">
+                <div class="res-icon" style="background:#F3EEFF"><i class="fas fa-book-open" style="color:#6C3FC5"></i>
+                </div>
+                <div>
+                    <h4>National Digital Archive</h4>
+                    <p>Philippine history, culture, and heritage resources from the National Library of the Philippines.
+                    </p><a href="https://nlp.gov.ph" target="_blank">Visit Archive <i
+                            class="fas fa-external-link-alt"></i></a>
+                </div>
+            </div>
+            <div class="res-card">
+                <div class="res-icon" style="background:#FFEBEE"><i class="fas fa-atom" style="color:#C62828"></i></div>
+                <div>
+                    <h4>PhilSciHigh Research Repository</h4>
+                    <p>Collection of student research papers from Philippine science high schools.</p><a href="#"
+                        onclick="alert('Repository access requires student login. Contact the librarian.')">Request
+                        Access <i class="fas fa-lock"></i></a>
+                </div>
+            </div>
+            <div class="res-card">
+                <div class="res-icon" style="background:#E8F5E9"><i class="fas fa-graduation-cap"
+                        style="color:#2E7D32"></i></div>
+                <div>
+                    <h4>Khan Academy</h4>
+                    <p>Free, world-class education in math, science, and computing — great for exam review.</p><a
+                        href="https://www.khanacademy.org" target="_blank">Study Now <i
+                            class="fas fa-external-link-alt"></i></a>
+                </div>
+            </div>
+        </div>
+
+        
+        <div
+            style="background:var(--white);border-radius:var(--radius);padding:1.5rem 2rem;box-shadow:var(--shadow);margin-top:2rem;display:grid;grid-template-columns:1fr 1fr;gap:2rem">
+            <div>
+                <h3 style="font-family:'Outfit',sans-serif;margin-bottom:1rem"><i class="fas fa-clock"
+                        style="color:var(--blue);margin-right:.4rem"></i> Library Hours</h3>
+                <table style="width:100%;font-size:.875rem;border-collapse:collapse">
+                    <tr>
+                        <td style="padding:.4rem 0;color:var(--text-light)">Monday – Friday</td>
+                        <td style="font-weight:600">7:30 AM – 5:00 PM</td>
+                    </tr>
+                    <tr>
+                        <td style="padding:.4rem 0;color:var(--text-light)">Saturday</td>
+                        <td style="font-weight:600">8:00 AM – 12:00 PM</td>
+                    </tr>
+                    <tr>
+                        <td style="padding:.4rem 0;color:var(--text-light)">Sunday & Holidays</td>
+                        <td style="font-weight:600;color:#C62828">Closed</td>
+                    </tr>
+                </table>
+            </div>
+            <div>
+                <h3 style="font-family:'Outfit',sans-serif;margin-bottom:1rem"><i class="fas fa-info-circle"
+                        style="color:var(--blue);margin-right:.4rem"></i> Library Policy</h3>
+                <ul style="font-size:.85rem;color:var(--text-light);padding-left:1.25rem;line-height:2">
+                    <li>Students may borrow up to 3 books at a time</li>
+                    <li>Borrowing period: 3 school days</li>
+                    <li>Reference books are for in-library use only</li>
+                    <li>Overdue fine: ₱2.00 per day per book</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <footer class="enr-footer">
+        <p>© 2025 Pasig City Science High School — Media Resource Center</p>
+        <p style="margin-top:.4rem"><a href="index.html">Home</a><a href="enroll.html">Apply</a><a
+                href="news.html">News</a><a href="index.html#contact">Contact</a></p>
+    </footer>
+
+    <script>
+        const BOOKS = [
+            { title: 'Biology: The Science of Life', author: 'Campbell, Reece', cat: 'Science', emoji: '🧬', status: 'available' },
+            { title: 'Physics for Scientists & Engineers', author: 'Serway, Jewett', cat: 'Science', emoji: '⚛️', status: 'available' },
+            { title: 'Advanced Organic Chemistry', author: 'March, Smith', cat: 'Science', emoji: '🧪', status: 'borrowed' },
+            { title: 'Introduction to Algorithms', author: 'Cormen, Leiserson', cat: 'Technology', emoji: '💻', status: 'available' },
+            { title: 'Python Programming: An Introduction', author: 'Zelle, John', cat: 'Technology', emoji: '🐍', status: 'available' },
+            { title: 'Calculus: Early Transcendentals', author: 'Stewart, James', cat: 'Mathematics', emoji: '📐', status: 'available' },
+            { title: 'Discrete Mathematics', author: 'Rosen, Kenneth', cat: 'Mathematics', emoji: '∑', status: 'borrowed' },
+            { title: 'Chemistry: A Molecular Approach', author: 'Tro, Nivaldo', cat: 'Science', emoji: '⚗️', status: 'available' },
+            { title: 'The Origins of Philippine Science', author: 'Ericta, Cid', cat: 'Reference', emoji: '🇵🇭', status: 'available' },
+            { title: 'Florante at Laura', author: 'Balagtas, Francisco', cat: 'Filipino', emoji: '📖', status: 'available' },
+            { title: 'Noli Me Tangere', author: 'Rizal, Jose', cat: 'Filipino', emoji: '✏️', status: 'available' },
+            { title: 'The Art of Writing Science Papers', author: 'Penrose, Katz', cat: 'Reference', emoji: '📝', status: 'digital' },
+            { title: 'Earth Science: An Introduction', author: 'Tarbuck, Lutgens', cat: 'Science', emoji: '🌍', status: 'available' },
+            { title: 'Research Methods for Students', author: 'Creswell, John', cat: 'Reference', emoji: '🔬', status: 'digital' },
+            { title: 'English for Academic Purposes', author: 'Jordan, R.R.', cat: 'English', emoji: '📚', status: 'available' },
+            { title: 'Modern Physics for Scientists', author: 'Tipler, Paul', cat: 'Science', emoji: '🌌', status: 'borrowed' },
+            { title: 'Data Structures Using Java', author: 'Karumanchi, Narasimha', cat: 'Technology', emoji: '📊', status: 'available' },
+            { title: 'Statistics for Life Sciences', author: 'Samuels, Witmer', cat: 'Mathematics', emoji: '📈', status: 'digital' },
+        ];
+
+        let activeCat2 = '';
+
+        function setBookCat(el, cat) {
+            activeCat2 = cat;
+            document.getElementById('bookCat').value = cat;
+            document.querySelectorAll('.cat-card').forEach(c => c.classList.remove('active'));
+            el.classList.add('active');
+            filterBooks();
+        }
+
+        function filterBooks() {
+            const q = document.getElementById('bookSearch').value.toLowerCase();
+            const cat = document.getElementById('bookCat').value || activeCat2;
+            activeCat2 = cat;
+            const filtered = BOOKS.filter(b =>
+                (!cat || b.cat === cat) &&
+                (b.title.toLowerCase().includes(q) || b.author.toLowerCase().includes(q))
+            );
+            document.getElementById('bookCount').textContent = `Showing ${filtered.length} item${filtered.length !== 1 ? 's' : ''}`;
+            const statusMap = {
+                available: { cls: 'b-avail', label: 'Available' },
+                borrowed: { cls: 'b-out', label: 'Checked Out' },
+                digital: { cls: 'b-digital', label: 'Digital Only' },
+            };
+            document.getElementById('booksGrid').innerHTML = filtered.map(b => {
+                const s = statusMap[b.status] || statusMap.available;
+                return `<div class="book-card">
+      <div class="book-cover" style="background:var(--blue-pale)">${b.emoji}</div>
+      <div class="book-body">
+        <h4>${b.title}</h4>
+        <div class="b-author"><i class="fas fa-user" style="font-size:.7rem"></i> ${b.author}</div>
+        <div style="display:flex;align-items:center;justify-content:space-between">
+          <span class="b-tag ${s.cls}"><i class="fas fa-${b.status === 'borrowed' ? 'times-circle' : b.status === 'digital' ? 'cloud' : ' check-circle'}"></i> ${s.label}</span>
+          <span style="font-size:.72rem;color:var(--text-light)">${b.cat}</span>
+        </div>
+      </div>
+    </div>`;
+            }).join('') || '<p style="grid-column:1/-1;text-align:center;padding:2rem;color:var(--text-light)">No books found for your search.</p>';
+        }
+
+        filterBooks();
+    </script>
+</body>
+
+</html>

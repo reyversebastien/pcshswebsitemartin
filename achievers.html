@@ -1,0 +1,1177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pascian Achievers | PCSHS</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link rel="stylesheet" href="style.css" />
+    <style>
+        .page-hero {
+            background: linear-gradient(135deg, #7B1113 0%, #12174a 60%, #0038A8 100%);
+            padding: 9rem 0 5rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden
+        }
+
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url('https://images.unsplash.com/photo-1571080082517-2b72e939ba64?w=1600&q=60') center/cover no-repeat;
+            opacity: .1
+        }
+
+        .page-hero-content {
+            position: relative;
+            z-index: 2
+        }
+
+        .page-hero .ptag {
+            background: rgba(255, 255, 255, .15);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, .3);
+            padding: .35rem 1rem;
+            border-radius: 999px;
+            font-size: .78rem;
+            font-weight: 600;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            display: inline-block;
+            margin-bottom: 1rem
+        }
+
+        .page-hero h1 {
+            font-family: 'DM Serif Display', serif;
+            font-size: clamp(2.2rem, 5vw, 3.8rem);
+            color: #fff;
+            margin-bottom: 1rem
+        }
+
+        .page-hero p {
+            color: rgba(255, 255, 255, .85);
+            font-size: 1.08rem;
+            max-width: 560px;
+            margin: 0 auto
+        }
+
+        .breadcrumb-bar {
+            background: #f8f9fc;
+            border-bottom: 1px solid #e8eaf0;
+            padding: .75rem 0
+        }
+
+        .breadcrumb-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            align-items: center;
+            gap: .5rem;
+            font-size: .82rem;
+            color: #6B7280
+        }
+
+        .breadcrumb-inner a {
+            color: #7B1113;
+            text-decoration: none;
+            font-weight: 500
+        }
+
+        .achievers-section {
+            padding: 5rem 0
+        }
+
+        .achievers-section .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem
+        }
+
+        .section-intro {
+            text-align: center;
+            margin-bottom: 3rem
+        }
+
+        .stag {
+            background: rgba(123, 17, 19, .08);
+            color: #7B1113;
+            padding: .3rem 1rem;
+            border-radius: 999px;
+            font-size: .78rem;
+            font-weight: 600;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            display: inline-block;
+            margin-bottom: .75rem
+        }
+
+        .section-intro h2 {
+            font-family: 'DM Serif Display', serif;
+            font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+            color: #12174a;
+            margin-bottom: .75rem
+        }
+
+        .section-intro p {
+            color: #5a6070;
+            max-width: 620px;
+            margin: 0 auto;
+            line-height: 1.7
+        }
+
+        .cat-tabs {
+            display: flex;
+            gap: .5rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 3rem
+        }
+
+        .cat-tab {
+            padding: .55rem 1.5rem;
+            border-radius: 999px;
+            border: 2px solid #e8eaf0;
+            background: #fff;
+            color: #6B7280;
+            font-size: .85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all .2s
+        }
+
+        .cat-tab.active,
+        .cat-tab:hover {
+            background: #7B1113;
+            border-color: #7B1113;
+            color: #fff
+        }
+
+        .achievement-card {
+            background: #fff;
+            border: 1px solid #e8eaf0;
+            border-radius: 18px;
+            overflow: hidden;
+            margin-bottom: 2rem;
+            transition: box-shadow .25s
+        }
+
+        .achievement-card:hover {
+            box-shadow: 0 12px 35px rgba(0, 0, 0, .1)
+        }
+
+        .ach-header {
+            background: linear-gradient(135deg, #12174a, #0038A8);
+            padding: 1.5rem 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1.25rem
+        }
+
+        .ach-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 14px;
+            background: rgba(255, 255, 255, .15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            flex-shrink: 0
+        }
+
+        .ach-title {
+            color: #fff
+        }
+
+        .ach-title h3 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.15rem;
+            margin-bottom: .2rem
+        }
+
+        .ach-title .ach-meta {
+            font-size: .8rem;
+            opacity: .8;
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap
+        }
+
+        .ach-title .ach-meta span {
+            display: flex;
+            align-items: center;
+            gap: .3rem
+        }
+
+        .ach-body {
+            padding: 1.75rem 2rem
+        }
+
+        .ach-body p {
+            font-size: .9rem;
+            color: #4B5563;
+            line-height: 1.75;
+            margin-bottom: 1.25rem
+        }
+
+        .ach-winners {
+            background: #f8f9fc;
+            border-radius: 12px;
+            padding: 1.25rem
+        }
+
+        .ach-winners h4 {
+            font-size: .82rem;
+            font-weight: 700;
+            color: #12174a;
+            letter-spacing: .07em;
+            text-transform: uppercase;
+            margin-bottom: .85rem
+        }
+
+        .winner-item {
+            display: flex;
+            align-items: flex-start;
+            gap: .85rem;
+            padding: .55rem 0;
+            border-bottom: 1px solid #eef0f8
+        }
+
+        .winner-item:last-child {
+            border-bottom: none
+        }
+
+        .medal {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            flex-shrink: 0
+        }
+
+        .gold {
+            background: #fff8dc;
+            border: 2px solid #FFD700
+        }
+
+        .silver {
+            background: #f0f0f0;
+            border: 2px solid #C0C0C0
+        }
+
+        .bronze {
+            background: #fdf3ee;
+            border: 2px solid #CD7F32
+        }
+
+        .special {
+            background: #e8f0ff;
+            border: 2px solid #0038A8;
+            font-size: .7rem;
+            font-weight: 700;
+            color: #0038A8
+        }
+
+        .winner-info strong {
+            display: block;
+            font-size: .88rem;
+            color: #12174a
+        }
+
+        .winner-info span {
+            font-size: .78rem;
+            color: #6B7280
+        }
+
+        .ach-adviser {
+            padding: .85rem 2rem;
+            background: #fafbff;
+            border-top: 1px solid #eef0f8;
+            font-size: .82rem;
+            color: #6B7280;
+            display: flex;
+            align-items: center;
+            gap: .5rem
+        }
+
+        .ach-adviser i {
+            color: #7B1113
+        }
+
+        .hidden {
+            display: none
+        }
+
+        body.dark-mode .breadcrumb-bar {
+            background: #1a1f3c;
+            border-color: #2a3060
+        }
+
+        body.dark-mode .achievement-card {
+            background: #1e2447;
+            border-color: #2a3060
+        }
+
+        body.dark-mode .ach-body p {
+            color: #9aa5cc
+        }
+
+        body.dark-mode .ach-winners {
+            background: #141830
+        }
+
+        body.dark-mode .ach-winners h4 {
+            color: #e0e6ff
+        }
+
+        body.dark-mode .winner-info strong {
+            color: #e0e6ff
+        }
+
+        body.dark-mode .winner-info span {
+            color: #9aa5cc
+        }
+
+        body.dark-mode .section-intro h2 {
+            color: #e0e6ff
+        }
+
+        body.dark-mode .section-intro p {
+            color: #9aa5cc
+        }
+
+        body.dark-mode .cat-tab {
+            background: #1e2447;
+            border-color: #2a3060;
+            color: #9aa5cc
+        }
+    </style>
+</head>
+
+<body>
+    <div class="utility-bar" id="utilityBar">
+        <div class="utility-inner">
+            <div class="utility-links">
+                <a href="alumni.html">Alumni</a><a href="library.html">Library</a><a href="portal.html">Student
+                    Portal</a><a href="faq.html">Contact</a>
+                <a href="admin.html"
+                    style="margin-left:.75rem;padding:.15rem .6rem;background:rgba(255,255,255,.15);border-radius:4px;font-weight:600;"><i
+                        class="fas fa-lock" style="margin-right:4px;font-size:.7em;"></i>Admin</a>
+            </div>
+            <div class="utility-right"><button class="theme-toggle" id="themeToggle" onclick="toggleTheme()"><i
+                        class="fas fa-moon"></i></button></div>
+        </div>
+    </div>
+    <header class="main-header" id="mainHeader">
+        <div class="header-inner">
+            <a href="index.html" class="logo-wrap">
+                <img src="pcshs_logo.png"
+                    onerror="this.src='https://via.placeholder.com/60x60/7B1113/FFFFFF?text=PCSHS'" alt="PCSHS Logo"
+                    class="logo-img" />
+                <div class="logo-text"><span class="logo-main">Pasig City Science High School</span><span
+                        class="logo-sub">Pasig City, Philippines</span></div>
+            </a>
+            <nav class="main-nav" id="mainNav">
+                <ul>
+                    <li class="has-dropdown"><a href="about.html">About <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown"><a href="about.html#overview"><i class="fas fa-school"></i> Our
+                                School</a><a href="about.html#mission"><i class="fas fa-bullseye"></i> Mission &
+                                Vision</a></div>
+                    </li>
+                    <li class="has-dropdown"><a href="admissions.html">Admissions <i
+                                class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown"><a href="admissions.html#steps"><i class="fas fa-list-ol"></i> Steps</a><a
+                                href="enroll.html"><i class="fas fa-pencil-alt"></i> Apply</a></div>
+                    </li>
+                    <li class="has-dropdown"><a href="clubs.html" class="active">Student Life <i
+                                class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown"><a href="clubs.html"><i class="fas fa-users"></i> Clubs & Orgs</a><a
+                                href="achievers.html"><i class="fas fa-trophy"></i> Pascian Achievers</a><a
+                                href="alumni.html"><i class="fas fa-graduation-cap"></i> Alumni</a></div>
+                    </li>
+                    <li><a href="resources.html">Resources</a></li>
+                    <li><a href="news.html">News</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                </ul>
+            </nav>
+            <button class="hamburger" id="hamburger"
+                onclick="toggleMobileNav()"><span></span><span></span><span></span></button>
+        </div>
+    </header>
+
+    <section class="page-hero">
+        <div class="page-hero-content">
+            <span class="ptag">Student Achievements</span>
+            <h1>Pascian Achievers</h1>
+            <p>Celebrating the outstanding accomplishments of PCSHS students on regional, national, and international
+                stages.</p>
+        </div>
+    </section>
+
+    <div class="breadcrumb-bar">
+        <div class="breadcrumb-inner">
+            <a href="index.html"><i class="fas fa-home"></i> Home</a>
+            <i class="fas fa-chevron-right"></i>
+            <a href="clubs.html">Student Life</a>
+            <i class="fas fa-chevron-right"></i>
+            <span>Pascian Achievers</span>
+        </div>
+    </div>
+
+    <section class="achievers-section">
+        <div class="container">
+            <div class="section-intro">
+                <span class="stag">Pride of PCSHS</span>
+                <h2>Award-Winning Pascians</h2>
+                <p>Our students consistently excel in mathematics, science, journalism, research, and performing arts
+                    competitions locally and around the world.</p>
+            </div>
+
+            <div class="cat-tabs">
+                <button class="cat-tab active" onclick="filterAch('all',this)">All</button>
+                <button class="cat-tab" onclick="filterAch('math',this)">Mathematics</button>
+                <button class="cat-tab" onclick="filterAch('science',this)">Science</button>
+                <button class="cat-tab" onclick="filterAch('journalism',this)">Journalism</button>
+                <button class="cat-tab" onclick="filterAch('research',this)">Research</button>
+                <button class="cat-tab" onclick="filterAch('nonacademic',this)">Non-Academic</button>
+            </div>
+
+            
+            <div class="achievement-card" data-cat="math">
+                <div class="ach-header">
+                    <div class="ach-icon">🌏</div>
+                    <div class="ach-title">
+                        <h3>2025 ASIAROPE Math Olympiad (International Round)</h3>
+                        <div class="ach-meta">
+                            <span><i class="fas fa-calendar"></i> Aug 30 – Sep 2, 2025</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Kuala Lumpur, Malaysia</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="ach-body">
+                    <p>The 2025 ASIAROPE Olympiad International Round brought together young learners from multiple
+                        countries to compete in Mathematics, Science, and English for secondary-level students aged
+                        16–18. The school earned recognition reflecting the students' dedication and skill.</p>
+                    <div class="ach-winners">
+                        <h4><i class="fas fa-medal"></i> Awardees</h4>
+                        <div class="winner-item">
+                            <div class="medal bronze">🥉</div>
+                            <div class="winner-info"><strong>Kezhia Emmanuelle Avelino</strong><span>Bronze Medalist –
+                                    Mathematics</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ach-adviser"><i class="fas fa-chalkboard-teacher"></i> Adviser: Not specified</div>
+            </div>
+
+            
+            <div class="achievement-card" data-cat="science">
+                <div class="ach-header">
+                    <div class="ach-icon">🔬</div>
+                    <div class="ach-title">
+                        <h3>2025 International Equilibrium Science Olympiad (Final Round)</h3>
+                        <div class="ach-meta">
+                            <span><i class="fas fa-calendar"></i> Sep 19–22, 2025</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Jpark Island Resort, Cebu</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="ach-body">
+                    <p>This prestigious competition drew participants from across Asia and beyond, including Thailand,
+                        Australia, Japan, Malaysia, Indonesia, Vietnam, Myanmar, Iran, Cambodia, Russia, and Taiwan,
+                        challenging Grades 2–12 students in multidisciplinary science topics.</p>
+                    <div class="ach-winners">
+                        <h4><i class="fas fa-medal"></i> Awardees</h4>
+                        <div class="winner-item">
+                            <div class="medal gold">🥇</div>
+                            <div class="winner-info"><strong>Christian Albert Hobrero</strong><span>Gold Medalist –
+                                    Science</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ach-adviser"><i class="fas fa-chalkboard-teacher"></i> Adviser: Not specified</div>
+            </div>
+
+            
+            <div class="achievement-card" data-cat="math">
+                <div class="ach-header">
+                    <div class="ach-icon">🧮</div>
+                    <div class="ach-title">
+                        <h3>2025 Thailand International Mathematics Olympiad (Heat Round)</h3>
+                        <div class="ach-meta">
+                            <span><i class="fas fa-calendar"></i> October 19, 2025</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Online</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="ach-body">
+                    <p>The 90-minute competition challenged learners from Kindergarten to Senior High in logic,
+                        arithmetic, algebra, number theory, geometry, and combinatorics, offering online and on-site
+                        participants a pathway to the Finals in Bangkok.</p>
+                    <div class="ach-winners">
+                        <h4><i class="fas fa-medal"></i> Awardees</h4>
+                        <div class="winner-item">
+                            <div class="medal gold">🥇</div>
+                            <div class="winner-info"><strong>Raphael Arkin Rufino, Tyler John Quinzson, Asher Ron
+                                    Dumapias</strong><span>Gold Medalists</span></div>
+                        </div>
+                        <div class="winner-item">
+                            <div class="medal silver">🥈</div>
+                            <div class="winner-info"><strong>Calix Gerald Tan, John Warren Escarilla, Sadam Ric San
+                                    Juan, Luis Gabriel Enrile</strong><span>Silver Medalists</span></div>
+                        </div>
+                        <div class="winner-item">
+                            <div class="medal bronze">🥉</div>
+                            <div class="winner-info"><strong>Kezhia Emmanuelle Avelino, Christian Albert Hobrero, Kian
+                                    Mikhail Espiritu</strong><span>Bronze Medalists</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ach-adviser"><i class="fas fa-chalkboard-teacher"></i> Adviser: Not specified</div>
+            </div>
+
+            
+            <div class="achievement-card" data-cat="math">
+                <div class="ach-header">
+                    <div class="ach-icon">🌐</div>
+                    <div class="ach-title">
+                        <h3>2025 Mathematics Without Borders</h3>
+                        <div class="ach-meta">
+                            <span><i class="fas fa-calendar"></i> October 25, 2025</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Online (28 Countries)</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="ach-body">
+                    <p>The 2025 Mathematics Without Borders competition brought together talented young mathematicians
+                        from 28 countries to demonstrate skills on a global stage, open to students in Grades 1–12 under
+                        18 years old.</p>
+                    <div class="ach-winners">
+                        <h4><i class="fas fa-medal"></i> Awardees</h4>
+                        <div class="winner-item">
+                            <div class="medal silver">🥈</div>
+                            <div class="winner-info"><strong>Tyler John Quinzson</strong><span>Silver Medalist</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ach-adviser"><i class="fas fa-chalkboard-teacher"></i> Adviser: Not specified</div>
+            </div>
+
+            
+            <div class="achievement-card" data-cat="math">
+                <div class="ach-header">
+                    <div class="ach-icon">🇺🇸</div>
+                    <div class="ach-title">
+                        <h3>2025 American Mathematics Olympiad (Autumn Round)</h3>
+                        <div class="ach-meta">
+                            <span><i class="fas fa-calendar"></i> Nov 5–9, 2025</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Online</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="ach-body">
+                    <p>Organized by SIMCC for students in Grades 2–12, AMO challenged young learners with a 90-minute,
+                        25-question, non-calculator exam testing analytical thinking and problem-solving skills.</p>
+                    <div class="ach-winners">
+                        <h4><i class="fas fa-medal"></i> Awardees</h4>
+                        <div class="winner-item">
+                            <div class="medal bronze">🥉</div>
+                            <div class="winner-info"><strong>Christian Albert Hobrero</strong><span>Bronze
+                                    Medalist</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ach-adviser"><i class="fas fa-chalkboard-teacher"></i> Adviser: Not specified</div>
+            </div>
+
+            
+            <div class="achievement-card" data-cat="science">
+                <div class="ach-header">
+                    <div class="ach-icon">🇭🇰</div>
+                    <div class="ach-title">
+                        <h3>2025 Hong Kong International Science Olympiad (Heat Round)</h3>
+                        <div class="ach-meta">
+                            <span><i class="fas fa-calendar"></i> November 9, 2025</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Online</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="ach-body">
+                    <p>A 60-minute online competition featuring 20 questions across Physics, Biology, Chemistry, and
+                        Integrated Science. The marking system rewarded accuracy and penalized incorrect answers,
+                        organized by MOTLI with a pathway to the Final Round in Singapore.</p>
+                    <div class="ach-winners">
+                        <h4><i class="fas fa-medal"></i> Awardees</h4>
+                        <div class="winner-item">
+                            <div class="medal gold">🥇</div>
+                            <div class="winner-info"><strong>Christian Albert Hobrero</strong><span>Gold Medalist</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ach-adviser"><i class="fas fa-chalkboard-teacher"></i> Adviser: Not specified</div>
+            </div>
+
+            
+            <div class="achievement-card" data-cat="math">
+                <div class="ach-header">
+                    <div class="ach-icon">🏅</div>
+                    <div class="ach-title">
+                        <h3>2025 Guangdong–HK–Macau GBA Mathematical Olympiad (Heat Round)</h3>
+                        <div class="ach-meta">
+                            <span><i class="fas fa-calendar"></i> November 23, 2025</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Online</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="ach-body">
+                    <p>A rigorous multi-section contest covering logical thinking, arithmetic, number theory, geometry,
+                        and combinatorics. Students from the school earned medals in all categories demonstrating strong
+                        preparation and adaptability.</p>
+                    <div class="ach-winners">
+                        <h4><i class="fas fa-medal"></i> Awardees</h4>
+                        <div class="winner-item">
+                            <div class="medal gold">🥇</div>
+                            <div class="winner-info"><strong>Kezhia Emmanuelle Avelino, Christian Albert Hobrero,
+                                    Raphael Arkin Rufino, Calix Gerald Tan, John Warren Escarilla, Rastin Axl Salas,
+                                    Aaron Senica</strong><span>Gold Medalists</span></div>
+                        </div>
+                        <div class="winner-item">
+                            <div class="medal silver">🥈</div>
+                            <div class="winner-info"><strong>James Clark De Mayo, Tyler John Quinzson, Sadam Ric San
+                                    Juan</strong><span>Silver Medalists</span></div>
+                        </div>
+                        <div class="winner-item">
+                            <div class="medal bronze">🥉</div>
+                            <div class="winner-info"><strong>Aric Vindua, Luis Gabriel Enrile</strong><span>Bronze
+                                    Medalists</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ach-adviser"><i class="fas fa-chalkboard-teacher"></i> Adviser: Not specified</div>
+            </div>
+
+            
+            <div class="achievement-card" data-cat="math science">
+                <div class="ach-header">
+                    <div class="ach-icon">🇮🇩</div>
+                    <div class="ach-title">
+                        <h3>2025 Asian Science and Math Olympiad (ASMO)</h3>
+                        <div class="ach-meta">
+                            <span><i class="fas fa-calendar"></i> Dec 12–15, 2025</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Bali, Indonesia</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="ach-body">
+                    <p>ASMO provided a platform for primary and secondary learners to demonstrate skills in Mathematics,
+                        Science, and English beyond the standard curriculum, encouraging analytical thinking and a
+                        passion for STEM.</p>
+                    <div class="ach-winners">
+                        <h4><i class="fas fa-medal"></i> Awardees</h4>
+                        <div class="winner-item">
+                            <div class="medal silver">🥈</div>
+                            <div class="winner-info"><strong>Kezhia Emmanuelle Avelino</strong><span>Silver Medalist –
+                                    Math & Science</span></div>
+                        </div>
+                        <div class="winner-item">
+                            <div class="medal silver">🥈</div>
+                            <div class="winner-info"><strong>Christian Albert Hobrero</strong><span>Silver Medalist –
+                                    Math</span></div>
+                        </div>
+                        <div class="winner-item">
+                            <div class="medal bronze">🥉</div>
+                            <div class="winner-info"><strong>Christian Albert Hobrero</strong><span>Bronze Medalist –
+                                    Science</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ach-adviser"><i class="fas fa-chalkboard-teacher"></i> Adviser: Not specified</div>
+            </div>
+
+            
+            <div class="achievement-card" data-cat="math">
+                <div class="ach-header">
+                    <div class="ach-icon">🇰🇭</div>
+                    <div class="ach-title">
+                        <h3>2025 Angkor Mathematics Competition</h3>
+                        <div class="ach-meta">
+                            <span><i class="fas fa-calendar"></i> Dec 13–14, 2025</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Phnom Penh, Cambodia</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="ach-body">
+                    <p>A major regional contest for Grades 1–12 organized by Bright Education and ICE, with participants
+                        from Laos, Malaysia, and the Philippines. Challenging questions promoted critical thinking with
+                        prizes including MacBooks and iPads.</p>
+                    <div class="ach-winners">
+                        <h4><i class="fas fa-medal"></i> Awardees</h4>
+                        <div class="winner-item">
+                            <div class="medal gold">🥇</div>
+                            <div class="winner-info"><strong>Kezhia Emmanuelle Avelino</strong><span>Gold
+                                    Medalist</span></div>
+                        </div>
+                        <div class="winner-item">
+                            <div class="medal gold">🥇</div>
+                            <div class="winner-info"><strong>Christian Albert Hobrero</strong><span>Gold Medalist</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ach-adviser"><i class="fas fa-chalkboard-teacher"></i> Adviser: Not specified</div>
+            </div>
+
+            
+            <div class="achievement-card" data-cat="math">
+                <div class="ach-header">
+                    <div class="ach-icon">🇯🇵</div>
+                    <div class="ach-title">
+                        <h3>2025 Int'l Science & Mathematics Olympiad of Southeast Asia</h3>
+                        <div class="ach-meta">
+                            <span><i class="fas fa-calendar"></i> Dec 17–23, 2025</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Osaka, Japan</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="ach-body">
+                    <p>The final round brought together young mathematicians from multiple countries in a culmination of
+                        national and regional qualifiers. Participants faced advanced problems requiring technical skill
+                        and creative strategic thinking.</p>
+                    <div class="ach-winners">
+                        <h4><i class="fas fa-medal"></i> Awardees</h4>
+                        <div class="winner-item">
+                            <div class="medal bronze">🥉</div>
+                            <div class="winner-info"><strong>Kezhia Emmanuelle Avelino</strong><span>Bronze
+                                    Medalist</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ach-adviser"><i class="fas fa-chalkboard-teacher"></i> Adviser: Not specified</div>
+            </div>
+
+            
+            <div class="achievement-card" data-cat="science">
+                <div class="ach-header">
+                    <div class="ach-icon">🏆</div>
+                    <div class="ach-title">
+                        <h3>DOST-SEI: 2025 Youth Excellence in Science (YES) Awards</h3>
+                        <div class="ach-meta">
+                            <span><i class="fas fa-calendar"></i> December 2025</span>
+                            <span><i class="fas fa-map-marker-alt"></i> National Science & Technology Week, Laoag
+                                City</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="ach-body">
+                    <p>PCSHS stood out with the <strong>highest number of DOST-SEI scholarship passers in Pasig
+                            City</strong>, totaling 64. The YES Medal, conferred by DOST-SEI, inspires youth to pursue
+                        careers in science and technology while highlighting exceptional academic achievements.</p>
+                    <div class="ach-winners">
+                        <h4><i class="fas fa-medal"></i> Excellence YES Medalists</h4>
+                        <div class="winner-item">
+                            <div class="medal special">YES</div>
+                            <div class="winner-info"><strong>Anna Cencia II "Bless" S. Porwelo</strong><span>Excellence
+                                    YES Medalist</span></div>
+                        </div>
+                        <div class="winner-item">
+                            <div class="medal special">YES</div>
+                            <div class="winner-info"><strong>Arwin Peter C. Castro</strong><span>Excellence YES
+                                    Medalist</span></div>
+                        </div>
+                        <div class="winner-item">
+                            <div class="medal special">YES</div>
+                            <div class="winner-info"><strong>Bryle Anthony C. Adawag</strong><span>Excellence YES
+                                    Medalist</span></div>
+                        </div>
+                        <div class="winner-item">
+                            <div class="medal special">YES</div>
+                            <div class="winner-info"><strong>Jared Aiden V. Jamon</strong><span>Excellence YES
+                                    Medalist</span></div>
+                        </div>
+                        <div class="winner-item">
+                            <div class="medal special">YES</div>
+                            <div class="winner-info"><strong>Joam Christangel A. Odavar</strong><span>Excellence YES
+                                    Medalist</span></div>
+                        </div>
+                        <div class="winner-item">
+                            <div class="medal special">YES</div>
+                            <div class="winner-info"><strong>Tyler John A. Quinzon</strong><span>Excellence YES
+                                    Medalist</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ach-adviser"><i class="fas fa-chalkboard-teacher"></i> Advisers: Ms. Villa Michelle de Vera
+                    & Mr. Francis Arman Cos</div>
+            </div>
+
+            
+            <div class="achievement-card" data-cat="science">
+                <div class="ach-header">
+                    <div class="ach-icon">🧠</div>
+                    <div class="ach-title">
+                        <h3>BRAINIAC: Clash of the Sci-Tech Champs Quiz Bowl Finals</h3>
+                        <div class="ach-meta">
+                            <span><i class="fas fa-calendar"></i> January 14, 2026</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Philippine Science High School, QC</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="ach-body">
+                    <p>Organized by Our Lady of Lourdes Hospital in partnership with DepEd-NCR, this prestigious
+                        competition gathered over 400 of the brightest junior high school students across NCR in
+                        rigorous rounds covering science, mathematics, and research.</p>
+                    <div class="ach-winners">
+                        <h4><i class="fas fa-medal"></i> Awardees</h4>
+                        <div class="winner-item">
+                            <div class="medal special">3rd</div>
+                            <div class="winner-info"><strong>PCSHS Team</strong><span>3rd Runner-Up – Grand
+                                    Finals</span></div>
+                        </div>
+                        <div class="winner-item">
+                            <div class="medal gold">🥇</div>
+                            <div class="winner-info"><strong>Asher Ron C. Dumapias (G10 Marx)</strong><span>PAMAMARISAN
+                                    Top Scorer – Math | BIDA Achiever | 3rd Top Scoring Overall</span></div>
+                        </div>
+                        <div class="winner-item">
+                            <div class="medal gold">🥇</div>
+                            <div class="winner-info"><strong>Janjelo H. Melad (G10 Goldstein)</strong><span>PAMAMARISAN
+                                    Top Scorer – Science | BIDA Achiever | 4th Top Scoring Overall</span></div>
+                        </div>
+                        <div class="winner-item">
+                            <div class="medal gold">🥇</div>
+                            <div class="winner-info"><strong>Jared Aiden V. Jamon (G10 Marx)</strong><span>PAMAMARISAN
+                                    Top Scorer – Math | BIDA Achiever | 5th Top Scoring Overall</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ach-adviser"><i class="fas fa-chalkboard-teacher"></i> Adviser: Mr. Francis Arman T. Cos
+                </div>
+            </div>
+
+            
+            <div class="achievement-card" data-cat="nonacademic">
+                <div class="ach-header">
+                    <div class="ach-icon">🎙️</div>
+                    <div class="ach-title">
+                        <h3>2026 Division Festival of Talents: Speak Up!</h3>
+                        <div class="ach-meta">
+                            <span><i class="fas fa-calendar"></i> Jan 14–16, 2026</span>
+                            <span><i class="fas fa-map-marker-alt"></i> SM East Ortigas, Pasig City</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="ach-body">
+                    <p>Senior high school learners were tested in a fast-paced impromptu speaking challenge, delivering
+                        original speeches on topics assigned moments before stepping on stage, with Filipiniana-inspired
+                        attire.</p>
+                    <div class="ach-winners">
+                        <h4><i class="fas fa-medal"></i> Awardees</h4>
+                        <div class="winner-item">
+                            <div class="medal silver">🥈</div>
+                            <div class="winner-info"><strong>Samiela Evanie D. Puro</strong><span>2nd Placer — Grade 12
+                                    Meyer</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ach-adviser"><i class="fas fa-chalkboard-teacher"></i> Adviser: Mr. Tristan Catapang</div>
+            </div>
+
+            
+            <div class="achievement-card" data-cat="nonacademic">
+                <div class="ach-header">
+                    <div class="ach-icon">📖</div>
+                    <div class="ach-title">
+                        <h3>2026 Division Festival of Talents: Read-a-thon</h3>
+                        <div class="ach-meta">
+                            <span><i class="fas fa-calendar"></i> Jan 14–16, 2026</span>
+                            <span><i class="fas fa-map-marker-alt"></i> SM East Ortigas, Pasig City</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="ach-body">
+                    <p>Promoting literacy and a love for reading, the DFOT Read-a-Thon challenged participants to engage
+                        thoughtfully with texts while demonstrating clarity, expression, and comprehension supporting
+                        the ARAL Program.</p>
+                    <div class="ach-winners">
+                        <h4><i class="fas fa-medal"></i> Awardees</h4>
+                        <div class="winner-item">
+                            <div class="medal bronze">🥉</div>
+                            <div class="winner-info"><strong>Janiah Francheska R. Ruiz & Denise L.
+                                    Reyes</strong><span>3rd Placers — Grade 10 Goldstein</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ach-adviser"><i class="fas fa-chalkboard-teacher"></i> Adviser: Ms. Larraine Kris N. Moldogo
+                </div>
+            </div>
+
+            
+            <div class="achievement-card" data-cat="science">
+                <div class="ach-header">
+                    <div class="ach-icon">🔭</div>
+                    <div class="ach-title">
+                        <h3>2026 RFOT STEMazing Competition</h3>
+                        <div class="ach-meta">
+                            <span><i class="fas fa-calendar"></i> Feb 23–24, 2026</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Pasay City National Science High School</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="ach-body">
+                    <p>The 2026 Regional Festival of Talents STEMazing Competition brought together top regional
+                        qualifiers from across NCR under the theme "Embracing Change, Redefining Excellence," testing
+                        STEM skills and teamwork.</p>
+                    <div class="ach-winners">
+                        <h4><i class="fas fa-medal"></i> Awardees</h4>
+                        <div class="winner-item">
+                            <div class="medal silver">🥈</div>
+                            <div class="winner-info"><strong>Bryle Anthony C. Adawag</strong><span>2nd Placer</span>
+                            </div>
+                        </div>
+                        <div class="winner-item">
+                            <div class="medal silver">🥈</div>
+                            <div class="winner-info"><strong>Eoghan Benedict D. Nolasco</strong><span>2nd Placer</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ach-adviser"><i class="fas fa-chalkboard-teacher"></i> Advisers: Ms. Villa Michelle de Vera
+                    & Mr. Joseph Lara</div>
+            </div>
+
+            
+            <div class="achievement-card" data-cat="science">
+                <div class="ach-header">
+                    <div class="ach-icon">⚛️</div>
+                    <div class="ach-title">
+                        <h3>2026 Philippine Junior Physics Challenge (National Level)</h3>
+                        <div class="ach-meta">
+                            <span><i class="fas fa-calendar"></i> January 24, 2026</span>
+                            <span><i class="fas fa-map-marker-alt"></i> UP Diliman, Quezon City</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="ach-body">
+                    <p>Held at the National Institute of Physics, UP Diliman, this national assessment brought together
+                        390 of the country's most promising young physics students to compete in problem-solving,
+                        conceptual understanding, and analytical reasoning.</p>
+                    <div class="ach-winners">
+                        <h4><i class="fas fa-medal"></i> Awardees</h4>
+                        <div class="winner-item">
+                            <div class="medal gold">🥇</div>
+                            <div class="winner-info"><strong>Secretario, Jelynne Seane M. (G10 Joule)</strong><span>Gold
+                                    Medalist</span></div>
+                        </div>
+                        <div class="winner-item">
+                            <div class="medal gold">🥇</div>
+                            <div class="winner-info"><strong>Unday, Earl John C. (G9 Ptolemy)</strong><span>Gold
+                                    Medalist</span></div>
+                        </div>
+                        <div class="winner-item">
+                            <div class="medal bronze">🥉</div>
+                            <div class="winner-info"><strong>Ocampo, Christian Mccoy S. (G10
+                                    Goldstein)</strong><span>Bronze Medalist</span></div>
+                        </div>
+                        <div class="winner-item">
+                            <div class="medal bronze">🥉</div>
+                            <div class="winner-info"><strong>Latumbo, Luezz Damien Q. (G9
+                                    Mendeleev)</strong><span>Bronze Medalist</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ach-adviser"><i class="fas fa-chalkboard-teacher"></i> Advisers: Ms. Villa Michelle de Vera
+                    & Mr. Francis Arman Cos</div>
+            </div>
+
+            
+            <div class="achievement-card" data-cat="journalism">
+                <div class="ach-header">
+                    <div class="ach-icon">📰</div>
+                    <div class="ach-title">
+                        <h3>31st Division Schools Press Conference (DSPC) 2025</h3>
+                        <div class="ach-meta">
+                            <span><i class="fas fa-calendar"></i> December 12, 2025</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Pasig Elementary School, Pasig City</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="ach-body">
+                    <p>PCSHS emerged as the <strong>Overall Champion</strong> of the 31st DSPC 2025, also securing 1st
+                        Best Performing School in English and 5th Best Performing School in Filipino.</p>
+                    <div class="ach-winners">
+                        <h4><i class="fas fa-medal"></i> Key Awardees</h4>
+                        <div class="winner-item">
+                            <div class="medal gold">🥇</div>
+                            <div class="winner-info"><strong>Charles Dominick B. Tud</strong><span>1st Place —
+                                    Copyreading & Headlining</span></div>
+                        </div>
+                        <div class="winner-item">
+                            <div class="medal gold">🥇</div>
+                            <div class="winner-info"><strong>Cherry Ann O. Malate</strong><span>1st Place — Pagwawasto
+                                    at Pag-uulo ng Balita</span></div>
+                        </div>
+                        <div class="winner-item">
+                            <div class="medal gold">🥇</div>
+                            <div class="winner-info"><strong>Godric T. Mangapot</strong><span>1st Place — Science
+                                    Feature Writing</span></div>
+                        </div>
+                        <div class="winner-item">
+                            <div class="medal gold">🥇</div>
+                            <div class="winner-info"><strong>Wynona Chrissandra Z. Ventura</strong><span>1st Place —
+                                    Pagsulat ng Kolum</span></div>
+                        </div>
+                        <div class="winner-item">
+                            <div class="medal silver">🥈</div>
+                            <div class="winner-info"><strong>Cris Loren S. Balhon, Romilen P. Santander, Jared Shia G.
+                                    Sarmiento</strong><span>2nd Place — News Writing, Pagsulat ng Balita, Sports
+                                    Writing</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ach-adviser"><i class="fas fa-chalkboard-teacher"></i> Advisers: Ms. Cherry A. Zerna, Ms.
+                    Sherry T. Cadiao, Ms. Vera-Janice Tamundong, Ms. Joana Marie L. Marites</div>
+            </div>
+
+            
+            <div class="achievement-card" data-cat="journalism">
+                <div class="ach-header">
+                    <div class="ach-icon">🖨️</div>
+                    <div class="ach-title">
+                        <h3>31st DSPC Group Events 2026</h3>
+                        <div class="ach-meta">
+                            <span><i class="fas fa-calendar"></i> February 6, 2026</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Pasig Elementary School, Pasig City</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="ach-body">
+                    <p>The school's Collaborative Desktop Publishing (English) team emerged as Champion, while the Radio
+                        Broadcasting (Filipino) team secured 2nd Place with multiple Best Anchor awards.</p>
+                    <div class="ach-winners">
+                        <h4><i class="fas fa-medal"></i> Awardees</h4>
+                        <div class="winner-item">
+                            <div class="medal gold">🥇</div>
+                            <div class="winner-info"><strong>Collaborative Desktop Publishing
+                                    (English)</strong><span>Champion — Jayke Brylle Balanrayos, Alleah Heart Licdan,
+                                    Dorothy Neil Zerna, Ashley Nicole Sabsilica, Gabrielle Zsie Malapitan, Gabrielle
+                                    Simeone Cano, Rayne Dharyll Sagayoc</span></div>
+                        </div>
+                        <div class="winner-item">
+                            <div class="medal silver">🥈</div>
+                            <div class="winner-info"><strong>Radio Broadcasting (Filipino)</strong><span>2nd Place —
+                                    Achilles Betan, Juan Miguel Villegas</span></div>
+                        </div>
+                        <div class="winner-item">
+                            <div class="medal special">🎙️</div>
+                            <div class="winner-info"><strong>Araziel Salas & Daniella Venice Pepito, Jeanilyn Cristo &
+                                    Venice Sy</strong><span>Best Anchor Awards</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ach-adviser"><i class="fas fa-chalkboard-teacher"></i> Advisers: Ms. Cherry A. Zerna, Ms.
+                    Sherry T. Cadiao, Ms. Vera-Janice Tamundong, Ms. Joana Marie L. Marites</div>
+            </div>
+
+            
+            <div class="achievement-card" data-cat="research">
+                <div class="ach-header">
+                    <div class="ach-icon">🧪</div>
+                    <div class="ach-title">
+                        <h3>2026 UP ALCHEMES Research Fair (25th Edition)</h3>
+                        <div class="ach-meta">
+                            <span><i class="fas fa-calendar"></i> Jan 15–17, 2026</span>
+                            <span><i class="fas fa-map-marker-alt"></i> UP Diliman, Quezon City</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="ach-body">
+                    <p>Under the theme <em>ATHANOR: Igniting the Youth to Blossom in their Potential</em>, Grade 12
+                        students presented their research on Anticancer Activity of Ti Plant extract against cervical
+                        cancer cells.</p>
+                    <div class="ach-winners">
+                        <h4><i class="fas fa-medal"></i> Awardees</h4>
+                        <div class="winner-item">
+                            <div class="medal silver">🥈</div>
+                            <div class="winner-info"><strong>Marie Claire R. Beloy, Sophia Nicole A. Santiago, Justine
+                                    Mikyla S. Clet</strong><span>Overall 1st Runner-Up (DFOT Secondary) | 2nd Place –
+                                    Life Science Category | Research: Anticancer Activity and Induction of Ti Plant
+                                    (Cordyline fruticosa) Leaf Methanolic Crude Extract Against Cervical Cancer Cells
+                                    (HeLa)</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ach-adviser"><i class="fas fa-chalkboard-teacher"></i> Adviser: Ms. Charito P. Corsiga</div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <img src="pcshs_logo.png"
+                    onerror="this.src='https://via.placeholder.com/50x50/7B1113/FFFFFF?text=PCSHS'" alt="PCSHS" />
+                <div><strong>Pasig City Science High School</strong><small>Rainforest Park, Maybunga, Pasig City</small>
+                </div>
+            </div>
+            <div class="footer-links">
+                <div class="fl-col">
+                    <h4>Student Life</h4><a href="clubs.html">Clubs & Orgs</a><a href="achievers.html">Achievers</a><a
+                        href="alumni.html">Alumni</a>
+                </div>
+                <div class="fl-col">
+                    <h4>Quick Links</h4><a href="admissions.html">Admissions</a><a href="resources.html">Resources</a><a
+                        href="faq.html">FAQ</a>
+                </div>
+                <div class="fl-col">
+                    <h4>Connect</h4><a href="https://www.facebook.com/pcshs.edu" target="_blank"><i
+                            class="fab fa-facebook"></i> Facebook</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Pasig City Science High School. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        function filterAch(cat, btn) {
+            document.querySelectorAll('.cat-tab').forEach(t => t.classList.remove('active'));
+            btn.classList.add('active');
+            document.querySelectorAll('.achievement-card').forEach(card => {
+                if (cat === 'all' || card.dataset.cat.includes(cat)) {
+                    card.classList.remove('hidden');
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+        }
+        (function () {
+            if (localStorage.getItem('pcshs_dark') === '1') {
+                document.body.classList.add('dark-mode');
+                const icon = document.querySelector('#themeToggle i');
+                if (icon) icon.className = 'fas fa-sun';
+            }
+        })();
+    </script>
+    
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+    <script src="firebase-config.js"></script>
+    <script src="db.js"></script>
+</body>
+
+</html>

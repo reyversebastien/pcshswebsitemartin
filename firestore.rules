@@ -1,0 +1,44 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    
+    match /applications/{doc} {
+      allow create: if true;
+      allow read, update, delete: if false; 
+    }
+
+    
+    match /contacts/{doc} {
+      allow create: if true;
+      allow read, update, delete: if false;
+    }
+
+    
+    match /news/{doc} {
+      allow read: if true;
+      allow write: if false; 
+    }
+    match /events/{doc} {
+      allow read: if true;
+      allow write: if false;
+    }
+    match /clubs/{doc} {
+      allow read: if true;
+      allow write: if false;
+    }
+    match /achievers/{doc} {
+      allow read: if true;
+      allow write: if false;
+    }
+    match /research/{doc} {
+      allow read: if true;
+      allow write: if false;
+    }
+    match /alumni/{doc} {
+      allow read: if true;
+      allow create: if true; 
+      allow update, delete: if false;
+    }
+  }
+}
